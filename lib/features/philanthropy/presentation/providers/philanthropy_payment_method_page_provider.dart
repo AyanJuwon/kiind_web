@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_paypal/flutter_paypal.dart';
-import 'package:flutter_paypal/flutter_paypal_subscription.dart';
+// import 'package:flutter_paypal/flutter_paypal.dart';
+// import 'package:flutter_paypal/flutter_paypal_subscription.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
@@ -180,57 +180,60 @@ print("paypal payload :: ${payload}");
             ];
 
 print("paypal mode 0 :: ${paymentDetail.gateway?.sandbox}");
+return Container();
+            // return UsePaypal(
+            //     onSuccess: (Map params) {
+            //       log('Payment transaction was succesfull $params');
+            //       shouldPop = false;
+            //       finalizeKiindDonation(context, donationInfo, paymentMethod,
+            //           paymentDetail, params,
+            //           isPaypal: false);
+            //     },
+            //     onError: (error) {
+            //       log('paypal error 0  $error');
+            //       showAlertToast(
+            //           'An error occurred processing your one-time transaction. Please try again.');
+            //     },
+            //     onCancel: (params) {
+            //       log('payment cancelled $params');
+            //     },
+            //     sandboxMode: paymentDetail.gateway!.sandbox,
+            //     returnURL: paymentDetail.gateway!.notifyUrl!,
+            //     cancelURL: paymentDetail.gateway!.cancelUrl!,
+            //     transactions: paypalTransactions,
+            //     note: "Contact us for any questions on your subscription.",
+            //     clientId: paymentMethod.apiKey!,
+            //     secretKey: paymentMethod.apiSecret!);
 
-            return UsePaypal(
-                onSuccess: (Map params) {
-                  log('Payment transaction was succesfull $params');
-                  shouldPop = false;
-                  finalizeKiindDonation(context, donationInfo, paymentMethod,
-                      paymentDetail, params,
-                      isPaypal: false);
-                },
-                onError: (error) {
-                  log('paypal error 0  $error');
-                  showAlertToast(
-                      'An error occurred processing your one-time transaction. Please try again.');
-                },
-                onCancel: (params) {
-                  log('payment cancelled $params');
-                },
-                sandboxMode: paymentDetail.gateway!.sandbox,
-                returnURL: paymentDetail.gateway!.notifyUrl!,
-                cancelURL: paymentDetail.gateway!.cancelUrl!,
-                transactions: paypalTransactions,
-                note: "Contact us for any questions on your subscription.",
-                clientId: paymentMethod.apiKey!,
-                secretKey: paymentMethod.apiSecret!);
           }
 
 print("paypal mode 1 :: ${paymentDetail.gateway?.sandbox}");
-          return UsePaypalSubscription(
-            onSuccess: (Map params) {
-              log('Payment was succesfull $params');
-              shouldPop = false;
-              finalizeKiindDonation(
-                  context, donationInfo, paymentMethod, paymentDetail, params,
-                  isPaypal: true);
-            },
-            onError: (error) {
-              log('paypal error 1 $error');
-              showAlertToast(
-                  'An error occurred processing your transaction. Please try again.');
-            },
-            onCancel: (params) {
-              log('payment cancelled $params');
-            },
-            sandboxMode: paymentDetail.gateway!.sandbox,
-            returnURL: paymentDetail.gateway!.notifyUrl!,
-            cancelURL: paymentDetail.gateway!.cancelUrl!,
-            planID: paymentDetail.gateway!.plan!,
-            clientId: paymentMethod.apiKey!,
-            secretKey: paymentMethod.apiSecret!,
-            note: "Contact us for any questions on your subscription.",
-          );
+          // return UsePaypalSubscription(
+          //   onSuccess: (Map params) {
+          //     log('Payment was succesfull $params');
+          //     shouldPop = false;
+          //     finalizeKiindDonation(
+          //         context, donationInfo, paymentMethod, paymentDetail, params,
+          //         isPaypal: true);
+          //   },
+          //   onError: (error) {
+          //     log('paypal error 1 $error');
+          //     showAlertToast(
+          //         'An error occurred processing your transaction. Please try again.');
+          //   },
+          //   onCancel: (params) {
+          //     log('payment cancelled $params');
+          //   },
+          //   sandboxMode: paymentDetail.gateway!.sandbox,
+          //   returnURL: paymentDetail.gateway!.notifyUrl!,
+          //   cancelURL: paymentDetail.gateway!.cancelUrl!,
+          //   planID: paymentDetail.gateway!.plan!,
+          //   clientId: paymentMethod.apiKey!,
+          //   secretKey: paymentMethod.apiSecret!,
+          //   note: "Contact us for any questions on your subscription.",
+          // );
+       return Container();
+       
         });
 
     if (shouldPop) {

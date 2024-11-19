@@ -59,11 +59,12 @@ class _PayModalState extends State<PayModal> {
   final Dio dio = Dio();
 
   Future<void> fetchData() async {
-    try {
+     if(widget.paymentDetails['campaign_id']!= null){
+       try {
       options = payment_options.Options.forWallet();
       final prefs = await SharedPreferences.getInstance();
       final token = (prefs.getString('token'))!;
-
+ 
       final response = await dio.get(
         "https://app.kiind.co.uk/api/v2${Endpoints.campaignDetail}/${widget.paymentDetails['campaign_id']}",
         options: Options(
@@ -89,6 +90,16 @@ class _PayModalState extends State<PayModal> {
       );
       options = payment_options.Options.forWallet();
     }
+  }else{
+      campaign = Campaign(
+        title: 'Fund Wallet',
+        featuredImage: 'https://img.icons8.com/color/452/wallet--v1.png',
+        type: 'Other',
+        options: payment_options.Options.forWallet(),
+      );
+      options = payment_options.Options.forWallet();
+  }
+ 
   }
 
   void changeDonation(int index) {

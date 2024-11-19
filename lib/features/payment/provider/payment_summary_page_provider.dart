@@ -342,20 +342,12 @@ class PaymentSummaryPageProvider extends BaseProvider {
 
   _launchPaypalModal(BuildContext context) async {
     Gateway? gateway = paymentDetail.value?.gateway;
-    if (gateway != null && method?.id == 3) {
-      // Create the list of transactions for PayPal
-      List<Map<String, dynamic>> transactions = [
-        {
-          "amount": {"total": "10.00", "currency": "USD"},
-          "description":
-              "Payment for services rendered", // Modify this as needed
-        },
-      ];
-      // Launch the PayPal checkout view
+    if (gateway != null && method?.id == 3) { 
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (modalContext) => PaypalOrderPayment(
-
+            returnURL:gateway.notifyUrl! ,
+       cancelURL:gateway.cancelUrl! ,
             sandboxMode: gateway.sandbox,
             clientId: gateway.publicKey!,
             secretKey: gateway.privateKey!,
