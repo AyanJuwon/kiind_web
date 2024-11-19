@@ -50,7 +50,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             title: customTextNormal(
               'Select Payment Method',
-              textColor: Theme.of(context).textTheme.bodyText1!.color,
+              textColor: Theme.of(context).textTheme.bodyLarge!.color,
             ),
             centerTitle: true,
             elevation: 1,

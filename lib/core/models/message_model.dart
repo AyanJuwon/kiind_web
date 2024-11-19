@@ -6,7 +6,7 @@
 // import 'dart:developer';
 
 // import 'package:jiffy/jiffy.dart';
-// import 'package:kiind/core/util/extensions/string_extensions.dart';
+// import 'package:kiind_web/core/util/extensions/string_extensions.dart';
 
 // class Message {
 //   Message({

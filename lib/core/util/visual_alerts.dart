@@ -12,13 +12,13 @@ void showAlertFlash(
   Color? textColor,
   Duration duration = const Duration(seconds: 7),
 }) {
-  // Using showToastWidget to show custom toast with an optional icon
+  // Using showAlertToastWidget to show custom toast with an optional icon
   showToastWidget(
     Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       decoration: BoxDecoration(
-        color: background ?? context.theme.backgroundColor,
+        color: background ?? context.theme.colorScheme.background,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -27,12 +27,12 @@ void showAlertFlash(
           if (showIcon)
             Icon(
               Icons.check_circle,
-              color: context.theme.textTheme.bodyText1?.color,
+              color: context.theme.textTheme.bodyLarge?.color,
             ),
           SizedBox(width: 8), // Space between icon and text
           customTextSmall(
             message,
-            textColor: textColor ?? context.theme.textTheme.bodyText1?.color,
+            textColor: textColor ?? context.theme.textTheme.bodyLarge?.color,
             alignment: TextAlign.start,
           ),
         ],

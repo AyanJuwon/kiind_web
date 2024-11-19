@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
-// import 'package:kiind/core/constants/app_colors.dart';
-// import 'package:kiind/core/provider/base_provider.dart';
+// import 'package:kiind_web/core/constants/app_colors.dart';
+// import 'package:kiind_web/core/provider/base_provider.dart';
 // import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 // import '../../core/util/input_validators.dart';

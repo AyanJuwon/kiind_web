@@ -52,6 +52,9 @@ dependencies:
   pie_chart: ^5.4.0
   equatable: ^2.0.3
   pretty_dio_logger: ^1.1.1
+  material_design_icons_flutter:
+  flutter_localizations:
+    sdk: flutter
   
   oktoast:
   hive: ^2.0.4
@@ -61,6 +64,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
   
 
 dev_dependencies:
@@ -79,11 +83,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -119,3 +123,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  

@@ -2,12 +2,23 @@
 
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
+import 'package:kiind_web/features/payment/pages/pay_modal.dart';
 import 'package:kiind_web/features/payment/pages/payment_method_screen.dart';
 import 'package:kiind_web/features/payment/pages/payment_summary/payment_summary_page.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+     
+      case '/pay':
+        final arguments = settings.arguments as Map<String, dynamic>? ?? {};
+        return MaterialPageRoute(
+          builder: (_) => PayModal(
+            paymentDetails: arguments,
+            preset: null, // Adjust if necessary
+          ),
+          settings: settings,
+        );
       case RoutePaths.paymentMethodScreen:
         final arguments = settings.arguments as Map<String, dynamic>? ?? {};
 
