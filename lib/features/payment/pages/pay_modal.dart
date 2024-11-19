@@ -452,71 +452,7 @@ class _PayModalState extends State<PayModal> {
                             ),
                           );
 
-                          // return MaterialButton(
-                          //   onPressed: enabled
-                          //       ? () => (_) async {
-                          //             print("here");
-                          //             bool isOther =
-                          //                 (campaign?.isOther ?? false);
-                          //             String opt = '';
-
-                          //             Amounts amounts = Amounts(
-                          //               userSubmittedAmount: double.tryParse(
-                          //                   _priceController.text),
-                          //             );
-                          //             Map<String, dynamic> detail =
-                          //                 PaymentDetail(
-                          //               amounts: amounts,
-                          //               cause: campaign,
-                          //             ).toMap();
-
-                          //             if (isOther) {
-                          //               // _opt = (subscriptionOption.value ?? '')
-                          //               //     .toLowerCase()
-                          //               //     .replaceAll(' ', '_');
-                          //               detail["__interval"] = opt;
-                          //               detail["__type"] = (opt.contains('_')
-                          //                       ? PaymentType.oneTime
-                          //                       : PaymentType.subscription)
-                          //                   .index;
-                          //               // preset = _campaign
-                          //               //     ?.subscriptionOptions[subscriptionOption.value ?? ''];
-                          //             }
-
-                          //             await context.off(
-                          //               RoutePaths.paymentMethodScreen,
-                          //               // RoutePaths.paymentSummaryScreen,
-                          //               args: detail,
-                          //             );
-                          //           }
-                          //       // widget.onContinue(
-                          //       // go to payment method page padd the payment type if its donation or wallet funding
-                          //       // Amounts(
-                          //       //   userSubmittedAmount: double.tryParse(
-                          //       //       _priceController.text),
-                          //       // ),
-                          //       // purpose: widget.cause is Post
-                          //       //     ? _purposeController.text
-                          //       //     : null,
-                          //       // )
-                          //       : () => {},
-                          //   color:
-                          //       enabled ? AppColors.primaryColor : Colors.grey,
-                          //   minWidth: double.infinity,
-                          //   padding: const EdgeInsets.symmetric(vertical: 22),
-                          //   shape: RoundedRectangleBorder(
-                          //     borderRadius: BorderRadius.circular(38),
-                          //   ),
-                          //   // () => showAlertFlash(
-                          //   //       context,
-                          //   //       'Enter a valid amount',
-                          //   //     ),
-                          //   child: customTextNormal(
-                          //     "Continue",
-                          //     textColor: Colors.white,
-                          //     fontWeight: FontWeight.w600,
-                          //   ),
-                          // );
+                   
                         },
                       ),
                     ],
