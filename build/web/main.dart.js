@@ -26865,7 +26865,7 @@ k.r=d
 k.w=c
 k.e=null
 r=f==null
-if(r)A.aE8($.I1().gaq(0),"showToastWidget")
+if(r)A.aE8($.I1().gaq(0),"showAlertToastWidget")
 r=r?k.b=e.$1($.I1().gaq(0)):f
 r=r.am(t.p7)
 if(r==null)r=B.yP
@@ -28225,7 +28225,7 @@ q=q==null?p:q.b
 r.push(A.x2(b,B.aB,q))
 A.aFs(A.dl(p,A.jS(r,B.ad,B.bU),B.q,p,p,new A.d6(o,p,p,s,p,p,B.al),p,p,B.De,B.Dg,p,p,p),p,p,p,A.aFz(),p,p,B.D7,p,B.R9,p)},
 aws(a){var s,r,q=null,p=A.cH(0,0,3),o=$.I1()
-A.aE8(o.gaq(0),"showToast")
+A.aE8(o.gaq(0),"showAlertToast")
 s=A.aDo(o.gaq(0))
 s=s
 o=s.am(t.p7)

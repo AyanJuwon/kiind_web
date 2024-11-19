@@ -35,7 +35,7 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                     ? null
                     : customTextNormal('Payment',
                         textColor:
-                            Theme.of(context).textTheme.bodyText1!.color),
+                            Theme.of(context).textTheme.bodyLarge!.color),
                 centerTitle: true,
                 leading: processing ? const Offstage() : null,
                 elevation: 1,

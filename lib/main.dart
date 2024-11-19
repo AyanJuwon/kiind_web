@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/providers/provider_setup.dart';
 import 'package:kiind_web/core/router/router.dart';
-import 'package:kiind_web/features/payment/pages/pay_modal.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'dart:html' as html;
 import 'package:shared_preferences/shared_preferences.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // URL must have these parameters: ?cause=,&amounts=,&__interval=,&__type=,
   // Load environment variables
   await dotenv.load();
 
@@ -48,13 +47,23 @@ void main() async {
     "user_id": 19, // Default or extracted value
   };
 
+  // Determine the initial route based on the URL
+  String initialRoute = uri.path; // e.g., "/pay" or "/"
+
   // Run the app
-  runApp(OKToast(child: MyApp(paymentDetails: paymentDetails)));
+  runApp(OKToast(
+    child: MyApp(
+      paymentDetails: paymentDetails,
+      initialRoute: initialRoute,
+    ),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   final Map<String, dynamic> paymentDetails;
-  const MyApp({super.key, required this.paymentDetails});
+  final String initialRoute;
+
+  const MyApp({super.key, required this.paymentDetails, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +71,27 @@ class MyApp extends StatelessWidget {
       providers: providers,
       builder: (context, child) {
         return MaterialApp(
+             localizationsDelegates: const [
+                    AppLocalizations.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: createMaterialColor(AppColors.primaryColor),
           ),
-          home: PayModal(
-            paymentDetails: paymentDetails,
-            preset: null,
-          ),
-          onGenerateRoute: AppRouter.generateRoute,
+          initialRoute: initialRoute, // Set the initial route
+          onGenerateRoute: (settings) {
+            // Pass payment details to `/pay` route if applicable
+            if (settings.name == '/pay') {
+              return AppRouter.generateRoute(RouteSettings(
+                name: '/pay',
+                arguments: paymentDetails,
+              ));
+            }
+            return AppRouter.generateRoute(settings);
+          },
         );
       },
     );
