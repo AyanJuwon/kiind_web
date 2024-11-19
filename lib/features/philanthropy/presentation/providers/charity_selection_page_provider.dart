@@ -15,7 +15,8 @@ import 'package:kiind_web/core/models/sub_categories_model.dart' ;
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
-import 'package:kiind_web/core/util/visual_alerts.dart'; 
+import 'package:kiind_web/core/util/visual_alerts.dart';
+import 'package:kiind_web/widgets/select_category_widgets.dart'; 
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CharitySelectionPageProvider extends BaseProvider {

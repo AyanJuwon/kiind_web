@@ -4,8 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:flutter_paypal/flutter_paypal.dart';
-import 'package:flutter_paypal/flutter_paypal_subscription.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:flutter_paypal/flutter_paypal_subscription.dart'; 
 import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
@@ -20,6 +19,7 @@ import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
+import 'package:paypal_payment/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum PaymentType {
@@ -354,11 +354,14 @@ class PaymentSummaryPageProvider extends BaseProvider {
       // Launch the PayPal checkout view
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (modalContext) => PaypalCheckoutView(
+          builder: (modalContext) => PaypalOrderPayment(
+
             sandboxMode: gateway.sandbox,
             clientId: gateway.publicKey!,
             secretKey: gateway.privateKey!,
-            transactions: paypalTransactions,
+            amount: paypalTransactions[0]['amount']['total'],
+            currencyCode: paypalTransactions[0]['amount']['currency'],
+
             note: "Thank you for supporting our cause.",
             onSuccess: (Map params) async {
               log("onSuccess: $params");

@@ -36,8 +36,8 @@ dependencies:
     git:
       url: https://github.com/Zamorite/flutter_paypal.git
       ref: feat/subscriptions
-  js: ^0.7.1
-  flutter_paypal_payment: ^1.0.6
+  js: ^0.6.7
+  paypal_payment: 
   dio: ^5.3.3
   provider:  
   google_fonts: ^4.0.4
