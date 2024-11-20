@@ -7,7 +7,7 @@ import 'package:kiind_web/core/router/router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
-// import 'dart:html' as html;
+import 'dart:html' as html;
 import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,47 +16,39 @@ void main() async {
   await dotenv.load();
 
   // Parse the current URL
-  // final uri = Uri.parse(html.window.location.href);
+  final uri = Uri.parse(html.window.location.href);
 
   // Extract query parameters
-  // final token = uri.queryParameters['token'];
-  // final cause = uri.queryParameters['cause'];
-  // final amounts = uri.queryParameters['amounts'];
-  // final interval = uri.queryParameters['__interval'];
-  // final type = uri.queryParameters['__type'];
+  final token = uri.queryParameters['token'];
+  final cause = uri.queryParameters['cause'];
+  final amounts = uri.queryParameters['amounts'];
+  final interval = uri.queryParameters['__interval'];
+  final type = uri.queryParameters['__type'];
 
   // Initialize payment details map
   Map<String, dynamic> paymentDetails = {};
 
   // Save token to SharedPreferences if present
   final prefs = await SharedPreferences.getInstance();
-  // if (token != null && token.isNotEmpty) {
-  //   await prefs.setString('token', token);
-  // } else {
+  if (token != null && token.isNotEmpty) {
+    await prefs.setString('token', token);
+  } else {
     // Use a default token if not provided in the URL
     await prefs.setString(
         'token', "175|5TU2ez2T3IneViSdWlqeW4pt7WCUuzV0V9ZQS99n");
-  // }
+  }
 
   // Populate payment details with extracted parameters
   paymentDetails = {
-    "campaign_id": null,
-    "amounts":  null,
-    "__interval": null,
-    "__type": null,
+    "campaign_id": cause != null ? int.tryParse(cause) : null,
+    "amounts": amounts != null ? double.tryParse(amounts) : null,
+    "__interval": interval,
+    "__type": type,
     "user_id": 19, // Default or extracted value
   };
-  // paymentDetails = {
-  //   "campaign_id": cause != null ? int.tryParse(cause) : null,
-  //   "amounts": amounts != null ? double.tryParse(amounts) : null,
-  //   "__interval": interval,
-  //   "__type": type,
-  //   "user_id": 19, // Default or extracted value
-  // };
 
   // Determine the initial route based on the URL
-  // String initialRoute = uri.path; // e.g., "/pay" or "/"
-  String initialRoute = "/pay"; // e.g., "/pay" or "/"
+  String initialRoute = uri.path; // e.g., "/pay" or "/"
 
   // Run the app
   runApp(OKToast(
