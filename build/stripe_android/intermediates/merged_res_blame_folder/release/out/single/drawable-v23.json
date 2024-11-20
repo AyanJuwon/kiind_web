@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/abc_control_background_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v23/abc_control_background_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/m3_selection_control_ripple.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v23/m3_selection_control_ripple.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/mtrl_popupmenu_background_overlay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v23/mtrl_popupmenu_background_overlay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/m3_tabs_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v23/m3_tabs_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/m3_tabs_transparent_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v23/m3_tabs_transparent_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v23/m3_radiobutton_ripple.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v23/m3_radiobutton_ripple.xml"
+    }
+]

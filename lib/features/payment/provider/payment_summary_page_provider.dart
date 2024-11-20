@@ -19,6 +19,7 @@ import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
+import 'package:kiind_web/features/payment/pages/paypal_payment_page.dart';
 import 'package:paypal_payment/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -345,7 +346,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
     if (gateway != null && method?.id == 3) { 
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (modalContext) => PaypalOrderPayment(
+          builder: (modalContext) => KiindPaypalPayment(
             returnURL:gateway.notifyUrl! ,
        cancelURL:gateway.cancelUrl! ,
             sandboxMode: gateway.sandbox,

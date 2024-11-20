@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/values-ht/values-ht.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/274f9b962dc914f8122d15b6cf49b5aa/transformed/jetified-hcaptcha-20.48.6/res/values-ht/values-ht.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "75",
+                        "endOffsets": "126"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/incremental/mergeReleaseResources/merged.dir/values-ht/values-ht.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/274f9b962dc914f8122d15b6cf49b5aa/transformed/jetified-hcaptcha-20.48.6/res/values-ht/values-ht.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "75",
+                        "endOffsets": "126"
+                    }
+                }
+            ]
+        }
+    ]
+}

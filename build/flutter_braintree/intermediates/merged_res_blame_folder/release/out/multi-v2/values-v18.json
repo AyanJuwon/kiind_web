@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/incremental/mergeReleaseResources/merged.dir/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/bbd90e23bc66b860b2c4059c356a7d1a/transformed/appcompat-1.4.0-alpha03/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/bbd90e23bc66b860b2c4059c356a7d1a/transformed/appcompat-1.4.0-alpha03/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/values-id/values-id.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/4533501dd0ed46a4ada1e8bce7db19c7/transformed/jetified-drop-in-6.13.0/res/values-id/values-id.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,111,155,202,328,388,458,511,587,663,707,848,930,982,1038,1098,1162,1216,1278,1328,1386,1450,1513,1569,1629,1709,1761,1805,1846,1934,2021,2068,2198,2243,2315,2361,2435,2506,2583,2632,2702,2789,2871,3037,3115,3202,3339",
+                        "endColumns": "55,43,46,125,59,69,52,75,75,43,140,81,51,55,59,63,53,61,49,57,63,62,55,59,79,51,43,40,87,86,46,129,44,71,45,73,70,76,48,69,86,81,165,77,86,136,71",
+                        "endOffsets": "106,150,197,323,383,453,506,582,658,702,843,925,977,1033,1093,1157,1211,1273,1323,1381,1445,1508,1564,1624,1704,1756,1800,1841,1929,2016,2063,2193,2238,2310,2356,2430,2501,2578,2627,2697,2784,2866,3032,3110,3197,3334,3406"
+                    }
+                },
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/938123ade13db04f5470cc0b3c69a0b8/transformed/jetified-play-services-wallet-19.1.0/res/values-id/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "202",
+                        "endColumns": "73",
+                        "endOffsets": "275"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "3411",
+                        "endColumns": "77",
+                        "endOffsets": "3484"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/incremental/mergeReleaseResources/merged.dir/values-id/values-id.xml",
+            "map": [
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/4533501dd0ed46a4ada1e8bce7db19c7/transformed/jetified-drop-in-6.13.0/res/values-id/values-id.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,111,155,202,328,388,458,511,587,663,707,848,930,982,1038,1098,1162,1216,1278,1328,1386,1450,1513,1569,1629,1709,1761,1805,1846,1934,2021,2068,2198,2243,2315,2361,2435,2506,2583,2632,2702,2789,2871,3037,3115,3202,3339",
+                        "endColumns": "55,43,46,125,59,69,52,75,75,43,140,81,51,55,59,63,53,61,49,57,63,62,55,59,79,51,43,40,87,86,46,129,44,71,45,73,70,76,48,69,86,81,165,77,86,136,71",
+                        "endOffsets": "106,150,197,323,383,453,506,582,658,702,843,925,977,1033,1093,1157,1211,1273,1323,1381,1445,1508,1564,1624,1704,1756,1800,1841,1929,2016,2063,2193,2238,2310,2356,2430,2501,2578,2627,2697,2784,2866,3032,3110,3197,3334,3406"
+                    }
+                },
+                {
+                    "source": "/Users/admin/.gradle/caches/transforms-3/938123ade13db04f5470cc0b3c69a0b8/transformed/jetified-play-services-wallet-19.1.0/res/values-id/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "202",
+                        "endColumns": "73",
+                        "endOffsets": "275"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "3411",
+                        "endColumns": "77",
+                        "endOffsets": "3484"
+                    }
+                }
+            ]
+        }
+    ]
+}

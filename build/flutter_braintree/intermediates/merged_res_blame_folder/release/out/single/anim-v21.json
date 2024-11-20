@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/anim-v21/mtrl_bottom_sheet_slide_out.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/anim-v21/mtrl_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/anim-v21/mtrl_bottom_sheet_slide_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/anim-v21/mtrl_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/anim-v21/fragment_fast_out_extra_slow_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/e58271537be9775d79f0be2ff1e90d55/transformed/fragment-1.4.1/res/anim-v21/fragment_fast_out_extra_slow_in.xml"
+    }
+]

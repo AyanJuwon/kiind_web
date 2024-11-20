@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/webview_flutter_android/intermediates/merged_res/release/layout-v21/notification_action.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/webview_flutter_android/intermediates/merged_res/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/webview_flutter_android/intermediates/merged_res/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/webview_flutter_android/intermediates/merged_res/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

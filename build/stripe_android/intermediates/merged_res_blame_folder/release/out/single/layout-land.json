@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/layout-land/material_timepicker.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/layout-land/material_timepicker.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/layout-land/material_clock_period_toggle_land.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/layout-land/material_clock_period_toggle_land.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/layout-land/mtrl_picker_header_dialog.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/layout-land/mtrl_picker_header_dialog.xml"
+    }
+]

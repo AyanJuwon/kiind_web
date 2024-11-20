@@ -1,0 +1,1250 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/design_password_eye.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_dark_focused.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_dark_focused.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_islam.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_islam.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_back.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_back.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_add_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_add_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_m3_chip_close.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_m3_chip_close.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_mastercard.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_mastercard.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_menu_arrow_down_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_menu_arrow_down_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_cvc_amex.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_cvc_amex.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_pressed_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_pressed_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_card_visa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/6de5251e98431ba38e24436d388a3fc4/transformed/jetified-stripe-ui-core-20.48.6/res/drawable/stripe_ic_card_visa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/notification_icon_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/38f9a26a73d17b9984454357c9b52eee/transformed/core-1.12.0/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_error_amex.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_error_amex.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_sepa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_sepa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_text_cursor_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_hsbc.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_hsbc.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_m3_chip_checked_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_m3_chip_checked_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_boleto.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_boleto.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/design_ic_visibility.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/design_ic_visibility.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_bacs_direct_debit_mark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_bacs_direct_debit_mark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_link_logo_bw.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/6de5251e98431ba38e24436d388a3fc4/transformed/jetified-stripe-ui-core-20.48.6/res/drawable/stripe_link_logo_bw.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_bank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_bank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_radio_on_to_off_mtrl_animation.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_radio_on_to_off_mtrl_animation.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_radio_off_to_on_mtrl_animation.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_radio_off_to_on_mtrl_animation.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_amex.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_amex.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_suntrust.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_suntrust.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_card_form_view_text_input_layout_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_card_form_view_text_input_layout_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_bottomsheet_drag_handle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_bottomsheet_drag_handle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_delete_symbol.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_delete_symbol.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_unionpay_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_unionpay_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_citi.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_citi.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_clock_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_clock_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_disabled.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_unchecked_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_unchecked_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_revolut_pay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_revolut_pay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_unchecked_pressed.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_unchecked_pressed.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_amazon_pay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_amazon_pay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_generic.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_generic.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_check_material_anim.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_check_material_anim.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_bank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_arrow_back_black_24.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_arrow_back_black_24.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_nfcu.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_nfcu.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_compass.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_compass.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_chevron_down.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/6de5251e98431ba38e24436d388a3fc4/transformed/jetified-stripe-ui-core-20.48.6/res/drawable/stripe_ic_chevron_down.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_unknown.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_unknown.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_afterpay_logo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_afterpay_logo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_muamalat.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_muamalat.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_discover_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_discover_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_link_logo_knockout_white.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/de189071d991954fef5a7fd2263f8c97/transformed/jetified-link-20.48.6/res/drawable/stripe_link_logo_knockout_white.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_cash_app_pay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_cash_app_pay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/pay_button_generic_background_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/db49b4097a382ff22316811f760730d9/transformed/jetified-play-services-wallet-19.3.0/res/drawable/pay_button_generic_background_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_switch_thumb_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_sunbit.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_sunbit.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_add.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_add.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_upi.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_upi.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_jcb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_jcb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_cvc.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_cvc.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_voice_search_api_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_mtrl_chip_checked_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_mtrl_chip_checked_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_unchecked_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_unchecked_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_edit.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_edit.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_radio_on_mtrl.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_radio_on_mtrl.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_borderless_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_arrow.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_arrow.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_td.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_td.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/test_level_drawable.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/test_level_drawable.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_checked_pressed.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_checked_pressed.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_visa_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_visa_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_clear_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_klarna.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_klarna.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_calendar_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_calendar_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_keyboard_arrow_left_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_keyboard_arrow_left_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_checkbox_unchecked_mtrl.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_checkbox_unchecked_mtrl.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_light_normal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_light_normal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/pay_button_generic_background_mask_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/db49b4097a382ff22316811f760730d9/transformed/jetified-play-services-wallet-19.3.0/res/drawable/pay_button_generic_background_mask_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_copy_mtrl_am_alpha.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_copy_mtrl_am_alpha.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_mail.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_mail.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_dropdown_arrow.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_dropdown_arrow.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_bank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_bank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/tooltip_frame_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/tooltip_frame_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_list_selector_holo_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_checkbox_unchecked_to_checked_mtrl_animation.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_checkbox_unchecked_to_checked_mtrl_animation.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_dinersclub.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_dinersclub.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_capitalone.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_capitalone.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_affin.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_affin.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_tabs_default_indicator.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_tabs_default_indicator.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_warning_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_warning_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_visa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_visa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_popupmenu_background_overlay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_popupmenu_background_overlay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_becs.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_becs.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_amex_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_amex_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_google_pay_mark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_google_pay_mark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_share_mtrl_alpha.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_share_mtrl_alpha.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_mtrl_chip_close_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_mtrl_chip_close_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_item_background_holo_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_indeterminate_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_indeterminate_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_alliance.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_alliance.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_blik.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_blik.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_lock.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_lock.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_pressed.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_pressed.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_keyboard_arrow_right_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_keyboard_arrow_right_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_dark_normal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_dark_normal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_jcb_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_jcb_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_svb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_svb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_maybank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_maybank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_error.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_error.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_hong_leong.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_hong_leong.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_unionpay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_unionpay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_affirm.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_affirm.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ratingbar_indicator_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_unknown.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_unknown.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_clear_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_clear_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_polling_failure.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_polling_failure.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_indicator.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_indicator.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_selectall_mtrl_alpha.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_selectall_mtrl_alpha.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_usaa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_usaa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_grabpay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_grabpay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_alma.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_alma.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_search_api_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_cimb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_cimb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_cancel.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_cancel.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_card.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_card.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_ideal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_ideal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_search_black_24.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_search_black_24.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_paypal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_paypal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_arrow_drop_up.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_arrow_drop_up.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_star_half_black_48dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_star_half_black_48dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_track.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_track.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_unchecked_indeterminate.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_unchecked_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_unknown.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_unknown.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_usbank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_usbank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_seekbar_track_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_avd_hide_password.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_avd_hide_password.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_panel_arrow_right.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_panel_arrow_right.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_checked_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_checked_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_amex.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_amex.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_clearpay_logo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_clearpay_logo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_brandicon_institution.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_brandicon_institution.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_ctil_chevron_up.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_ctil_chevron_up.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_avd_show_password.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_m3_chip_check.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_m3_chip_check.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_mastercard_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_mastercard_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_standard_chartered.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_standard_chartered.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_jcb_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_jcb_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_ctil_chevron.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_ctil_chevron.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_popupmenu_background_overlay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_popupmenu_background_overlay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_discover.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_discover.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_jcb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_jcb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_cut_mtrl_alpha.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_cut_mtrl_alpha.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_discover.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_discover.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_link_error.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/de189071d991954fef5a7fd2263f8c97/transformed/jetified-link-20.48.6/res/drawable/stripe_link_error.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_trash.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_trash.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_popupmenu_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_popupmenu_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_unionpay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_unionpay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_disabled.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_satispay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_satispay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_cartebancaire_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_cartebancaire_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_uob.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_uob.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_ctil_chevron_down.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_ctil_chevron_down.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_mastercard.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_mastercard.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_edit_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_edit_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_error.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_error.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/navigation_empty_icon.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/navigation_empty_icon.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_tabs_line_indicator.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_tabs_line_indicator.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_unionpay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_unionpay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_visa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_visa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_indeterminate_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_indeterminate_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/design_ic_visibility_off.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/design_ic_visibility_off.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_afterpay_clearpay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_afterpay_clearpay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_tabs_rounded_line_indicator.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_tabs_rounded_line_indicator.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_ab_back_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_pressed_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_pressed_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_mastercard_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_mastercard_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_keyboard_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_keyboard_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_light_focused.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_light_focused.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_p24.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_p24.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_konbini.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_konbini.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_person.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_person.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/avd_hide_password.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/avd_hide_password.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_photo_camera.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_photo_camera.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_giropay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_giropay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ratingbar_small_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_dark_normal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/design_fab_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/design_fab_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_ocbc.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_ocbc.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_arrow_down.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_arrow_down.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ratingbar_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_checked_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_checked_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/notification_bg.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/38f9a26a73d17b9984454357c9b52eee/transformed/core-1.12.0/res/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_seekbar_tick_mark_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_loading_spinner.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_loading_spinner.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_mtrl_checked_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_mtrl_checked_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_search.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_search.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_visa_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_visa_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/tooltip_frame_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/tooltip_frame_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_link_logo_knockout_black.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/de189071d991954fef5a7fd2263f8c97/transformed/jetified-link-20.48.6/res/drawable/stripe_link_logo_knockout_black.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_paymentsheet_testmode_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_paymentsheet_testmode_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_textfield_search_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_zip.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_zip.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_amex_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_amex_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_clear_black_24.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_clear_black_24.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_clear.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_clear.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_cartes_bancaires_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_cartes_bancaires_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_mastercard.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_mastercard.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_bsn.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_bsn.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_checkbox_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_checkbox_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/avd_show_password.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/avd_show_password.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_wechat_pay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_wechat_pay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_alipay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_alipay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_tab_indicator_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_public.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_public.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_track_decoration.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_track_decoration.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_discover_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_discover_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_swish.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_swish.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_dialog_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_dialog_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_checked_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_checked_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_add_black_32dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_add_black_32dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_add_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_add_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_pnc.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_pnc.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/notification_bg_low.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/38f9a26a73d17b9984454357c9b52eee/transformed/core-1.12.0/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_boa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_boa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_unionpay_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_unionpay_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_cartes_bancaires.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_cartes_bancaires.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_bottom_sheet_drag_handle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_bottom_sheet_drag_handle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_billie.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_billie.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_affirm_logo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_affirm_logo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_vector_test.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d2c4c480aa271929545a4807fa652a76/transformed/jetified-appcompat-resources-1.6.1/res/drawable/abc_vector_test.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_3ds2_ic_cartesbancaires.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360369887f5f2ecf586dbfd3c83346f6/transformed/jetified-stripe-3ds2-android-6.1.8/res/drawable/stripe_3ds2_ic_cartesbancaires.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_discover.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_discover.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_simple_button_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_simple_button_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_visa.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_visa.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_multibanco.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_multibanco.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_error.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_error.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_kfh.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_kfh.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_ambank.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_ambank.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_check_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_check_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_logo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_logo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_light_normal.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_cab_background_top_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_mobile_pay.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_mobile_pay.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_googlepay_primary_button_checkmark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_googlepay_primary_button_checkmark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_raykat.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_raykat.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_checkbox_checked_to_unchecked_mtrl_animation.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_checkbox_checked_to_unchecked_mtrl_animation.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_go_search_api_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_icon_light_focused.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_icon_light_focused.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_twint.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_twint.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_rhb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_rhb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_paste_mtrl_am_alpha.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_paste_mtrl_am_alpha.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_arrow_drop_down.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_arrow_drop_down.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_edit_symbol.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_edit_symbol.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_ic_menu_overflow_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_link_arrow.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_link_arrow.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/notification_tile_bg.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/38f9a26a73d17b9984454357c9b52eee/transformed/core-1.12.0/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_bancontact.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_bancontact.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_eps.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_eps.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_check_mark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_check_mark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_sepa_debit.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_sepa_debit.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_card_progress_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_card_progress_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_indeterminate.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/pay_button_generic_background_mask_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/db49b4097a382ff22316811f760730d9/transformed/jetified-play-services-wallet-19.3.0/res/drawable/pay_button_generic_background_mask_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_stripe.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_stripe.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_warning.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_warning.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_googlepay_primary_button_lock.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_googlepay_primary_button_lock.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_check_circle.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_check_circle.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_diners.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_diners.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_item_background_holo_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_link.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_link.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_wellsfargo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_wellsfargo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_checked_indeterminate.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_checked_indeterminate.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_star_black_48dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_star_black_48dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_bank_morganchase.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_bank_morganchase.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_close.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_close.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/m3_password_eye.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/m3_password_eye.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/design_snackbar_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/design_snackbar_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_diners_template_32.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_diners_template_32.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_checkmark_tinted.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_checkmark_tinted.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_diners_unpadded.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_diners_unpadded.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_info.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0dd214ec3fcac73f9ba06834d8600417/transformed/jetified-financial-connections-20.48.6/res/drawable/stripe_ic_info.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/abc_btn_radio_material_anim.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/abc_btn_radio_material_anim.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_amex.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/fe994195a476503bd9ee5bfa7fefb7eb/transformed/jetified-payments-model-20.48.6/res/drawable/stripe_ic_amex.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/material_ic_menu_arrow_up_black_24dp.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/material_ic_menu_arrow_up_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/common_google_signin_btn_text_dark_focused.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/50bcb13917740a643c9fa82af7376177/transformed/jetified-play-services-base-18.3.0/res/drawable/common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_radio_off_mtrl.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_radio_off_mtrl.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_fpx.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_fpx.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_checkbox_button_icon_unchecked_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_checkbox_button_icon_unchecked_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_pm_oxxo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/360847d1bafd3d63613325563004fc76/transformed/jetified-payments-ui-core-20.48.6/res/drawable/stripe_ic_paymentsheet_pm_oxxo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/ic_mtrl_chip_checked_black.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/ic_mtrl_chip_checked_black.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_hcaptcha_logo.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/274f9b962dc914f8122d15b6cf49b5aa/transformed/jetified-hcaptcha-20.48.6/res/drawable/stripe_ic_hcaptcha_logo.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_ic_checkbox_checked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_ic_checkbox_checked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_checkmark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/25d6663a749325becef84dcb319d39e2/transformed/jetified-payments-core-20.48.6/res/drawable/stripe_ic_checkmark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/pay_button_generic_background_dark.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/db49b4097a382ff22316811f760730d9/transformed/jetified-play-services-wallet-19.3.0/res/drawable/pay_button_generic_background_dark.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/mtrl_switch_thumb_unchecked.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable/mtrl_switch_thumb_unchecked.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/btn_checkbox_checked_mtrl.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable/btn_checkbox_checked_mtrl.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable/stripe_ic_paymentsheet_card_cartes_bancaires.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/d9b8bcd6dbd717cccc3cebf63c37f96c/transformed/jetified-paymentsheet-20.48.6/res/drawable/stripe_ic_paymentsheet_card_cartes_bancaires.xml"
+    }
+]

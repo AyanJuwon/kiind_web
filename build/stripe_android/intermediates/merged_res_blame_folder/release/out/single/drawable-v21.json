@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/abc_dialog_material_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v21/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/mtrl_navigation_bar_item_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v21/mtrl_navigation_bar_item_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/m3_tabs_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v21/m3_tabs_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/38f9a26a73d17b9984454357c9b52eee/transformed/core-1.12.0/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/material_cursor_drawable.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/451e8a0a32bfa6f0ed17a1d12735e326/transformed/material-1.11.0/res/drawable-v21/material_cursor_drawable.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/abc_list_divider_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v21/abc_list_divider_material.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/stripe_android/intermediates/merged_res/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/bb21742e799053e15e1dfd561a7f36c6/transformed/appcompat-1.6.1/res/drawable-v21/abc_btn_colored_material.xml"
+    }
+]

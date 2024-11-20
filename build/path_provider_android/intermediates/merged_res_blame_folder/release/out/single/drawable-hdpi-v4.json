@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/path_provider_android/intermediates/merged_res/release/drawable-hdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/path_provider_android/intermediates/merged_res/release/drawable-hdpi-v4/notification_bg_normal_pressed.9.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/path_provider_android/intermediates/merged_res/release/drawable-hdpi-v4/notify_panel_notification_icon_bg.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/path_provider_android/intermediates/merged_res/release/drawable-hdpi-v4/notification_bg_low_pressed.9.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/path_provider_android/intermediates/merged_res/release/drawable-hdpi-v4/notification_bg_normal.9.png",
+        "source": "/Users/admin/.gradle/caches/transforms-3/0bea0ea1711778ac37c39547d97303e6/transformed/core-1.6.0/res/drawable-hdpi-v4/notification_bg_normal.9.png"
+    }
+]

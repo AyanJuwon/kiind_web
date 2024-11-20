@@ -31,6 +31,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
   
   flutter_paypal:
     git:
@@ -42,7 +44,7 @@ dependencies:
   provider:  
   google_fonts: ^4.0.4
   jiffy: ^6.3.1
-  flutter_stripe: ^11.2.0
+  flutter_stripe:  
   flutter_braintree:
     git:
       url: https://github.com/AyanJuwon/flutter-braintree.git  
@@ -53,6 +55,7 @@ dependencies:
   equatable: ^2.0.3
   pretty_dio_logger: ^1.1.1
   material_design_icons_flutter:
+  flutter_inappwebview: ^6.0.0
   flutter_localizations:
     sdk: flutter
   

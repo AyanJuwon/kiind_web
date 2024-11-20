@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/interpolator-v21/mtrl_fast_out_linear_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/interpolator-v21/mtrl_fast_out_linear_in.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/interpolator-v21/mtrl_linear_out_slow_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/interpolator-v21/mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "/Users/admin/Desktop/trcomms/kiind_web/build/flutter_braintree/intermediates/merged_res/release/interpolator-v21/mtrl_fast_out_slow_in.xml",
+        "source": "/Users/admin/.gradle/caches/transforms-3/ada40f0c3369f2dd651d20707b873395/transformed/material-1.4.0/res/interpolator-v21/mtrl_fast_out_slow_in.xml"
+    }
+]
