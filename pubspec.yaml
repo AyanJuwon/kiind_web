@@ -56,7 +56,7 @@ dependencies:
   equatable: ^2.0.3
   pretty_dio_logger: ^1.1.1
   material_design_icons_flutter:
-  flutter_inappwebview: ^6.0.0
+ 
   flutter_localizations:
     sdk: flutter
   
