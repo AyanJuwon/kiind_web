@@ -15,15 +15,26 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
      
-      case '/pay':
-        final arguments = settings.arguments as Map<String, dynamic>? ?? {};
-        return MaterialPageRoute(
-          builder: (_) => PayModal(
-            paymentDetails: arguments,
-            preset: null, // Adjust if necessary
-          ),
-          settings: settings,
-        );
+     case '/pay':
+  final arguments = settings.arguments as Map<String, dynamic>? ?? {};
+  if (arguments.isEmpty) {
+    return MaterialPageRoute(
+      builder: (_) => const Scaffold(
+        body: Center(
+          child: Text('Payment details not provided.'),
+        ),
+      ),
+      settings: settings,
+    );
+  }
+  return MaterialPageRoute(
+    builder: (_) => PayModal(
+      paymentDetails: arguments,
+      preset: null, // Adjust based on your needs
+    ),
+    settings: settings,
+  );
+
       case RoutePaths.paymentMethodScreen:
         final arguments = settings.arguments as Map<String, dynamic>? ?? {};
 

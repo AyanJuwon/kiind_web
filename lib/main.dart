@@ -1,14 +1,16 @@
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/providers/provider_setup.dart';
 import 'package:kiind_web/core/router/router.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
-import 'dart:html' as html;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';  
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -47,8 +49,14 @@ void main() async {
     "user_id": 19, // Default or extracted value
   };
 
-  // Determine the initial route based on the URL
-  String initialRoute = uri.path; // e.g., "/pay" or "/"
+  // Determine the initial route based on the URL path
+  String initialRoute = uri.path.isEmpty ? '/' : uri.path.split('?').first;
+
+  // Debugging logs for verification
+  print('Full URL: ${html.window.location.href}');
+  print('Path: $initialRoute');
+  print('Query Parameters: ${uri.queryParameters}');
+  print('Payment Details: $paymentDetails');
 
   // Run the app
   runApp(OKToast(
@@ -58,6 +66,7 @@ void main() async {
     ),
   ));
 }
+
 
 class MyApp extends StatelessWidget {
   final Map<String, dynamic> paymentDetails;
@@ -77,7 +86,7 @@ class MyApp extends StatelessWidget {
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
                   ],
-          title: 'Flutter Demo',
+          title: 'Kiind',
           theme: ThemeData(
             primarySwatch: createMaterialColor(AppColors.primaryColor),
           ),
