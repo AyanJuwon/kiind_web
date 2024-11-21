@@ -77,15 +77,14 @@ class MyApp extends StatelessWidget {
                     GlobalWidgetsLocalizations.delegate,
                     GlobalCupertinoLocalizations.delegate,
                   ],
-          title: 'Kiind',
+          title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: createMaterialColor(AppColors.primaryColor),
           ),
           initialRoute: initialRoute, // Set the initial route
-          onGenerateRoute: 
-          (settings) {
+          onGenerateRoute: (settings) {
             // Pass payment details to `/pay` route if applicable
-            if (settings.name == '/pay' || settings.name == '/') {
+            if (settings.name == '/pay') {
               return AppRouter.generateRoute(RouteSettings(
                 name: '/pay',
                 arguments: paymentDetails,
