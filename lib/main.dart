@@ -82,9 +82,10 @@ class MyApp extends StatelessWidget {
             primarySwatch: createMaterialColor(AppColors.primaryColor),
           ),
           initialRoute: initialRoute, // Set the initial route
-          onGenerateRoute: (settings) {
+          onGenerateRoute: 
+          (settings) {
             // Pass payment details to `/pay` route if applicable
-            if (settings.name == '/pay') {
+            if (settings.name == '/pay' || settings.name == '/') {
               return AppRouter.generateRoute(RouteSettings(
                 name: '/pay',
                 arguments: paymentDetails,

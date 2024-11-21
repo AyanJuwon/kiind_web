@@ -96398,7 +96398,8 @@ $2(a,b){var s=null,r=this.a
 return new A.ra(r.d,new A.amM(r),"Kiind",A.wW(s,s,A.b9R(B.at),s),B.Qd,s)},
 $S:639}
 A.amM.prototype={
-$1(a){if(a.a==="/pay")return A.aMU(new A.iS("/pay",this.a.c))
+$1(a){var s=a.a
+if(s==="/pay"||s==="/")return A.aMU(new A.iS("/pay",this.a.c))
 return A.aMU(a)},
 $S:174}
 A.pY.prototype={
