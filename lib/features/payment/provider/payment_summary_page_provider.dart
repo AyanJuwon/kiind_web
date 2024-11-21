@@ -344,18 +344,17 @@ class PaymentSummaryPageProvider extends BaseProvider {
   _launchPaypalModal(BuildContext context) async {
     Gateway? gateway = paymentDetail.value?.gateway;
     if (gateway != null && method?.id == 3) { 
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (modalContext) => KiindPaypalPayment(
-            returnURL:gateway.notifyUrl! ,
-       cancelURL:gateway.cancelUrl! ,
+    Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) =>
+      PaypalOrderPayment(
+        clientId: gateway.publicKey!,
+         secretKey: gateway.privateKey!, 
+         currencyCode: paypalTransactions[0]['amount']['currency'],
+          amount: paypalTransactions[0]['amount']['total'],
+          returnURL:gateway.notifyUrl! ,
+            cancelURL:gateway.cancelUrl! ,
             sandboxMode: gateway.sandbox,
-            clientId: gateway.publicKey!,
-            secretKey: gateway.privateKey!,
-            amount: paypalTransactions[0]['amount']['total'],
-            currencyCode: paypalTransactions[0]['amount']['currency'],
-
-            note: "Thank you for supporting our cause.",
+                       note: "Thank you for supporting our cause.",
             onSuccess: (Map params) async {
               log("onSuccess: $params");
               paymentPayload = params;
@@ -371,13 +370,49 @@ class PaymentSummaryPageProvider extends BaseProvider {
             onCancel: () {
               log('Payment cancelled');
               Navigator.pop(context);
-              showAlertToast("PPayment Cancelled");
+              showAlertToast("PPayment Cancelled");}
 
-              // Handle payment cancellation if needed
-            },
-          ),
-        ),
-      );
+            
+          
+          ,)));
+      // Navigator.of(context).push(
+      //   MaterialPageRoute(
+      //     builder: (modalContext) => KiindPaypalPayment(
+      //       itemName: "paymentDetail.value!.cause",
+      //       businessEmail: gateway.publicKey!,
+      //       returnURL:gateway.notifyUrl! ,
+      //       cancelURL:gateway.cancelUrl! ,
+      //       sandboxMode: gateway.sandbox,
+      //       clientId: gateway.publicKey!,
+      //       secretKey: gateway.privateKey!,
+      //       amount: paypalTransactions[0]['amount']['total'],
+      //       currencyCode: paypalTransactions[0]['amount']['currency'],
+
+      //       note: "Thank you for supporting our cause.",
+      //       onSuccess: (Map params) async {
+      //         log("onSuccess: $params");
+      //         paymentPayload = params;
+      //         await sendReceiptToServer(context);
+      //         context.to(RoutePaths.paymentSuccessfulScreen);
+      //       },
+      //       onError: (error) {
+      //         log("onError: $error");
+      //         Navigator.pop(context);
+      //         showAlertToast("Paypal error::: $error");
+      //         // Handle payment error, maybe show a message to the user
+      //       },
+      //       onCancel: () {
+      //         log('Payment cancelled');
+      //         Navigator.pop(context);
+      //         showAlertToast("PPayment Cancelled");
+
+      //         // Handle payment cancellation if needed
+      //       },
+      //     ),
+      //   ),
+      // );
+   
+   
     }
   }
 
