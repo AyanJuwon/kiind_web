@@ -41,8 +41,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 //     );
 //   }
 // }
-
-import 'package:dio/dio.dart'; // Import RestInterceptor
+ 
 
 class RestClient {
   final Dio dio;
@@ -50,7 +49,7 @@ class RestClient {
   RestClient()
       : dio = Dio(
           BaseOptions(
-            baseUrl: kBaseUrl.env,
+            baseUrl: "https://app.kiind.co.uk/api/v2",
 
             // connectTimeout: Constants.requestTimeout.inSeconds * 1000, // Uncomment if needed
           ),
