@@ -95628,18 +95628,16 @@ return A.r($async$pV,r)},
 gpF(){return this.dy},
 spF(a){return this.dy=a}}
 A.anK.prototype={
-$1(a){var s,r,q,p,o,n,m=this.b,l=m.d
-l.toString
-s=m.e
+$1(a){var s,r,q,p,o,n=this.b,m=n.d
+m.toString
+s=n.e
 s.toString
 r=this.a
 q=J.a7(r.k1[0].h(0,"amount"),"currency")
 p=J.a7(r.k1[0].h(0,"amount"),"total")
-o=m.a
+o=n.b
 o.toString
-n=m.b
-n.toString
-return new A.rv(new A.anH(r,a),new A.anI(a),new A.anJ(a),o,n,"Thank you for supporting our cause.",l,s,m.c==="sandbox",q,p,null)},
+return new A.rv(new A.anH(r,a),new A.anI(a),new A.anJ(a),"https://kiind.co.uk/?__route=payment_successful",o,"Thank you for supporting our cause.",m,s,n.c==="sandbox",q,p,null)},
 $S:617}
 A.anH.prototype={
 $1(a){return this.a_E(a)},

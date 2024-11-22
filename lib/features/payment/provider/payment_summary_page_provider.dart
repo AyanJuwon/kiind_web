@@ -351,7 +351,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
          secretKey: gateway.privateKey!, 
          currencyCode: paypalTransactions[0]['amount']['currency'],
           amount: paypalTransactions[0]['amount']['total'],
-          returnURL:gateway.notifyUrl! ,
+          returnURL:"https://kiind.co.uk/?__route=payment_successful" ,
             cancelURL:gateway.cancelUrl! ,
             sandboxMode: gateway.sandbox,
                        note: "Thank you for supporting our cause.",
