@@ -450,7 +450,7 @@ class _PayModalState extends State<PayModal> {
                                   }
                                 : null, // Pass null when disabled
                             color:
-                                enabled ? AppColors.primaryColor : Colors.grey,
+                                enabled ? Colors.red : Colors.grey,
                             minWidth: double.infinity,
                             padding: const EdgeInsets.symmetric(vertical: 22),
                             shape: RoundedRectangleBorder(
