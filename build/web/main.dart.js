@@ -95236,7 +95236,7 @@ A.aK("building button")
 p=o?new A.aBT(this.a,a):q
 s=o?B.lH:B.B0
 r=A.eR(38)
-return A.C1(A.c6("Continue",B.A,16,B.al,1000,B.k),s,q,q,q,1/0,p,B.Mn,new A.cR(r,B.t))},
+return A.C1(A.c6("Continuessss",B.A,16,B.al,1000,B.k),s,q,q,q,1/0,p,B.Mn,new A.cR(r,B.t))},
 $S:604}
 A.aBT.prototype={
 $0(){var s=0,r=A.t(t.H),q=this,p,o,n,m
