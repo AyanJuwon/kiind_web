@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:kiind_web/core/constants/app_colors.dart'; 
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/campaign_model.dart';
 import 'package:kiind_web/core/models/options.model.dart' as payment_options;
@@ -29,7 +30,7 @@ class PayModal extends StatefulWidget {
     this.paymentDetails,
     // required this.options,
 
-    this.themeColor = Colors.red,
+    this.themeColor = AppColors.primaryColor,
     this.forWallet = false,
     this.preset,
     this.subInterval = 'One Time',
@@ -210,7 +211,7 @@ class _PayModalState extends State<PayModal> {
                                 .keys
                                 .map(
                                   (key) => SubscriptionTile(
-                                    themeColor: Colors.red,
+                                    themeColor: AppColors.primaryColor,
                                     active: _option == key,
                                     onTap: () {
                                       FocusScope.of(context).unfocus();
@@ -307,8 +308,8 @@ class _PayModalState extends State<PayModal> {
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
                                               color: _donation == index
-                                                  ? Colors.red
-                                                  : Colors.red
+                                                  ? AppColors.primaryColor
+                                                  : AppColors.primaryColor
                                                       .withOpacity(0.45),
                                             ),
                                             child: Padding(
@@ -348,8 +349,8 @@ class _PayModalState extends State<PayModal> {
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
                                               color: _donation == index + 2
-                                                  ? Colors.red
-                                                  : Colors.red
+                                                  ? AppColors.primaryColor
+                                                  : AppColors.primaryColor
                                                       .withOpacity(0.45),
                                             ),
                                             child: Padding(
@@ -449,7 +450,7 @@ class _PayModalState extends State<PayModal> {
                                   }
                                 : null, // Pass null when disabled
                             color:
-                                enabled ? Colors.red : Colors.grey,
+                                enabled ? AppColors.primaryColor : Colors.grey,
                             minWidth: double.infinity,
                             padding: const EdgeInsets.symmetric(vertical: 22),
                             shape: RoundedRectangleBorder(
@@ -487,7 +488,7 @@ class SubscriptionTile extends StatelessWidget {
 
   const SubscriptionTile({
     Key? key,
-    this.themeColor = Colors.red,
+    this.themeColor = AppColors.primaryColor,
     required this.active,
     required this.onTap,
     required this.title,
