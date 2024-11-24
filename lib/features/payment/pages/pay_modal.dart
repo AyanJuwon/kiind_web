@@ -30,7 +30,7 @@ class PayModal extends StatefulWidget {
     this.paymentDetails,
     // required this.options,
 
-    this.themeColor = AppColors.primaryColor,
+    this.themeColor = Colors.red,
     this.forWallet = false,
     this.preset,
     this.subInterval = 'One Time',
@@ -211,7 +211,7 @@ class _PayModalState extends State<PayModal> {
                                 .keys
                                 .map(
                                   (key) => SubscriptionTile(
-                                    themeColor: AppColors.primaryColor,
+                                    themeColor: Colors.red,
                                     active: _option == key,
                                     onTap: () {
                                       FocusScope.of(context).unfocus();
@@ -308,8 +308,8 @@ class _PayModalState extends State<PayModal> {
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
                                               color: _donation == index
-                                                  ? AppColors.primaryColor
-                                                  : AppColors.primaryColor
+                                                  ? Colors.red
+                                                  : Colors.red
                                                       .withOpacity(0.45),
                                             ),
                                             child: Padding(
@@ -349,8 +349,8 @@ class _PayModalState extends State<PayModal> {
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
                                               color: _donation == index + 2
-                                                  ? AppColors.primaryColor
-                                                  : AppColors.primaryColor
+                                                  ? Colors.red
+                                                  : Colors.red
                                                       .withOpacity(0.45),
                                             ),
                                             child: Padding(
@@ -488,7 +488,7 @@ class SubscriptionTile extends StatelessWidget {
 
   const SubscriptionTile({
     Key? key,
-    this.themeColor = AppColors.primaryColor,
+    this.themeColor = Colors.red,
     required this.active,
     required this.onTap,
     required this.title,
