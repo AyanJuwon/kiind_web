@@ -379,7 +379,7 @@ Future<void> fetchPaymentDetails(BuildContext context) async {
     if (gateway != null && method?.id == 3) { 
     Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) =>
-      PaypalOrderPayment(
+     isSub? PaypalOrderPayment(
         clientId: gateway.publicKey!,
          secretKey: gateway.privateKey!, 
          currencyCode: paypalTransactions[0]['amount']['currency'],
@@ -407,43 +407,56 @@ Future<void> fetchPaymentDetails(BuildContext context) async {
 
             
           
-          ,)));
-      // Navigator.of(context).push(
-      //   MaterialPageRoute(
-      //     builder: (modalContext) => KiindPaypalPayment(
-      //       itemName: "paymentDetail.value!.cause",
-      //       businessEmail: gateway.publicKey!,
-      //       returnURL:gateway.notifyUrl! ,
-      //       cancelURL:gateway.cancelUrl! ,
-      //       sandboxMode: gateway.sandbox,
-      //       clientId: gateway.publicKey!,
-      //       secretKey: gateway.privateKey!,
-      //       amount: paypalTransactions[0]['amount']['total'],
-      //       currencyCode: paypalTransactions[0]['amount']['currency'],
-
-      //       note: "Thank you for supporting our cause.",
-      //       onSuccess: (Map params) async {
-      //         log("onSuccess: $params");
-      //         paymentPayload = params;
-      //         await sendReceiptToServer(context);
-      //         context.to(RoutePaths.paymentSuccessfulScreen);
-      //       },
-      //       onError: (error) {
-      //         log("onError: $error");
-      //         Navigator.pop(context);
-      //         showAlertToast("Paypal error::: $error");
-      //         // Handle payment error, maybe show a message to the user
-      //       },
-      //       onCancel: () {
-      //         log('Payment cancelled');
-      //         Navigator.pop(context);
-      //         showAlertToast("PPayment Cancelled");
-
-      //         // Handle payment cancellation if needed
-      //       },
-      //     ),
-      //   ),
-      // );
+          ,): PaypalSubscriptionPayment(
+                        sandboxMode: true,
+                        clientId:  gateway.publicKey!,
+                        secretKey:  gateway.privateKey,
+                        productName: paymentDetail.value!.cause.title,
+                        type: "PHYSICAL",
+                        planName: paymentDetail.value!.cause.title,
+                        planId: gateway.plan!,
+                        billingCycles: [
+                          {
+                            'tenure_type': 'REGULAR',
+                            'sequence': 1,
+                            "total_cycles": 12,
+                            'pricing_scheme': {
+                              'fixed_price': {
+                                'currency_code': "USD",
+                                'value': '${paymentDetail.value!.amounts?.userSubmittedAmount ?? 0}',
+                              }
+                            },
+                            'frequency': {
+                              "interval_unit": interval?.replaceAll('ly', '').toUpperCase(),
+                              "interval_count": 1
+                            }
+                          }
+                        ],
+                        paymentPreferences: const {
+                          "auto_bill_outstanding": true
+                        },
+                       returnURL:"https://kiind.co.uk/?__route=payment_successful" ,
+                        cancelURL: gateway.cancelUrl,
+                       onSuccess: (Map params) async {
+              log("onSuccess: $params");
+              paymentPayload = params;
+              await sendReceiptToServer(context);
+              context.to(RoutePaths.paymentSuccessfulScreen);
+            },
+            onError: (error) {
+              log("onError: $error");
+              Navigator.pop(context);
+              showAlertToast("Paypal error::: $error");
+              
+            },
+            onCancel: () {
+              log('Payment cancelled');
+              Navigator.pop(context);
+              showAlertToast("Payment Cancelled");}
+                      )
+          
+          ));
+ 
    
    
     }
