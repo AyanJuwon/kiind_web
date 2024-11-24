@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:kiind_web/core/constants/app_colors.dart';
+import 'package:flutter/material.dart'; 
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/campaign_model.dart';
 import 'package:kiind_web/core/models/options.model.dart' as payment_options;
@@ -26,7 +25,7 @@ class PayModal extends StatefulWidget {
   final ValueNotifier<String?>? subscriptionOption;
 
   const PayModal({
-    Key? key,
+    super.key,
     this.paymentDetails,
     // required this.options,
 
@@ -37,7 +36,7 @@ class PayModal extends StatefulWidget {
     this.cause,
     this.subscriptionOption,
     this.onSelectSubscription,
-  }) : super(key: key);
+  });
 
   @override
   State<PayModal> createState() => _PayModalState();
@@ -504,10 +503,6 @@ class SubscriptionTile extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
             vertical: 18,
           ),
-          child: customTextNormal(
-            title,
-            textColor: active ? themeColor : null, // Colors.black,
-          ),
           decoration: BoxDecoration(
             color: context.brightness == Brightness.light
                 ? null
@@ -529,6 +524,10 @@ class SubscriptionTile extends StatelessWidget {
                       color: Colors.grey.withOpacity(.5),
                     ),
                   ),
+          ),
+          child: customTextNormal(
+            title,
+            textColor: active ? themeColor : null,  
           ),
         ),
       ),

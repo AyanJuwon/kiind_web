@@ -4,8 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
-import 'package:kiind_web/core/models/user_model.dart';
-import 'package:kiind_web/core/util/extensions/response_extensions.dart';
+import 'package:kiind_web/core/models/user_model.dart'; 
 import 'package:kiind_web/core/util/rest/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,8 +12,8 @@ abstract class BaseProvider extends ChangeNotifier {
   final ValueNotifier<bool> _initialised = ValueNotifier(false);
   ValueNotifier<bool> get initialisedAsListenable => _initialised;
   String? token;
-  late RestClient client;
-  User? _user;
+  late RestClient client; 
+  // User? _user;
   String? shareLink, shareText, shareSubject, shareContent;
   bool closeOnback = false;
   final commentCtrl = TextEditingController();
@@ -115,7 +114,7 @@ Future<void> getUser(
         saveUser(user);
       }
     }
-  } on DioError catch (e) {
+  } on DioException catch (e) {
     // Handle Dio errors
     if (e.response != null) {
       print('Error: ${e.response?.data}');
