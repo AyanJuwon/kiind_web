@@ -52,32 +52,55 @@ class PaymentMethodPageProvider extends BaseProvider {
       campaign = Campaign.fromMap(Map<String, dynamic>.from(res.info!.data));
     }
   }
+ 
 
-  _fetchMethods(BuildContext context) async {
+Future<void> _fetchMethods(BuildContext context) async {
+  loading = true;
+  notifyListeners();
+
+  try {
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
+
+    // Retrieve token from SharedPreferences
     final prefs = await SharedPreferences.getInstance();
-    token = (await prefs.getString('token'))!;
+    final token = prefs.getString('token');
+
+    if (token == null) {
+      throw Exception('Token not found');
+    }
+
+    // Fetch user details
     await getUser(context);
-    Response res = await client.get(
-      Endpoints.getPaymentMethods,
+
+    // API call to get payment methods
+    final response = await dio.get(
+      Endpoints.getPaymentMethods, // Use the correct endpoint path
       options: Options(
         headers: {
           'Authorization': 'Bearer $token',
-          'Accept': 'application/json'
         },
-        extra: {'context': context},
+        extra: {'context': context}, // Pass additional context if needed
       ),
     );
-    loading = false;
-    notifyListeners();
-    if (res.isValid) {
+
+    // Validate response
+    if (response.statusCode == 200 && response.data != null) {
+      final responseData = response.data;
+      print(responseData);
+
       Map<String, dynamic> detailMap = Map<String, dynamic>.from(context.args);
 
       PaymentDetail detail = PaymentDetail.fromMap(detailMap);
 
       bool other = detail.cause?.isOther ?? false;
 
-      for (var v in res.info!.data) {
-        // if ((!_other) || (v['id'] != 4)) {
+      for (var v in responseData['data']) {
         if (v['id'] != 4) {
           paymentMethods[v['id']] = PaymentMethod.fromMap(v);
         }
@@ -90,9 +113,19 @@ class PaymentMethodPageProvider extends BaseProvider {
         );
       }
     }
-
+  } on DioError catch (e) {
+    // Handle Dio errors
+    if (e.response != null) {
+      print('Error: ${e.response?.data}');
+    } else {
+      print('Error: ${e.message}');
+    }
+  } finally {
+    loading = false;
     notifyListeners();
   }
+}
+
 
   selectMethod(PaymentMethod method, BuildContext context, amount) {
     print(context.args);

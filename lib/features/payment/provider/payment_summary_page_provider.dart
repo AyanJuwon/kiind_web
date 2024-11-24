@@ -112,14 +112,20 @@ class PaymentSummaryPageProvider extends BaseProvider {
       callback: fetchPaymentDetails,
     );
   }
+ 
 
-  fetchPaymentDetails(BuildContext context) async {
-    loading = false;
+Future<void> fetchPaymentDetails(BuildContext context) async {
+  loading = false;
+  notifyListeners();
+
+  try {
+    // Retrieve user profile
     user = await getUserProfile();
     notifyListeners();
+
+    // Extract and process payment details from context
     Map<String, dynamic> paymentDetailMap =
         Map<String, dynamic>.from(context.args);
-
     paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
 
     paymentType = PaymentType.values[context.args['__type'] ?? 0];
@@ -140,26 +146,41 @@ class PaymentSummaryPageProvider extends BaseProvider {
       data["id"] = paymentDetail.value?.cause?.id;
     }
 
-    final prefs = await SharedPreferences.getInstance();
-    token = (await prefs.getString('token'))!;
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
 
-    Response res = await client.post(
-      initEndpoint,
+    // Retrieve token from SharedPreferences
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
+
+    if (token == null) {
+      throw Exception('Token not found');
+    }
+
+    // API call to initiate payment
+    final response = await dio.post(
+      initEndpoint,  
       data: data,
       options: Options(
         headers: {
           'Authorization': 'Bearer $token',
-          'Accept': 'application/json'
         },
-        extra: {'context': context},
+        extra: {'context': context}, 
       ),
     );
 
-    if (res.isValid) {
+    if (response.statusCode == 200 && response.data != null) {
       String? initialPurpose = paymentDetail.value?.purpose;
-      // use the response to initialize gateway
-      PaymentDetail detail =
-          PaymentDetail.fromMap(Map<String, dynamic>.from(res.info!.data));
+
+      // Use the response to initialize gateway
+      PaymentDetail detail = PaymentDetail.fromMap(
+        Map<String, dynamic>.from(response.data['data']),
+      );
 
       if (paymentType == PaymentType.deposit) {
         paymentDetail.value = paymentDetail.value?.copyWith(
@@ -176,7 +197,19 @@ class PaymentSummaryPageProvider extends BaseProvider {
     } else {
       context.back(times: 2);
     }
+  } on DioError catch (e) {
+    // Handle Dio errors
+    if (e.response != null) {
+      print('Error: ${e.response?.data}');
+    } else {
+      print('Error: ${e.message}');
+    }
+    context.back(times: 2); // Handle failure
+  } finally {
+    loading = false;
+    notifyListeners();
   }
+}
 
   initializeGateway(BuildContext context) async {
     try {

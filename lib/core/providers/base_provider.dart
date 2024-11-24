@@ -69,37 +69,66 @@ abstract class BaseProvider extends ChangeNotifier {
     }
   }
 
-  listenForRefresh(BuildContext context) {}
+  listenForRefresh(BuildContext context) {} 
 
-  getUser(
-    BuildContext context, {
-    bool load = true,
-  }) async {
-    if (load) loading = true;
+Future<void> getUser(
+  BuildContext context, {
+  bool load = true,
+}) async {
+  if (load) {
+    // Handle loading state here
+  }
 
+  try {
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
+
+    // Retrieve token from SharedPreferences
     final prefs = await SharedPreferences.getInstance();
-    token = (await prefs.getString('token'))!;
+    final token = prefs.getString('token');
 
-    Response res = await client.get(
+    if (token == null) {
+      throw Exception('Token not found');
+    }
+
+    // API call
+    final response = await dio.get(
       Endpoints.userProfile,
       options: Options(
         headers: {
           'Authorization': 'Bearer $token',
-          'Accept': 'application/json'
         },
-        extra: {'context': context},
+        extra: {'context': context}, // Pass additional context if needed
       ),
     );
 
-    if (res.isValid) {
-      _user = User.fromMap(res.info!.data!['user']);
-
-      saveUser(_user!);
+    // Process response
+    if (response.statusCode == 200 && response.data != null) {
+      final userData = response.data['data'];
+      if (userData != null) {
+        final user = User.fromMap(userData);
+        saveUser(user);
+      }
     }
-
-    if (load) loading = false;
+  } on DioError catch (e) {
+    // Handle Dio errors
+    if (e.response != null) {
+      print('Error: ${e.response?.data}');
+    } else {
+      print('Error: ${e.message}');
+    }
+  } finally {
+    if (load) {
+      // Reset loading state
+    }
   }
-
+}
+ 
   Future<void> saveUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
     final userMap = user.toMap(); // Call toMap() on the instance 'user'

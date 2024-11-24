@@ -440,7 +440,7 @@ class _PayModalState extends State<PayModal> {
                                           PaymentType.deposit.index;
                                     }
 
-                                    print("here::::: $detail");
+                                   
 
                                     await context.off(
                                       RoutePaths.paymentMethodScreen,
