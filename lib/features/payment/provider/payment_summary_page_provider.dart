@@ -42,7 +42,8 @@ class PaymentSummaryPageProvider extends BaseProvider {
     String endpoint = '';
 
     if (paymentDetail.value?.purpose == null) {
-      print("payment type::::: ${endpoint}");
+      print("payment type interval ::::: ${interval}"); 
+      print("payment type is sub ::::: ${isSub}");
       switch (paymentType.index) {
         case 1:
           endpoint = isSub
@@ -377,9 +378,10 @@ Future<void> fetchPaymentDetails(BuildContext context) async {
   _launchPaypalModal(BuildContext context) async {
     Gateway? gateway = paymentDetail.value?.gateway;
     if (gateway != null && method?.id == 3) { 
+      print("check if is sub before launcing modal ::: $isSub");
     Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext context) =>
-     isSub? PaypalOrderPayment(
+     !isSub? PaypalOrderPayment(
         clientId: gateway.publicKey!,
          secretKey: gateway.privateKey!, 
          currencyCode: paypalTransactions[0]['amount']['currency'],
