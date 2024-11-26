@@ -10,8 +10,7 @@ import 'package:kiind_web/features/philanthropy/presentation/providers/philanthr
 class PhilanthropyPaymentMethodPage extends StatefulWidget {
   final DonationInfoModel donationInfo;
 
-  const PhilanthropyPaymentMethodPage({Key? key, required this.donationInfo})
-      : super(key: key);
+  const PhilanthropyPaymentMethodPage({super.key, required this.donationInfo});
 
   @override
   _PhilanthropyPaymentMethodPageState createState() =>

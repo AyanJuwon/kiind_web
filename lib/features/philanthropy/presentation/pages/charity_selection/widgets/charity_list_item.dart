@@ -10,12 +10,11 @@ class CharityListItem extends StatelessWidget {
   final Function() onToggle;
 
   const CharityListItem(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.isSelected,
       required this.onToggle,
-      this.image})
-      : super(key: key);
+      this.image});
 
   @override
   Widget build(BuildContext context) {

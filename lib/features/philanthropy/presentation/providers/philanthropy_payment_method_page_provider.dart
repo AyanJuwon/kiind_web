@@ -15,7 +15,6 @@ import 'package:kiind_web/core/models/payment_method.dart'
 import 'package:kiind_web/core/providers/base_provider.dart';
 
 import 'package:kiind_web/core/router/route_paths.dart';
-import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:paypal_payment/paypal_payment.dart';
@@ -39,7 +38,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
                 method.title!.toLowerCase() == 'stripe')
             .toList();
       }
-    } on DioError {
+    } on DioException {
       showAlertToast('An error occurred. Please try again');
     }
 
@@ -86,7 +85,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
         detail = PaymentDetail.fromMap(
             Map<String, dynamic>.from(result.data['data']));
       }
-    } on DioError {
+    } on DioException {
       loading = false;
       showAlertToast('An error occurred. Please try again');
     }
@@ -114,7 +113,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
       {bool isPaypal = false}) async {
     // loading = true;
     print("paypal mode :: ${paymentDetail.gateway?.sandbox}");
-    print("paypal payload :: ${payload}");
+    print("paypal payload :: $payload");
     try {
       final result = await client.post(Endpoints.finalizeKiindDonation, data: {
         'payment_method': paymentMethod.title!.toLowerCase(),
@@ -135,7 +134,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
         Navigator.of(context).pushNamed(RoutePaths.paymentSuccessfulScreen);
         // }
       }
-    } on DioError {
+    } on DioException {
       showAlertToast('An error occurred. Please try again');
     }
 
@@ -172,7 +171,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
                 "item_list": {
                   "items": [
                     {
-                      "name": "${paymentDetail.cause?.title}",
+                      "name": "${paymentDetail.cause != null ? paymentDetail.cause.title : 'Portfolio Donation'}",
                       "quantity": 1,
                       "price":
                           '${paymentDetail.amounts?.userSubmittedAmount ?? 0}',
@@ -184,16 +183,16 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
             ];
 
             print("paypal mode 0 :: ${paymentDetail.gateway?.sandbox}");
-      
+
             return PaypalOrderPayment(
               sandboxMode: paymentDetail.gateway!.sandbox,
               cancelURL: paymentDetail.gateway!.cancelUrl!,
               note: "Contact us for any questions on your subscription.",
               clientId: paymentMethod.apiKey!,
               secretKey: paymentMethod.apiSecret!,
-            currencyCode: "USD",
-              amount: paymentDetail.amounts?.userSubmittedAmount.toString() ?? "0.0",
-
+              currencyCode: "USD",
+              amount: paymentDetail.amounts?.userSubmittedAmount.toString() ??
+                  "0.0",
               returnURL: "https://kiind.co.uk/?__route=payment_successful",
               onSuccess: (Map params) {
                 log('Payment transaction was succesfull $params');
@@ -216,9 +215,9 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
             sandboxMode: paymentDetail.gateway!.sandbox,
             clientId: paymentMethod.apiKey!,
             secretKey: paymentMethod.apiSecret!,
-            productName: paymentDetail!.cause.title,
+            productName:   'Portfolio Donation',
             type: "PHYSICAL",
-            planName: paymentDetail!.cause.title,
+            planName:    'Portfolio Donation',
             planId: paymentDetail.gateway!.plan!,
             billingCycles: [
               {
@@ -229,11 +228,11 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
                   'fixed_price': {
                     'currency_code': "USD",
                     'value':
-                        '${paymentDetail!.amounts?.userSubmittedAmount ?? 0}',
+                        '${paymentDetail.amounts?.userSubmittedAmount ?? 0}',
                   }
                 },
                 'frequency': {
-                  "interval_unit": interval?.replaceAll('ly', '').toUpperCase(),
+                  "interval_unit": interval.replaceAll('ly', '').toUpperCase(),
                   "interval_count": 1
                 }
               }

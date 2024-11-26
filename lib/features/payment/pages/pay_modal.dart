@@ -132,19 +132,19 @@ class _PayModalState extends State<PayModal> {
   }
 
   void setDefault(String? key) {
-    dynamic _cause = widget.cause;
+    dynamic cause = widget.cause;
 
-    if (_cause?.isOther ?? false) {
+    if (cause?.isOther ?? false) {
       switch (key?.toLowerCase()) {
         case 'yearly':
-          _preset = _cause!.yearly;
+          _preset = cause!.yearly;
           break;
         case 'one time':
-          _preset = _cause!.oneTime;
+          _preset = cause!.oneTime;
           break;
         case 'monthly':
         default:
-          _preset = _cause!.monthly;
+          _preset = cause!.monthly;
           break;
       }
     }
@@ -171,12 +171,12 @@ class _PayModalState extends State<PayModal> {
 
   @override
   Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 //  final translation = AppLocalizations.of(context);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: SizedBox(
-        height: _size.height * 0.9,
+        height: size.height * 0.9,
         child: Padding(
           padding: MediaQuery.of(context).viewInsets,
           child: SingleChildScrollView(
@@ -203,7 +203,7 @@ class _PayModalState extends State<PayModal> {
                       ),
                       ValueListenableBuilder<String?>(
                         valueListenable: widget.subscriptionOption!,
-                        builder: (context, _option, child) {
+                        builder: (context, option, child) {
                           Campaign? cause = widget.cause as Campaign?;
                           return Row(
                             children: (cause?.subscriptionOptions ?? {})
@@ -211,7 +211,7 @@ class _PayModalState extends State<PayModal> {
                                 .map(
                                   (key) => SubscriptionTile(
                                     themeColor: AppColors.primaryColor,
-                                    active: _option == key,
+                                    active: option == key,
                                     onTap: () {
                                       FocusScope.of(context).unfocus();
 
@@ -270,13 +270,13 @@ class _PayModalState extends State<PayModal> {
                         valueListenable: (widget.cause?.isOther ?? false)
                             ? widget.subscriptionOption!
                             : ValueNotifier(null),
-                        builder: (context, _option, child) {
-                          bool isSub = !['One Time', null].contains(_option);
+                        builder: (context, option, child) {
+                          bool isSub = !['One Time', null].contains(option);
 
                           return customTextNormal(
                               widget.forWallet
                                   ? 'How much do you want to add?'
-                                  : 'How much do you want to donate${isSub ? (' ' + (_option?.toLowerCase() ?? '')) : ''}?',
+                                  : 'How much do you want to donate${isSub ? (' ${option?.toLowerCase() ?? ''}') : ''}?',
                               fontWeight: FontWeight.w600,
                               textColor: Colors.black);
                         },
@@ -284,10 +284,10 @@ class _PayModalState extends State<PayModal> {
                       const SizedBox(height: 18),
                       ValueListenableBuilder<num>(
                         valueListenable: multiplier,
-                        builder: (context, _multiplier, child) {
+                        builder: (context, multiplier, child) {
                           return ValueListenableBuilder(
                             valueListenable: presetIndex,
-                            builder: (context, _donation, child) {
+                            builder: (context, donation, child) {
                               return Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -306,7 +306,7 @@ class _PayModalState extends State<PayModal> {
                                             margin: const EdgeInsets.symmetric(
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
-                                              color: _donation == index
+                                              color: donation == index
                                                   ? AppColors.primaryColor
                                                   : AppColors.primaryColor
                                                       .withOpacity(0.45),
@@ -319,9 +319,9 @@ class _PayModalState extends State<PayModal> {
                                               child: customTextNormal(
                                                 options!.faceValueAt(
                                                   index,
-                                                  multiplier: _multiplier,
+                                                  multiplier: multiplier,
                                                 ),
-                                                textColor: _donation == index
+                                                textColor: donation == index
                                                     ? Colors.white
                                                     : Colors.black87,
                                               ),
@@ -347,7 +347,7 @@ class _PayModalState extends State<PayModal> {
                                             margin: const EdgeInsets.symmetric(
                                                 horizontal: 2),
                                             decoration: BoxDecoration(
-                                              color: _donation == index + 2
+                                              color: donation == index + 2
                                                   ? AppColors.primaryColor
                                                   : AppColors.primaryColor
                                                       .withOpacity(0.45),
@@ -360,10 +360,10 @@ class _PayModalState extends State<PayModal> {
                                               child: customTextNormal(
                                                 options!.faceValueAt(
                                                   (index + 2),
-                                                  multiplier: _multiplier,
+                                                  multiplier: multiplier,
                                                 ),
                                                 textColor:
-                                                    _donation == index + 2
+                                                    donation == index + 2
                                                         ? Colors.white
                                                         : Colors.black87,
                                               ),
@@ -403,9 +403,9 @@ class _PayModalState extends State<PayModal> {
                       const SizedBox(height: 48),
                       ValueListenableBuilder<String?>(
                         valueListenable: priceStr,
-                        builder: (context, _priceStr, child) {
+                        builder: (context, priceStr, child) {
                           bool enabled =
-                              (double.tryParse(_priceStr ?? '') ?? 0) > 0;
+                              (double.tryParse(priceStr ?? '') ?? 0) > 0;
 // if campaign
                           print("building button");
                           return MaterialButton(
@@ -482,13 +482,13 @@ class SubscriptionTile extends StatelessWidget {
   final Function() onTap;
 
   const SubscriptionTile({
-    Key? key,
+    super.key,
     this.themeColor = AppColors.primaryColor,
     required this.active,
     required this.onTap,
     required this.title,
     this.isLast = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

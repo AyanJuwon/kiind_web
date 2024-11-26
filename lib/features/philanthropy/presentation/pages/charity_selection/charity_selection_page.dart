@@ -18,11 +18,10 @@ class CharitySelectionPage extends StatefulWidget {
   final int? subscriptionId;
 
   const CharitySelectionPage(
-      {Key? key,
+      {super.key,
       required this.donationInfo,
       this.syncedCharities,
-      this.subscriptionId})
-      : super(key: key);
+      this.subscriptionId});
 
   @override
   _CharitySelectionPageState createState() => _CharitySelectionPageState();
@@ -159,7 +158,7 @@ class _CharitySelectionPageState extends State<CharitySelectionPage> {
                                             Brightness.dark
                                         ? Theme.of(context)
                                             .colorScheme
-                                            .background
+                                            .surface
                                         : AppColors.lightGrey,
                                     borderRadius: BorderRadius.circular(12)),
                                 child: TextField(

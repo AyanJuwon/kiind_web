@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/providers/provider_setup.dart';
 import 'package:kiind_web/core/router/router.dart';
+import 'package:kiind_web/widgets/donation_modal.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,6 +99,10 @@ class MyApp extends StatelessWidget {
                 name: '/pay',
                 arguments: paymentDetails,
               ));
+            }
+            if (settings.name == '/portfolio-payment') {
+              return MaterialPageRoute(
+                  builder: (_) => const CampaignDonateModal());
             }
             return AppRouter.generateRoute(settings);
           },

@@ -10,8 +10,7 @@ class KiindDonateModal extends StatefulWidget {
   final Function(DonationInfoModel) onContinue;
   final ScrollController? controller;
 
-  const KiindDonateModal({Key? key, required this.onContinue, this.controller})
-      : super(key: key);
+  const KiindDonateModal({super.key, required this.onContinue, this.controller});
 
   @override
   State<KiindDonateModal> createState() => _KiindDonateModalState();
@@ -68,10 +67,10 @@ class _KiindDonateModalState extends State<KiindDonateModal> {
 
   @override
   Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     return SizedBox(
-      height: _size.height * 0.9,
+      height: size.height * 0.9,
       child: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: SingleChildScrollView(
@@ -199,13 +198,13 @@ class _KiindDonateModalState extends State<KiindDonateModal> {
                           amount: _priceController.value.text,
                           interval: 'single',
                           giftAid: _addGiftAid ? 1 : 0)),
-                      child: customTextNormal('Continue',
-                          textColor: Colors.white, fontWeight: FontWeight.w600),
                       color: AppColors.primaryColor,
                       minWidth: double.infinity,
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(38)),
+                      child: customTextNormal('Continue',
+                          textColor: Colors.white, fontWeight: FontWeight.w600),
                     ),
                     const SizedBox(height: 48),
                   ],

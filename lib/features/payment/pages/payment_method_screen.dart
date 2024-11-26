@@ -12,7 +12,7 @@ import 'package:kiind_web/features/payment/provider/payment_method_page_provider
 import 'package:kiind_web/widgets/refresh_widget.dart';
 
 class PaymentMethodPage extends StatefulWidget {
-  const PaymentMethodPage({Key? key}) : super(key: key);
+  const PaymentMethodPage({super.key});
 
   @override
   _PaymentMethodPageState createState() => _PaymentMethodPageState();
@@ -80,7 +80,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                   },
                   keyRefresh: keyRefresh,
                   child: Container(
-                    margin: EdgeInsets.only(top: globalPadding),
+                    margin: const EdgeInsets.only(top: globalPadding),
                     child: ListView.separated(
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),

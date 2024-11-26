@@ -8,13 +8,12 @@ class CustomDropdownButton<T> extends StatelessWidget {
   final Color? dropdownColor;
 
   const CustomDropdownButton(
-      {Key? key,
+      {super.key,
       this.borderColor,
       this.dropdownColor,
       required this.items,
       required this.value,
-      required this.onChanged})
-      : super(key: key);
+      required this.onChanged});
 
   @override
   Widget build(BuildContext context) {

@@ -121,7 +121,7 @@ class CharityAllocationPageProvider extends BaseProvider {
         print(result.statusCode);
         print(result.data);
       }
-    } on DioError {
+    } on DioException {
       showAlertToast('An error occurred. Please try again');
     }
 
@@ -143,7 +143,7 @@ class CharityAllocationPageProvider extends BaseProvider {
         Navigator.of(context)
             .pushReplacementNamed(RoutePaths.kiindPortfolioScreen);
       }
-    } on DioError {
+    } on DioException {
       showAlertToast('An error occurred. Please try again.');
       loading = false;
     }

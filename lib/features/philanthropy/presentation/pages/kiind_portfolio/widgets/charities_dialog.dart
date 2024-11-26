@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KiindPortfolioCharitiesDialog extends StatelessWidget {
-  const KiindPortfolioCharitiesDialog({Key? key}) : super(key: key);
+  const KiindPortfolioCharitiesDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

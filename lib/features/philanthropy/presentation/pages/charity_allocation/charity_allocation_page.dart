@@ -16,11 +16,10 @@ class CharityAllocationPage extends StatefulWidget {
   final int? subscriptionId;
 
   const CharityAllocationPage(
-      {Key? key,
+      {super.key,
       required this.selectedCharities,
       required this.donationInfo,
-      required this.subscriptionId})
-      : super(key: key);
+      required this.subscriptionId});
 
   @override
   _CharityAllocationPageState createState() => _CharityAllocationPageState();
@@ -50,7 +49,7 @@ class _CharityAllocationPageState extends State<CharityAllocationPage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: Theme.of(context).brightness == Brightness.dark
-                        ? Theme.of(context).colorScheme.background
+                        ? Theme.of(context).colorScheme.surface
                         : AppColors.lightGrey,
                     border: Border(
                         bottom: BorderSide(

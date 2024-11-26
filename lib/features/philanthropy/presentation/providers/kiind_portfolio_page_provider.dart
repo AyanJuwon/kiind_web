@@ -48,7 +48,7 @@ class KiindPortfolioPageProvider extends BaseProvider {
       } else {
         hasError = true;
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       hasError = true;
       if (e.response!.statusCode == 404) {
         loading = false;
@@ -169,7 +169,7 @@ class KiindPortfolioPageProvider extends BaseProvider {
         // print(response.statusCode);
         // print(response.data);
       }
-    } on DioError {
+    } on DioException {
       showAlertToast(AppLocalizations.of(context)!.anErrorOccured);
       // showAlertToast('An error occurred. Please try again.');
       loading = false;

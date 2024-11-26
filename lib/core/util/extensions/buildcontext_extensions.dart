@@ -87,7 +87,7 @@ extension Navigation on BuildContext {
 
 extension Decorations on BuildContext {
   BoxDecoration get cardDecoration => BoxDecoration(
-        color: Theme.of(this).colorScheme.background,
+        color: Theme.of(this).colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(

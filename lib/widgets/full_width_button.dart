@@ -12,7 +12,7 @@ class FullWidthButton extends StatelessWidget {
   final double? borderRadius;
 
   const FullWidthButton(
-      {Key? key,
+      {super.key,
       this.isLoading = false,
       this.fontSize = 18,
       this.textColor,
@@ -20,8 +20,7 @@ class FullWidthButton extends StatelessWidget {
       this.borderRadius,
       required this.onPressed,
       required this.text,
-      required this.color})
-      : super(key: key);
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +73,7 @@ class FlexibleButton extends StatelessWidget {
   final double? width;
 
   const FlexibleButton(
-      {Key? key,
+      {super.key,
       this.isLoading = false,
       this.fontSize = 18,
       this.textColor,
@@ -83,8 +82,7 @@ class FlexibleButton extends StatelessWidget {
       this.width,
       required this.onPressed,
       required this.text,
-      required this.color})
-      : super(key: key);
+      required this.color});
 
   @override
   Widget build(BuildContext context) {

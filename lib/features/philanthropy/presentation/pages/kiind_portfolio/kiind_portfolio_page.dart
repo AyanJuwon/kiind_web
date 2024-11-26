@@ -15,7 +15,7 @@ import 'package:pie_chart/pie_chart.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class KiindPortfolioPage extends StatefulWidget {
-  const KiindPortfolioPage({Key? key}) : super(key: key);
+  const KiindPortfolioPage({super.key});
 
   @override
   _KiindPortfolioPageState createState() => _KiindPortfolioPageState();
@@ -181,12 +181,8 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                                               'syncedCharities': provider
                                                   .parseSyncedCharities(),
                                               'subscriptionId':
-                                                  provider.subscriptionDetails ==
-                                                          null
-                                                      ? null
-                                                      : provider
-                                                          .subscriptionDetails!
-                                                          .id
+                                                  provider
+                                                          .subscriptionDetails?.id
                                             });
                                         provider.getPortfolio();
                                       },
@@ -195,13 +191,13 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                               );
                             });
                       },
+                      color: AppColors.primaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28)),
                       child: customTextNormal(
                         translation.edit,
                         textColor: Colors.white,
                       ),
-                      color: AppColors.primaryColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28)),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -242,13 +238,7 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                             context: context,
                             isScrollControlled: true,
                             builder: (modalContext) {
-                              return CampaignDonateModal(
-                                  onContinue: (donationInfo) {
-                                Navigator.of(modalContext).pop();
-                                Navigator.of(context).pushNamed(
-                                    RoutePaths.philanthropyPaymentMethodSscreen,
-                                    arguments: donationInfo);
-                              });
+                              return const CampaignDonateModal();
                             });
                       }
 

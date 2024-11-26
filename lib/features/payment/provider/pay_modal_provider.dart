@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class PaymentModalProvider extends BaseProvider {
   Campaign? campaign;
 
+  @override
   late RestClient client;
   // Initialize client here if not already initialized
 
@@ -37,7 +38,7 @@ class PaymentModalProvider extends BaseProvider {
 
   fetchCampaign(BuildContext context, int campaignID) async {
     final prefs = await SharedPreferences.getInstance();
-    token = (await prefs.getString('token'))!;
+    token = (prefs.getString('token'))!;
     Response res = await client.get(
       "${Endpoints.campaignDetail}/$campaignID",
       options: Options(

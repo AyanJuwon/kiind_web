@@ -12,7 +12,7 @@ class LoadingTile extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
 
   const LoadingTile({
-    Key? key,
+    super.key,
     this.filled = false,
     this.styles = const [],
     this.leadingSize,
@@ -22,7 +22,7 @@ class LoadingTile extends StatelessWidget {
     this.crossAxisAlignment = CrossAxisAlignment.start,
     this.trailingSize,
     this.rounded = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -118,9 +118,9 @@ class LuneShimmer extends StatelessWidget {
   final bool rounded;
 
   const LuneShimmer({
-    Key? key,
+    super.key,
     this.rounded = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +136,7 @@ class LuneShimmer extends StatelessWidget {
 }
 
 class BareShimmer extends StatelessWidget {
-  const BareShimmer({Key? key}) : super(key: key);
+  const BareShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,9 +154,9 @@ class BareShimmer extends StatelessWidget {
 class TextShimmer extends StatelessWidget {
   final LoadingText textConfig;
   const TextShimmer({
-    Key? key,
+    super.key,
     required this.textConfig,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

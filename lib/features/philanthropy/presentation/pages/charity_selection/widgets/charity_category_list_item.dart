@@ -8,11 +8,10 @@ class CharityCategoryListItem extends StatelessWidget {
   final bool isSelected;
 
   const CharityCategoryListItem(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.onTap,
-      required this.isSelected})
-      : super(key: key);
+      required this.isSelected});
 
   @override
   Widget build(BuildContext context) {

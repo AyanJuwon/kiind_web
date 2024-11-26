@@ -12,7 +12,7 @@ class FillWidthButton extends StatelessWidget {
   final double? borderRadius;
 
   const FillWidthButton(
-      {Key? key,
+      {super.key,
       this.isLoading = false,
       this.fontSize = 18,
       this.textColor,
@@ -20,8 +20,7 @@ class FillWidthButton extends StatelessWidget {
       this.borderRadius,
       required this.onPressed,
       required this.text,
-      required this.color})
-      : super(key: key);
+      required this.color});
 
   @override
   Widget build(BuildContext context) {

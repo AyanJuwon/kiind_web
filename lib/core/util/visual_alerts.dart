@@ -18,7 +18,7 @@ void showAlertFlash(
       margin: const EdgeInsets.symmetric(horizontal: 12),
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
       decoration: BoxDecoration(
-        color: background ?? context.theme.colorScheme.background,
+        color: background ?? context.theme.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -29,7 +29,7 @@ void showAlertFlash(
               Icons.check_circle,
               color: context.theme.textTheme.bodyLarge?.color,
             ),
-          SizedBox(width: 8), // Space between icon and text
+          const SizedBox(width: 8), // Space between icon and text
           customTextSmall(
             message,
             textColor: textColor ?? context.theme.textTheme.bodyLarge?.color,
@@ -51,7 +51,7 @@ void showAlertFlash(
 void showAlertToast(String message, {bool long = true}) {
   showToast(
     message,
-    duration: long ? Duration(seconds: 3) : Duration(seconds: 1),
+    duration: long ? const Duration(seconds: 3) : const Duration(seconds: 1),
     position: ToastPosition.bottom,
   );
 }

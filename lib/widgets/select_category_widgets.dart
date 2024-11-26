@@ -10,14 +10,13 @@ class CategoryPill extends StatelessWidget {
   final VoidCallback onTap;
   final String categoryName;
   const CategoryPill(
-      {Key? key,
+      {super.key,
       required this.pillColor,
       required this.categoryName,
       required this.onTap,
       required this.textColor,
       required this.elevation,
-      required this.shadowColor})
-      : super(key: key);
+      required this.shadowColor});
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +53,12 @@ class SubCategory extends StatelessWidget {
   final String subCategoryName;
   final bool visibility;
   const SubCategory(
-      {Key? key,
+      {super.key,
       required this.pillColor,
       required this.textColor,
       required this.onTap,
       required this.subCategoryName,
-      required this.visibility})
-      : super(key: key);
+      required this.visibility});
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +96,7 @@ class ItemBadge extends StatelessWidget {
   final IconData? icon;
   final Widget? iconWidget;
 
-  const ItemBadge({Key? key, required this.color, this.icon, this.iconWidget})
-      : super(key: key);
+  const ItemBadge({super.key, required this.color, this.icon, this.iconWidget});
 
   @override
   Widget build(BuildContext context) {

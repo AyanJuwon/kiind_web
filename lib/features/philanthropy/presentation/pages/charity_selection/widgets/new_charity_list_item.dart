@@ -10,15 +10,14 @@ class NewCharityListItem extends StatelessWidget {
   final Function() menuFunction4;
   final Function() onTap;
   const NewCharityListItem(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.image,
       required this.onTap,
       // required this.menuFunction1,
       required this.menuFunction2,
       required this.menuFunction3,
-      required this.menuFunction4})
-      : super(key: key);
+      required this.menuFunction4});
 
   @override
   Widget build(BuildContext context) {
@@ -80,18 +79,18 @@ class NewCharityListItem extends StatelessWidget {
                     // ),
                     PopupMenuItem(
                       onTap: menuFunction2,
-                      child: const Text("Share QR code"),
                       value: 2,
+                      child: const Text("Share QR code"),
                     ),
                     PopupMenuItem(
                       onTap: menuFunction3,
-                      child: const Text("Share A Link"),
                       value: 3,
+                      child: const Text("Share A Link"),
                     ),
                     PopupMenuItem(
                       onTap: menuFunction4,
-                      child: const Text("Share ID"),
                       value: 4,
+                      child: const Text("Share ID"),
                     )
                   ])
         ],

@@ -3,8 +3,6 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
-import 'package:flutter_paypal/flutter_paypal.dart';
-import 'package:flutter_paypal/flutter_paypal_subscription.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
@@ -14,12 +12,10 @@ import 'package:kiind_web/core/models/payment_method.dart' as kiind_pay;
 import 'package:kiind_web/core/models/post_model.dart';
 import 'package:kiind_web/core/models/user_model.dart';
 import 'package:kiind_web/core/providers/base_provider.dart';
-import 'package:kiind_web/core/providers/provider_setup.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
-import 'package:kiind_web/features/payment/pages/paypal_payment_page.dart';
 import 'package:paypal_payment/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,6 +33,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
   String? interval = 'one_time';
 
   bool get isSub => interval != 'one_time';
+  @override
   String? token;
   String get initEndpoint {
     String endpoint = '';
@@ -140,7 +137,6 @@ class PaymentSummaryPageProvider extends BaseProvider {
         "interval": interval?.replaceAll('ly', ''),
       };
 
-      print("payment data :::: $data");
       if (paymentType != PaymentType.deposit) {
         data["id"] = paymentDetail.value?.cause?.id;
       }
@@ -196,7 +192,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
       } else {
         context.back(times: 2);
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // Handle Dio errors
       if (e.response != null) {
         print('Error: ${e.response?.data}');

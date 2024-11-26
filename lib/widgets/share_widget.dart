@@ -8,12 +8,12 @@ class ShareButton extends StatelessWidget {
   final Function() share;
 
   const ShareButton({
-    Key? key,
+    super.key,
     required this.share,
     this.shareBusy = false,
     this.themeColor = AppColors.primaryColor,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

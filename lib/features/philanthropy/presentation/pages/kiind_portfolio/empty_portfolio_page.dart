@@ -8,7 +8,7 @@ import 'package:kiind_web/widgets/full_width_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptyKiindPortfolioPage extends StatelessWidget {
-  const EmptyKiindPortfolioPage({Key? key}) : super(key: key);
+  const EmptyKiindPortfolioPage({super.key});
 
   @override
   Widget build(BuildContext context) {

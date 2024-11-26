@@ -5,7 +5,6 @@ import 'package:kiind_web/core/constants/box_keys.dart';
 import 'package:kiind_web/core/constants/db_keys.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
-import 'package:kiind_web/core/util/extensions/string_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,7 +29,7 @@ class RestInterceptor extends Interceptor {
   Future<void> initializeInterceptor() async {
     prefBox = await Hive.openBox(kPrefBox);
     final prefs = await SharedPreferences.getInstance();
-    token = await prefs.getString('token');
+    token = prefs.getString('token');
 
     _updateToken();
   }
@@ -51,7 +50,7 @@ class RestInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) {
-    print("authentication token ::: ${token}");
+    print("authentication token ::: $token");
     if (token?.isEmpty ?? true) _updateToken();
 
     if (token?.isNotEmpty ?? false) {
@@ -76,7 +75,7 @@ class RestInterceptor extends Interceptor {
 
   @override
   Future<void> onError(
-    DioError err,
+    DioException err,
     ErrorInterceptorHandler handler,
   ) async {
     BuildContext? ctx = err.requestOptions.extra['context'];

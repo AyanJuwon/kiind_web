@@ -17,6 +17,7 @@ class PaymentMethodPageProvider extends BaseProvider {
   Map<int, PaymentMethod> paymentMethods = {};
 
   bool saveAsDefault = false;
+  @override
   String? token;
   Campaign? campaign;
   @override
@@ -36,7 +37,7 @@ class PaymentMethodPageProvider extends BaseProvider {
 
   fetchCampaign(BuildContext context, int campaignID) async {
     final prefs = await SharedPreferences.getInstance();
-    token = (await prefs.getString('token'))!;
+    token = (prefs.getString('token'))!;
     Response res = await client.get(
       "${Endpoints.campaignDetail}/$campaignID",
       options: Options(
@@ -113,7 +114,7 @@ class PaymentMethodPageProvider extends BaseProvider {
           );
         }
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // Handle Dio errors
       if (e.response != null) {
         print('Error: ${e.response?.data}');

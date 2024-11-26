@@ -13,14 +13,14 @@ class BasePage<T extends ChangeNotifier> extends StatefulWidget {
   final bool needsUser, hasCustomLoader;
 
   const BasePage({
-    Key? key,
+    super.key,
     required this.builder,
     required this.provider,
     required this.child,
     this.needsUser = true,
     this.hasCustomLoader = false,
     this.init,
-  }) : super(key: key);
+  });
 
   @override
   _BasePageState<T> createState() => _BasePageState<T>();

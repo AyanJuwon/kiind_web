@@ -10,8 +10,7 @@ class CharitySearchView extends StatelessWidget {
   final List<Charity> charities;
 
   const CharitySearchView(
-      {Key? key, required this.keyword, required this.charities})
-      : super(key: key);
+      {super.key, required this.keyword, required this.charities});
 
   @override
   Widget build(BuildContext context) {

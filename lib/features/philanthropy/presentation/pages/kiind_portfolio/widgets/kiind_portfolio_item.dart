@@ -8,12 +8,11 @@ class KiindPortfolioItem extends StatelessWidget {
   final List<String> charities;
 
   const KiindPortfolioItem(
-      {Key? key,
+      {super.key,
       required this.label,
       required this.allocation,
       required this.color,
-      required this.charities})
-      : super(key: key);
+      required this.charities});
 
   @override
   Widget build(BuildContext context) {

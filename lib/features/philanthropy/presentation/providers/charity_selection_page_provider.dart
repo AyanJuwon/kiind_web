@@ -198,7 +198,7 @@ class CharitySelectionPageProvider extends BaseProvider {
           CategoryModel(id: -1, title: 'All'),
           ...categoriesData
               .map((category) => CategoryModel.fromMap(category))
-              .toList()
+              
         ];
 
         print('api response :::: $categories');
@@ -208,7 +208,7 @@ class CharitySelectionPageProvider extends BaseProvider {
 
         await getnewCategories();
       }
-    } on DioError {
+    } on DioException {
       categoriesError = true;
       showAlertToast('An error occurred. Please try again');
     }
@@ -250,7 +250,7 @@ class CharitySelectionPageProvider extends BaseProvider {
       if (result.statusCode == 404) {
         charities = [];
       }
-    } on DioError {
+    } on DioException {
       hasError = true;
       print("error occured ");
       showAlertToast('An error occurred. Please try again');
@@ -279,7 +279,7 @@ class CharitySelectionPageProvider extends BaseProvider {
       if (result.statusCode == 404) {
         charities = [];
       }
-    } on DioError {
+    } on DioException {
       hasError = true;
       showAlertToast('An error occurred. Please try again');
     }
@@ -308,7 +308,7 @@ class CharitySelectionPageProvider extends BaseProvider {
       if (result.statusCode == 404) {
         searchResult = [];
       }
-    } on DioError {
+    } on DioException {
       searchError = true;
       showAlertToast('An error occurred. Please try again');
     }
@@ -388,7 +388,7 @@ class CharitySelectionPageProvider extends BaseProvider {
                 //  controller: scrollCtrl,
                 child: ValueListenableBuilder(
                   valueListenable: loadingAsListenable,
-                  builder: (context, _loading, child) {
+                  builder: (context, loading, child) {
                     return Wrap(
                       spacing: 10,
                       runSpacing: 10,

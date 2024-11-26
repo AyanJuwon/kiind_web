@@ -9,11 +9,11 @@ class RefreshWidget extends StatefulWidget {
   final Future Function() onRefresh;
 
   const RefreshWidget({
-    Key? key,
+    super.key,
     required this.keyRefresh,
     required this.onRefresh,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   _RefreshWidgetState createState() => _RefreshWidgetState();

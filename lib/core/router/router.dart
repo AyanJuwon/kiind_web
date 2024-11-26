@@ -38,7 +38,7 @@ class AppRouter {
         final arguments = settings.arguments as Map<String, dynamic>? ?? {};
 
         return MaterialPageRoute(
-          builder: (_) => PaymentMethodPage(),
+          builder: (_) => const PaymentMethodPage(),
           settings: settings,
         );
       case RoutePaths.paymentSummaryScreen:

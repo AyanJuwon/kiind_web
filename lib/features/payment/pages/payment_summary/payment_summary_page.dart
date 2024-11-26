@@ -10,7 +10,7 @@ import 'package:kiind_web/core/util/extensions/num_extentions.dart';
 import 'package:kiind_web/features/payment/provider/payment_summary_page_provider.dart';
 
 class PaymentSummaryPage extends StatefulWidget {
-  const PaymentSummaryPage({Key? key}) : super(key: key);
+  const PaymentSummaryPage({super.key});
 
   @override
   _PaymentSummaryPageState createState() => _PaymentSummaryPageState();
@@ -224,9 +224,9 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                               ),
                                             ],
                                           ),
-                                          Column(
+                                          const Column(
                                             mainAxisSize: MainAxisSize.min,
-                                            children: const [
+                                            children: [
                                               SizedBox(height: 6),
                                               Divider(color: Colors.black54),
                                               SizedBox(height: 6),

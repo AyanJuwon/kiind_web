@@ -14,7 +14,7 @@ class CharityAllocationItem extends StatelessWidget {
   final Color color;
 
   const CharityAllocationItem(
-      {Key? key,
+      {super.key,
       required this.charity,
       required this.category,
       required this.onRemove,
@@ -22,8 +22,7 @@ class CharityAllocationItem extends StatelessWidget {
       required this.allocation,
       required this.index,
       required this.color,
-      this.image})
-      : super(key: key);
+      this.image});
 
   @override
   Widget build(BuildContext context) {
