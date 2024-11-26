@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:flutter_paypal/flutter_paypal.dart';
-import 'package:flutter_paypal/flutter_paypal_subscription.dart'; 
+import 'package:flutter_paypal/flutter_paypal_subscription.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
@@ -42,8 +42,6 @@ class PaymentSummaryPageProvider extends BaseProvider {
     String endpoint = '';
 
     if (paymentDetail.value?.purpose == null) {
-      print("payment type interval ::::: ${interval}"); 
-      print("payment type is sub ::::: ${isSub}");
       switch (paymentType.index) {
         case 1:
           endpoint = isSub
@@ -113,104 +111,104 @@ class PaymentSummaryPageProvider extends BaseProvider {
       callback: fetchPaymentDetails,
     );
   }
- 
 
-Future<void> fetchPaymentDetails(BuildContext context) async {
-  loading = false;
-  notifyListeners();
-
-  try {
-    // Retrieve user profile
-    user = await getUserProfile();
-    notifyListeners();
-
-    // Extract and process payment details from context
-    Map<String, dynamic> paymentDetailMap =
-        Map<String, dynamic>.from(context.args);
-    paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
-
-    paymentType = PaymentType.values[context.args['__type'] ?? 0];
-
-    if (context.args['__interval'] != null) {
-      interval = context.args['__interval'];
-    }
-
-    method = kiind_pay.PaymentMethod.fromMap(context.args['__method']);
-
-    Map<String, dynamic> data = {
-      "payment_method": method?.title?.toLowerCase(),
-      "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
-      "interval": interval?.replaceAll('ly', ''),
-    };
-
-    if (paymentType != PaymentType.deposit) {
-      data["id"] = paymentDetail.value?.cause?.id;
-    }
-
-    // Initialize Dio
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://app.kiind.co.uk/api/v2',
-        headers: {'Accept': 'application/json'},
-      ),
-    );
-
-    // Retrieve token from SharedPreferences
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-
-    if (token == null) {
-      throw Exception('Token not found');
-    }
-
-    // API call to initiate payment
-    final response = await dio.post(
-      initEndpoint,  
-      data: data,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-        extra: {'context': context}, 
-      ),
-    );
-
-    if (response.statusCode == 200 && response.data != null) {
-      String? initialPurpose = paymentDetail.value?.purpose;
-
-      // Use the response to initialize gateway
-      PaymentDetail detail = PaymentDetail.fromMap(
-        Map<String, dynamic>.from(response.data['data']),
-      );
-
-      if (paymentType == PaymentType.deposit) {
-        paymentDetail.value = paymentDetail.value?.copyWith(
-          gateway: detail.gateway,
-          purpose: initialPurpose,
-        );
-      } else {
-        paymentDetail.value = detail.copyWith(
-          purpose: initialPurpose,
-        );
-      }
-
-      await initializeGateway(context);
-    } else {
-      context.back(times: 2);
-    }
-  } on DioError catch (e) {
-    // Handle Dio errors
-    if (e.response != null) {
-      print('Error: ${e.response?.data}');
-    } else {
-      print('Error: ${e.message}');
-    }
-    context.back(times: 2); // Handle failure
-  } finally {
+  Future<void> fetchPaymentDetails(BuildContext context) async {
     loading = false;
     notifyListeners();
+
+    try {
+      // Retrieve user profile
+      user = await getUserProfile();
+      notifyListeners();
+
+      // Extract and process payment details from context
+      Map<String, dynamic> paymentDetailMap =
+          Map<String, dynamic>.from(context.args);
+      paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
+
+      paymentType = PaymentType.values[context.args['__type'] ?? 0];
+
+      if (context.args['__interval'] != null) {
+        interval = context.args['__interval'];
+      }
+
+      method = kiind_pay.PaymentMethod.fromMap(context.args['__method']);
+
+      Map<String, dynamic> data = {
+        "payment_method": method?.title?.toLowerCase(),
+        "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+        "interval": interval?.replaceAll('ly', ''),
+      };
+
+      print("payment data :::: $data");
+      if (paymentType != PaymentType.deposit) {
+        data["id"] = paymentDetail.value?.cause?.id;
+      }
+
+      // Initialize Dio
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: 'https://app.kiind.co.uk/api/v2',
+          headers: {'Accept': 'application/json'},
+        ),
+      );
+
+      // Retrieve token from SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+
+      if (token == null) {
+        throw Exception('Token not found');
+      }
+
+      // API call to initiate payment
+      final response = await dio.post(
+        initEndpoint,
+        data: data,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+          extra: {'context': context},
+        ),
+      );
+
+      if (response.statusCode == 200 && response.data != null) {
+        String? initialPurpose = paymentDetail.value?.purpose;
+
+        // Use the response to initialize gateway
+        PaymentDetail detail = PaymentDetail.fromMap(
+          Map<String, dynamic>.from(response.data['data']),
+        );
+
+        if (paymentType == PaymentType.deposit) {
+          paymentDetail.value = paymentDetail.value?.copyWith(
+            gateway: detail.gateway,
+            purpose: initialPurpose,
+          );
+        } else {
+          paymentDetail.value = detail.copyWith(
+            purpose: initialPurpose,
+          );
+        }
+
+        await initializeGateway(context);
+      } else {
+        context.back(times: 2);
+      }
+    } on DioError catch (e) {
+      // Handle Dio errors
+      if (e.response != null) {
+        print('Error: ${e.response?.data}');
+      } else {
+        print('Error: ${e.message}');
+      }
+      context.back(times: 2); // Handle failure
+    } finally {
+      loading = false;
+      notifyListeners();
+    }
   }
-}
 
   initializeGateway(BuildContext context) async {
     try {
@@ -268,6 +266,7 @@ Future<void> fetchPaymentDetails(BuildContext context) async {
   // }
 
   initBrainTree(BuildContext context) {
+    print("not paypal data here");
     btReq = BraintreeDropInRequest(
       clientToken: paymentDetail.value?.gateway?.privateKey,
       amount: paymentDetail.value?.amounts?.userSubmittedAmount?.toString(),
@@ -377,90 +376,83 @@ Future<void> fetchPaymentDetails(BuildContext context) async {
 
   _launchPaypalModal(BuildContext context) async {
     Gateway? gateway = paymentDetail.value?.gateway;
-    if (gateway != null && method?.id == 3) { 
+    if (gateway != null && method?.id == 3) {
       print("check if is sub before launcing modal ::: $isSub");
-    Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) =>
-     !isSub? PaypalOrderPayment(
-        clientId: gateway.publicKey!,
-         secretKey: gateway.privateKey!, 
-         currencyCode: paypalTransactions[0]['amount']['currency'],
-          amount: paypalTransactions[0]['amount']['total'],
-          returnURL:"https://kiind.co.uk/?__route=payment_successful" ,
-            cancelURL:gateway.cancelUrl! ,
-            sandboxMode: gateway.sandbox,
-                       note: "Thank you for supporting our cause.",
-            onSuccess: (Map params) async {
-              log("onSuccess: $params");
-              paymentPayload = params;
-              await sendReceiptToServer(context);
-              context.to(RoutePaths.paymentSuccessfulScreen);
-            },
-            onError: (error) {
-              log("onError: $error");
-              Navigator.pop(context);
-              showAlertToast("Paypal error::: $error");
-              // Handle payment error, maybe show a message to the user
-            },
-            onCancel: () {
-              log('Payment cancelled');
-              Navigator.pop(context);
-              showAlertToast("PPayment Cancelled");}
-
-            
-          
-          ,): PaypalSubscriptionPayment(
-                        sandboxMode: true,
-                        clientId:  gateway.publicKey!,
-                        secretKey:  gateway.privateKey,
-                        productName: paymentDetail.value!.cause.title,
-                        type: "PHYSICAL",
-                        planName: paymentDetail.value!.cause.title,
-                        planId: gateway.plan!,
-                        billingCycles: [
-                          {
-                            'tenure_type': 'REGULAR',
-                            'sequence': 1,
-                            "total_cycles": 12,
-                            'pricing_scheme': {
-                              'fixed_price': {
-                                'currency_code': "USD",
-                                'value': '${paymentDetail.value!.amounts?.userSubmittedAmount ?? 0}',
-                              }
-                            },
-                            'frequency': {
-                              "interval_unit": interval?.replaceAll('ly', '').toUpperCase(),
-                              "interval_count": 1
-                            }
-                          }
-                        ],
-                        paymentPreferences: const {
-                          "auto_bill_outstanding": true
-                        },
-                       returnURL:"https://kiind.co.uk/?__route=payment_successful" ,
-                        cancelURL: gateway.cancelUrl,
-                       onSuccess: (Map params) async {
-              log("onSuccess: $params");
-              paymentPayload = params;
-              await sendReceiptToServer(context);
-              context.to(RoutePaths.paymentSuccessfulScreen);
-            },
-            onError: (error) {
-              log("onError: $error");
-              Navigator.pop(context);
-              showAlertToast("Paypal error::: $error");
-              
-            },
-            onCancel: () {
-              log('Payment cancelled');
-              Navigator.pop(context);
-              showAlertToast("Payment Cancelled");}
-                      )
-          
-          ));
- 
-   
-   
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => !isSub
+              ? PaypalOrderPayment(
+                  clientId: gateway.publicKey!,
+                  secretKey: gateway.privateKey!,
+                  currencyCode: paypalTransactions[0]['amount']['currency'],
+                  amount: paypalTransactions[0]['amount']['total'],
+                  returnURL: "https://kiind.co.uk/?__route=payment_successful",
+                  cancelURL: gateway.cancelUrl!,
+                  sandboxMode: gateway.sandbox,
+                  note: "Thank you for supporting our cause.",
+                  onSuccess: (Map params) async {
+                    log("onSuccess: $params");
+                    paymentPayload = params;
+                    await sendReceiptToServer(context);
+                    context.to(RoutePaths.paymentSuccessfulScreen);
+                  },
+                  onError: (error) {
+                    log("onError: $error");
+                    Navigator.pop(context);
+                    showAlertToast("Paypal error::: $error");
+                    // Handle payment error, maybe show a message to the user
+                  },
+                  onCancel: () {
+                    log('Payment cancelled');
+                    Navigator.pop(context);
+                    showAlertToast("PPayment Cancelled");
+                  },
+                )
+              : PaypalSubscriptionPayment(
+                  sandboxMode: true,
+                  clientId: gateway.publicKey!,
+                  secretKey: gateway.privateKey,
+                  productName: paymentDetail.value!.cause.title,
+                  type: "PHYSICAL",
+                  planName: paymentDetail.value!.cause.title,
+                  planId: gateway.plan!,
+                  billingCycles: [
+                    {
+                      'tenure_type': 'REGULAR',
+                      'sequence': 1,
+                      "total_cycles": 12,
+                      'pricing_scheme': {
+                        'fixed_price': {
+                          'currency_code': "USD",
+                          'value':
+                              '${paymentDetail.value!.amounts?.userSubmittedAmount ?? 0}',
+                        }
+                      },
+                      'frequency': {
+                        "interval_unit":
+                            interval?.replaceAll('ly', '').toUpperCase(),
+                        "interval_count": 1
+                      }
+                    }
+                  ],
+                  paymentPreferences: const {"auto_bill_outstanding": true},
+                  returnURL: "https://kiind.co.uk/?__route=payment_successful",
+                  cancelURL: gateway.cancelUrl,
+                  onSuccess: (Map params) async {
+                    log("onSuccess: $params");
+                    paymentPayload = params;
+                    await sendReceiptToServer(context);
+                    context.to(RoutePaths.paymentSuccessfulScreen);
+                  },
+                  onError: (error) {
+                    log("onError: $error");
+                    Navigator.pop(context);
+                    showAlertToast("Paypal error::: $error");
+                  },
+                  onCancel: () {
+                    log('Payment cancelled');
+                    Navigator.pop(context);
+                    showAlertToast("Payment Cancelled");
+                  })));
     }
   }
 

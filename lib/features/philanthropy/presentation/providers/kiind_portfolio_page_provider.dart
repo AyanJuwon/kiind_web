@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/constants/app_constants.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
-import 'package:kiind_web/core/models/subscription_model.dart'; 
+import 'package:kiind_web/core/models/subscription_model.dart';
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
@@ -74,14 +74,14 @@ class KiindPortfolioPageProvider extends BaseProvider {
       dataMap[key] = value;
     }
 
-       print("categories color ::: $dataMap");
+    print("categories color ::: $dataMap");
     return dataMap;
   }
 
   List<Color> getColors() {
-       print("categories color ::: ${this.categories}");
+    print("categories color ::: ${this.categories}");
     final List<String> categories = getDataMap().keys.toList();
-       print("categories color ::: ${this.categories!.length}");
+    print("categories color ::: ${this.categories!.length}");
     final colors =
         categories.map((category) => categoriesColors[category]).toList();
 
@@ -120,7 +120,7 @@ class KiindPortfolioPageProvider extends BaseProvider {
     }
   }
 
-  String getPrimaryButtonHint(BuildContext context){
+  String getPrimaryButtonHint(BuildContext context) {
     if (subscriptionDetails == null) {
       return AppLocalizations.of(context)!.youMayWantToSetUpDonationPlan;
       // return 'You may want to set up a donation plan. Kindly click on the button below to proceed';
@@ -130,15 +130,14 @@ class KiindPortfolioPageProvider extends BaseProvider {
         subscriptionDetails!.interval == 'year') {
       // return 'You have an active ${getFormattedInterval(subscriptionDetails!.interval)} subscription of £${subscriptionDetails!.amount} to your Portfolio';
       return '${AppLocalizations.of(context)!.youHaveAnActive} ${getFormattedInterval(subscriptionDetails!.interval)} ${AppLocalizations.of(context)!.subscriptionOf} £${subscriptionDetails!.amount} ${AppLocalizations.of(context)!.toYourPortfolio}';
-    } else {
-    }
-      return AppLocalizations.of(context)!.youMayWantToDonateToYourPortfolio;
-      // return 'You may want to donate to your Portfolio again. Kindly click on Be Kiind button to donate';
+    } else {}
+    return AppLocalizations.of(context)!.youMayWantToDonateToYourPortfolio;
+    // return 'You may want to donate to your Portfolio again. Kindly click on Be Kiind button to donate';
   }
 
-  String getPrimaryButtonText(BuildContext context){
+  String getPrimaryButtonText(BuildContext context) {
     if (subscriptionDetails == null) {
-      return  AppLocalizations.of(context)!.donateNow;
+      return AppLocalizations.of(context)!.donateNow;
     }
 
     if (subscriptionDetails!.interval == 'month' ||
@@ -164,7 +163,7 @@ class KiindPortfolioPageProvider extends BaseProvider {
         Navigator.of(context)
             .pushReplacementNamed(RoutePaths.kiindPortfolioScreen);
       } else {
-      showAlertToast(AppLocalizations.of(context)!.anErrorOccured);
+        showAlertToast(AppLocalizations.of(context)!.anErrorOccured);
         // showAlertToast('An error occurred. Please try again.');
         // print('failed to cancel subscription');
         // print(response.statusCode);

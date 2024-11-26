@@ -78,7 +78,7 @@ class _CharityAllocationPageState extends State<CharityAllocationPage> {
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: AppColors.primaryColor1),
-                        child:   Padding(
+                        child: Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: Icon(MdiIcons.plusThick,
                               size: 12, color: Colors.white),

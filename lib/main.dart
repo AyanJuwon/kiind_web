@@ -7,7 +7,7 @@ import 'package:kiind_web/core/providers/provider_setup.dart';
 import 'package:kiind_web/core/router/router.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';  
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -67,12 +67,12 @@ void main() async {
   ));
 }
 
-
 class MyApp extends StatelessWidget {
   final Map<String, dynamic> paymentDetails;
   final String initialRoute;
 
-  const MyApp({super.key, required this.paymentDetails, required this.initialRoute});
+  const MyApp(
+      {super.key, required this.paymentDetails, required this.initialRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -80,12 +80,12 @@ class MyApp extends StatelessWidget {
       providers: providers,
       builder: (context, child) {
         return MaterialApp(
-             localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           title: 'Kiind',
           theme: ThemeData(
             primarySwatch: createMaterialColor(AppColors.primaryColor),

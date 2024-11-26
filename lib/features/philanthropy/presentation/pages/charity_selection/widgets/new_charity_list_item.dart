@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kiind_web/core/constants/texts.dart'; 
+import 'package:kiind_web/core/constants/texts.dart';
+
 class NewCharityListItem extends StatelessWidget {
   final String label;
   final String image;
@@ -21,7 +22,6 @@ class NewCharityListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // final translation = AppLocalizations.of(context);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12),
@@ -64,7 +64,7 @@ class NewCharityListItem extends StatelessWidget {
                   child: Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 20, vertical: 1),
-                    child: customTextNormal( "view", textColor: Colors.white),
+                    child: customTextNormal("view", textColor: Colors.white),
                   )),
             ),
           ),

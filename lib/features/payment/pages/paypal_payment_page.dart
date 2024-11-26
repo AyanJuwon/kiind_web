@@ -4,16 +4,16 @@
 
 // class KiindPaypalPayment extends StatelessWidget {
 //   final String itemName;
-//   final String businessEmail; 
-//   final String secretKey; 
-//   final String clientId; 
+//   final String businessEmail;
+//   final String secretKey;
+//   final String clientId;
 //   final String amount;
 //   final String currencyCode;
 //   final String returnURL;
 //   final String cancelURL;
 //   final bool sandboxMode;
 //   final String note;
-  
+
 //   final Function(Map<String, dynamic>) onSuccess;
 //   final Function(String) onError;
 //   final VoidCallback onCancel;

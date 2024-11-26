@@ -52,80 +52,79 @@ class PaymentMethodPageProvider extends BaseProvider {
       campaign = Campaign.fromMap(Map<String, dynamic>.from(res.info!.data));
     }
   }
- 
 
-Future<void> _fetchMethods(BuildContext context) async {
-  loading = true;
-  notifyListeners();
+  Future<void> _fetchMethods(BuildContext context) async {
+    loading = true;
+    notifyListeners();
 
-  try {
-    // Initialize Dio
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://app.kiind.co.uk/api/v2',
-        headers: {'Accept': 'application/json'},
-      ),
-    );
+    try {
+      // Initialize Dio
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: 'https://app.kiind.co.uk/api/v2',
+          headers: {'Accept': 'application/json'},
+        ),
+      );
 
-    // Retrieve token from SharedPreferences
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
+      // Retrieve token from SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
 
-    if (token == null) {
-      throw Exception('Token not found');
-    }
+      if (token == null) {
+        throw Exception('Token not found');
+      }
 
-    // Fetch user details
-    await getUser(context);
+      // Fetch user details
+      await getUser(context);
 
-    // API call to get payment methods
-    final response = await dio.get(
-      Endpoints.getPaymentMethods, // Use the correct endpoint path
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-        extra: {'context': context}, // Pass additional context if needed
-      ),
-    );
+      // API call to get payment methods
+      final response = await dio.get(
+        Endpoints.getPaymentMethods, // Use the correct endpoint path
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+          extra: {'context': context}, // Pass additional context if needed
+        ),
+      );
 
-    // Validate response
-    if (response.statusCode == 200 && response.data != null) {
-      final responseData = response.data;
-      print(responseData);
+      // Validate response
+      if (response.statusCode == 200 && response.data != null) {
+        final responseData = response.data;
+        print(responseData);
 
-      Map<String, dynamic> detailMap = Map<String, dynamic>.from(context.args);
+        Map<String, dynamic> detailMap =
+            Map<String, dynamic>.from(context.args);
 
-      PaymentDetail detail = PaymentDetail.fromMap(detailMap);
+        PaymentDetail detail = PaymentDetail.fromMap(detailMap);
 
-      bool other = detail.cause?.isOther ?? false;
+        bool other = detail.cause?.isOther ?? false;
 
-      for (var v in responseData['data']) {
-        if (v['id'] != 4) {
-          paymentMethods[v['id']] = PaymentMethod.fromMap(v);
+        for (var v in responseData['data']) {
+          if (v['id'] != 4) {
+            paymentMethods[v['id']] = PaymentMethod.fromMap(v);
+          }
+        }
+
+        if (!other) {
+          paymentMethods[10000] = PaymentMethod(
+            id: 10000,
+            title: 'Wallet',
+          );
         }
       }
-
-      if (!other) {
-        paymentMethods[10000] = PaymentMethod(
-          id: 10000,
-          title: 'Wallet',
-        );
+    } on DioError catch (e) {
+      // Handle Dio errors
+      if (e.response != null) {
+        print('Error: ${e.response?.data}');
+      } else {
+        print('Error: ${e.message}');
       }
+    } finally {
+      loading = false;
+      notifyListeners();
     }
-  } on DioError catch (e) {
-    // Handle Dio errors
-    if (e.response != null) {
-      print('Error: ${e.response?.data}');
-    } else {
-      print('Error: ${e.message}');
-    }
-  } finally {
-    loading = false;
-    notifyListeners();
   }
-}
-
 
   selectMethod(PaymentMethod method, BuildContext context, amount) {
     print(context.args);

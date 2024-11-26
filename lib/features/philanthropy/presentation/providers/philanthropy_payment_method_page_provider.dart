@@ -10,11 +10,15 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
-import 'package:kiind_web/core/models/payment_method.dart' as kind_payment_method;
+import 'package:kiind_web/core/models/payment_method.dart'
+    as kind_payment_method;
 import 'package:kiind_web/core/providers/base_provider.dart';
- 
+
 import 'package:kiind_web/core/router/route_paths.dart';
+import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
+import 'package:oktoast/oktoast.dart';
+import 'package:paypal_payment/paypal_payment.dart';
 
 class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
   List<kind_payment_method.PaymentMethod>? paymentMethods;
@@ -109,8 +113,8 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
       Map? payload,
       {bool isPaypal = false}) async {
     // loading = true;
-print("paypal mode :: ${paymentDetail.gateway?.sandbox}");
-print("paypal payload :: ${payload}");
+    print("paypal mode :: ${paymentDetail.gateway?.sandbox}");
+    print("paypal payload :: ${payload}");
     try {
       final result = await client.post(Endpoints.finalizeKiindDonation, data: {
         'payment_method': paymentMethod.title!.toLowerCase(),
@@ -127,8 +131,8 @@ print("paypal payload :: ${payload}");
 
       if (result.statusCode == 200) {
         // if (!isPaypal) {
-          loading = false;
-          Navigator.of(context).pushNamed(RoutePaths.paymentSuccessfulScreen);
+        loading = false;
+        Navigator.of(context).pushNamed(RoutePaths.paymentSuccessfulScreen);
         // }
       }
     } on DioError {
@@ -146,7 +150,7 @@ print("paypal payload :: ${payload}");
     bool shouldPop = true;
     print(" paypal payment plan ::: ${donationInfo.plan}");
     print(" paypal payment interval ::: ${donationInfo.interval}");
- 
+
     await showDialog(
         context: context,
         builder: (modalContext) {
@@ -179,61 +183,80 @@ print("paypal payload :: ${payload}");
               }
             ];
 
-print("paypal mode 0 :: ${paymentDetail.gateway?.sandbox}");
-return Container();
-            // return UsePaypal(
-            //     onSuccess: (Map params) {
-            //       log('Payment transaction was succesfull $params');
-            //       shouldPop = false;
-            //       finalizeKiindDonation(context, donationInfo, paymentMethod,
-            //           paymentDetail, params,
-            //           isPaypal: false);
-            //     },
-            //     onError: (error) {
-            //       log('paypal error 0  $error');
-            //       showAlertToast(
-            //           'An error occurred processing your one-time transaction. Please try again.');
-            //     },
-            //     onCancel: (params) {
-            //       log('payment cancelled $params');
-            //     },
-            //     sandboxMode: paymentDetail.gateway!.sandbox,
-            //     returnURL: paymentDetail.gateway!.notifyUrl!,
-            //     cancelURL: paymentDetail.gateway!.cancelUrl!,
-            //     transactions: paypalTransactions,
-            //     note: "Contact us for any questions on your subscription.",
-            //     clientId: paymentMethod.apiKey!,
-            //     secretKey: paymentMethod.apiSecret!);
+            print("paypal mode 0 :: ${paymentDetail.gateway?.sandbox}");
+      
+            return PaypalOrderPayment(
+              sandboxMode: paymentDetail.gateway!.sandbox,
+              cancelURL: paymentDetail.gateway!.cancelUrl!,
+              note: "Contact us for any questions on your subscription.",
+              clientId: paymentMethod.apiKey!,
+              secretKey: paymentMethod.apiSecret!,
+            currencyCode: "USD",
+              amount: paymentDetail.amounts?.userSubmittedAmount.toString() ?? "0.0",
 
+              returnURL: "https://kiind.co.uk/?__route=payment_successful",
+              onSuccess: (Map params) {
+                log('Payment transaction was succesfull $params');
+                shouldPop = false;
+                finalizeKiindDonation(
+                    context, donationInfo, paymentMethod, paymentDetail, params,
+                    isPaypal: false);
+              },
+              onError: (error) {
+                log('paypal error 0  $error');
+                showToast(
+                    'An error occurred processing your one-time transaction. Please try again.');
+              },
+              onCancel: (params) {
+                log('payment cancelled $params');
+              },
+            );
           }
-
-print("paypal mode 1 :: ${paymentDetail.gateway?.sandbox}");
-          // return UsePaypalSubscription(
-          //   onSuccess: (Map params) {
-          //     log('Payment was succesfull $params');
-          //     shouldPop = false;
-          //     finalizeKiindDonation(
-          //         context, donationInfo, paymentMethod, paymentDetail, params,
-          //         isPaypal: true);
-          //   },
-          //   onError: (error) {
-          //     log('paypal error 1 $error');
-          //     showAlertToast(
-          //         'An error occurred processing your transaction. Please try again.');
-          //   },
-          //   onCancel: (params) {
-          //     log('payment cancelled $params');
-          //   },
-          //   sandboxMode: paymentDetail.gateway!.sandbox,
-          //   returnURL: paymentDetail.gateway!.notifyUrl!,
-          //   cancelURL: paymentDetail.gateway!.cancelUrl!,
-          //   planID: paymentDetail.gateway!.plan!,
-          //   clientId: paymentMethod.apiKey!,
-          //   secretKey: paymentMethod.apiSecret!,
-          //   note: "Contact us for any questions on your subscription.",
-          // );
-       return Container();
-       
+          return PaypalSubscriptionPayment(
+            sandboxMode: paymentDetail.gateway!.sandbox,
+            clientId: paymentMethod.apiKey!,
+            secretKey: paymentMethod.apiSecret!,
+            productName: paymentDetail!.cause.title,
+            type: "PHYSICAL",
+            planName: paymentDetail!.cause.title,
+            planId: paymentDetail.gateway!.plan!,
+            billingCycles: [
+              {
+                'tenure_type': 'REGULAR',
+                'sequence': 1,
+                "total_cycles": 12,
+                'pricing_scheme': {
+                  'fixed_price': {
+                    'currency_code': "USD",
+                    'value':
+                        '${paymentDetail!.amounts?.userSubmittedAmount ?? 0}',
+                  }
+                },
+                'frequency': {
+                  "interval_unit": interval?.replaceAll('ly', '').toUpperCase(),
+                  "interval_count": 1
+                }
+              }
+            ],
+            paymentPreferences: const {"auto_bill_outstanding": true},
+            returnURL: "https://kiind.co.uk/?__route=payment_successful",
+            cancelURL: paymentDetail.gateway!.cancelUrl!,
+            onSuccess: (Map params) {
+              log('Payment was succesfull $params');
+              shouldPop = false;
+              finalizeKiindDonation(
+                  context, donationInfo, paymentMethod, paymentDetail, params,
+                  isPaypal: true);
+            },
+            onError: (error) {
+              log('paypal error 1 $error');
+              showToast(
+                  'An error occurred processing your transaction. Please try again.');
+            },
+            onCancel: (params) {
+              log('payment cancelled $params');
+            },
+          );
         });
 
     if (shouldPop) {
@@ -243,7 +266,6 @@ print("paypal mode 1 :: ${paymentDetail.gateway?.sandbox}");
     //   RoutePaths.paymentSuccessfulScreen
     // );
   }
-
 
   void stripePaymentHandler(
       BuildContext context,
@@ -259,20 +281,19 @@ print("paypal mode 1 :: ${paymentDetail.gateway?.sandbox}");
       Stripe.merchantIdentifier = 'Kiind';
       await Stripe.instance.applySettings();
       await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-            merchantDisplayName: 'Kiind',
-            customerId: null,
-            paymentIntentClientSecret: gateway.paymentIntent!,
-            customerEphemeralKeySecret: gateway.privateKey!,
-            applePay: const PaymentSheetApplePay(merchantCountryCode: 'GB'),
-            googlePay: const PaymentSheetGooglePay(merchantCountryCode: 'GB'),
-            style: Theme.of(context).brightness == Brightness.dark
-                ? ThemeMode.dark
-                : ThemeMode.light,
-            // primaryButtonColor: bg,
-            // testEnv: gateway.sandbox,
-        )
-      );
+          paymentSheetParameters: SetupPaymentSheetParameters(
+        merchantDisplayName: 'Kiind',
+        customerId: null,
+        paymentIntentClientSecret: gateway.paymentIntent!,
+        customerEphemeralKeySecret: gateway.privateKey!,
+        applePay: const PaymentSheetApplePay(merchantCountryCode: 'GB'),
+        googlePay: const PaymentSheetGooglePay(merchantCountryCode: 'GB'),
+        style: Theme.of(context).brightness == Brightness.dark
+            ? ThemeMode.dark
+            : ThemeMode.light,
+        // primaryButtonColor: bg,
+        // testEnv: gateway.sandbox,
+      ));
       await Stripe.instance.applySettings();
 
       try {
@@ -329,9 +350,6 @@ print("paypal mode 1 :: ${paymentDetail.gateway?.sandbox}");
   //   // }
   // }
 }
-
-
-
 
 // sb-4mnjb10941552@personal.example.com
 

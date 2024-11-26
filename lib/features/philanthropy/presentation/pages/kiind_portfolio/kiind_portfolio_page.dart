@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:kiind_web/core/base_page.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/texts.dart';
-import 'package:kiind_web/core/router/route_paths.dart'; 
+import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/features/philanthropy/presentation/pages/kiind_portfolio/empty_portfolio_page.dart';
 import 'package:kiind_web/features/philanthropy/presentation/pages/kiind_portfolio/widgets/kiind_modal.dart';
 import 'package:kiind_web/features/philanthropy/presentation/pages/kiind_portfolio/widgets/kiind_portfolio_item.dart';
@@ -13,7 +13,6 @@ import 'package:kiind_web/widgets/full_width_button.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class KiindPortfolioPage extends StatefulWidget {
   const KiindPortfolioPage({Key? key}) : super(key: key);
@@ -67,8 +66,7 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  customTextNormal(
-                      translation.anErrorOccuredPortflio),
+                  customTextNormal(translation.anErrorOccuredPortflio),
                   TextButton(
                       onPressed: () => provider.getPortfolio(),
                       child: customTextSmall(translation.tryAgain))
@@ -162,10 +160,10 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                             builder: (dialogContext) {
                               return AlertDialog(
                                 title: customTextMedium(
-                                  translation.editPortfolio,
+                                    translation.editPortfolio,
                                     alignment: TextAlign.start),
                                 content: customTextNormal(
-                                  translation.makeChangesToYourPortfolio,
+                                    translation.makeChangesToYourPortfolio,
                                     // 'Making changes to your Portfolio will cancel your active subscription. Do you wish to continue?',
                                     alignment: TextAlign.start),
                                 actions: [
@@ -215,15 +213,15 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                     } else {
                       allocation = temp;
                     }
-                 
-                    if(provider.categories!.isEmpty){
+
+                    if (provider.categories!.isEmpty) {
                       return Container();
                     }
 
                     return KiindPortfolioItem(
                       label: provider.categories![index]['category'],
                       allocation: allocation,
-                      color: provider.getColors()[index] ,
+                      color: provider.getColors()[index],
                       charities: List<Map>.from(
                               provider.categories![index]['charities'])
                           .map((charity) => charity['title'].toString())
@@ -233,7 +231,8 @@ class _KiindPortfolioPageState extends State<KiindPortfolioPage> {
                   const SizedBox(height: 68),
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 28),
-                      child: customTextSmall(provider.getPrimaryButtonHint(context),
+                      child: customTextSmall(
+                          provider.getPrimaryButtonHint(context),
                           fontSize: 12)),
                   const SizedBox(height: 12),
                   FullWidthButton(

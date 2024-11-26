@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
-import 'package:kiind_web/core/models/user_model.dart'; 
+import 'package:kiind_web/core/models/user_model.dart';
 import 'package:kiind_web/core/util/rest/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,7 +12,7 @@ abstract class BaseProvider extends ChangeNotifier {
   final ValueNotifier<bool> _initialised = ValueNotifier(false);
   ValueNotifier<bool> get initialisedAsListenable => _initialised;
   String? token;
-  late RestClient client; 
+  late RestClient client;
   // User? _user;
   String? shareLink, shareText, shareSubject, shareContent;
   bool closeOnback = false;
@@ -68,66 +68,66 @@ abstract class BaseProvider extends ChangeNotifier {
     }
   }
 
-  listenForRefresh(BuildContext context) {} 
+  listenForRefresh(BuildContext context) {}
 
-Future<void> getUser(
-  BuildContext context, {
-  bool load = true,
-}) async {
-  if (load) {
-    // Handle loading state here
-  }
-
-  try {
-    // Initialize Dio
-    final dio = Dio(
-      BaseOptions(
-        baseUrl: 'https://app.kiind.co.uk/api/v2',
-        headers: {'Accept': 'application/json'},
-      ),
-    );
-
-    // Retrieve token from SharedPreferences
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-
-    if (token == null) {
-      throw Exception('Token not found');
+  Future<void> getUser(
+    BuildContext context, {
+    bool load = true,
+  }) async {
+    if (load) {
+      // Handle loading state here
     }
 
-    // API call
-    final response = await dio.get(
-      Endpoints.userProfile,
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-        extra: {'context': context}, // Pass additional context if needed
-      ),
-    );
+    try {
+      // Initialize Dio
+      final dio = Dio(
+        BaseOptions(
+          baseUrl: 'https://app.kiind.co.uk/api/v2',
+          headers: {'Accept': 'application/json'},
+        ),
+      );
 
-    // Process response
-    if (response.statusCode == 200 && response.data != null) {
-      final userData = response.data['data'];
-      if (userData != null) {
-        final user = User.fromMap(userData);
-        saveUser(user);
+      // Retrieve token from SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+
+      if (token == null) {
+        throw Exception('Token not found');
+      }
+
+      // API call
+      final response = await dio.get(
+        Endpoints.userProfile,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+          extra: {'context': context}, // Pass additional context if needed
+        ),
+      );
+
+      // Process response
+      if (response.statusCode == 200 && response.data != null) {
+        final userData = response.data['data'];
+        if (userData != null) {
+          final user = User.fromMap(userData);
+          saveUser(user);
+        }
+      }
+    } on DioException catch (e) {
+      // Handle Dio errors
+      if (e.response != null) {
+        print('Error: ${e.response?.data}');
+      } else {
+        print('Error: ${e.message}');
+      }
+    } finally {
+      if (load) {
+        // Reset loading state
       }
     }
-  } on DioException catch (e) {
-    // Handle Dio errors
-    if (e.response != null) {
-      print('Error: ${e.response?.data}');
-    } else {
-      print('Error: ${e.message}');
-    }
-  } finally {
-    if (load) {
-      // Reset loading state
-    }
   }
-}
- 
+
   Future<void> saveUser(User user) async {
     final prefs = await SharedPreferences.getInstance();
     final userMap = user.toMap(); // Call toMap() on the instance 'user'

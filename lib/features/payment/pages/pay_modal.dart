@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:kiind_web/core/constants/app_colors.dart'; 
+import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/campaign_model.dart';
 import 'package:kiind_web/core/models/options.model.dart' as payment_options;
@@ -59,29 +59,38 @@ class _PayModalState extends State<PayModal> {
   final Dio dio = Dio();
 
   Future<void> fetchData() async {
-     if(widget.paymentDetails['campaign_id']!= null){
-       try {
-      options = payment_options.Options.forWallet();
-      final prefs = await SharedPreferences.getInstance();
-      final token = (prefs.getString('token'))!;
- 
-      final response = await dio.get(
-        "https://app.kiind.co.uk/api/v2${Endpoints.campaignDetail}/${widget.paymentDetails['campaign_id']}",
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-            'Accept': 'application/json'
-          },
-          extra: {'context': context},
-        ),
-      );
+    if (widget.paymentDetails['campaign_id'] != null) {
+      try {
+        options = payment_options.Options.forWallet();
+        final prefs = await SharedPreferences.getInstance();
+        final token = (prefs.getString('token'))!;
 
-      campaign = Campaign.fromMap(response.data['data']);
-      setState(() {
-        options = campaign!.options!;
-      });
-    } catch (e) {
-      // print('Error: $e');
+        final response = await dio.get(
+          "https://app.kiind.co.uk/api/v2${Endpoints.campaignDetail}/${widget.paymentDetails['campaign_id']}",
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $token',
+              'Accept': 'application/json'
+            },
+            extra: {'context': context},
+          ),
+        );
+
+        campaign = Campaign.fromMap(response.data['data']);
+        setState(() {
+          options = campaign!.options!;
+        });
+      } catch (e) {
+        // print('Error: $e');
+        campaign = Campaign(
+          title: 'Fund Wallet',
+          featuredImage: 'https://img.icons8.com/color/452/wallet--v1.png',
+          type: 'Other',
+          options: payment_options.Options.forWallet(),
+        );
+        options = payment_options.Options.forWallet();
+      }
+    } else {
       campaign = Campaign(
         title: 'Fund Wallet',
         featuredImage: 'https://img.icons8.com/color/452/wallet--v1.png',
@@ -90,16 +99,6 @@ class _PayModalState extends State<PayModal> {
       );
       options = payment_options.Options.forWallet();
     }
-  }else{
-      campaign = Campaign(
-        title: 'Fund Wallet',
-        featuredImage: 'https://img.icons8.com/color/452/wallet--v1.png',
-        type: 'Other',
-        options: payment_options.Options.forWallet(),
-      );
-      options = payment_options.Options.forWallet();
-  }
- 
   }
 
   void changeDonation(int index) {
@@ -440,8 +439,6 @@ class _PayModalState extends State<PayModal> {
                                           PaymentType.deposit.index;
                                     }
 
-                                   
-
                                     await context.off(
                                       RoutePaths.paymentMethodScreen,
                                       // RoutePaths.paymentSummaryScreen,
@@ -462,8 +459,6 @@ class _PayModalState extends State<PayModal> {
                               fontWeight: FontWeight.w600,
                             ),
                           );
-
-                   
                         },
                       ),
                     ],
@@ -528,7 +523,7 @@ class SubscriptionTile extends StatelessWidget {
           ),
           child: customTextNormal(
             title,
-            textColor: active ? themeColor : null,  
+            textColor: active ? themeColor : null,
           ),
         ),
       ),

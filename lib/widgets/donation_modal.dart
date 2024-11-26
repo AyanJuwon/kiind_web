@@ -1,19 +1,21 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_typing_uninitialized_variables
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/texts.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
+import 'package:kiind_web/core/providers/provider_setup.dart';
+import 'package:kiind_web/core/router/route_paths.dart';
 
 const _adoptPayments = ['£5', '£10', '£20', '£50'];
 
 class CampaignDonateModal extends StatefulWidget {
   final Function(DonationInfoModel) onContinue;
-  final ScrollController? controller;
 
-  const CampaignDonateModal(
-      {Key? key, required this.onContinue, this.controller})
-      : super(key: key);
+  const CampaignDonateModal({
+    Key? key,
+    required this.onContinue,
+  }) : super(key: key);
 
   @override
   State<CampaignDonateModal> createState() => _CampaignDonateModalState();
@@ -64,7 +66,8 @@ class _CampaignDonateModalState extends State<CampaignDonateModal> {
     if (_selectedDonation < 0) {
       amount = double.parse(_adoptPayments[0].replaceAll('£', ''));
     } else {
-      amount = double.parse(_adoptPayments[_selectedDonation].replaceAll('£', ''));
+      amount =
+          double.parse(_adoptPayments[_selectedDonation].replaceAll('£', ''));
     }
     return ((amount * 25) / 100).toStringAsFixed(2);
   }
@@ -121,7 +124,7 @@ class _CampaignDonateModalState extends State<CampaignDonateModal> {
                             child: AnimatedContainer(
                               duration: Duration(milliseconds: 500),
                               decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.background,
+                                  color: Theme.of(context).colorScheme.surface,
                                   border: Border(
                                       bottom: BorderSide(
                                           color: _selectedSubscriptionPlan ==
@@ -182,13 +185,16 @@ class _CampaignDonateModalState extends State<CampaignDonateModal> {
                                   onTap: () => changeDonation(index),
                                   child: AnimatedContainer(
                                     duration: Duration(milliseconds: 500),
-                                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 2),
                                     decoration: BoxDecoration(
                                         color: _selectedDonation == index
                                             ? AppColors.primaryColor
-                                            : AppColors.primaryColor.withOpacity(0.25)),
+                                            : AppColors.primaryColor
+                                                .withOpacity(0.25)),
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12),
                                       child: customTextNormal(
                                           _adoptPayments[index],
                                           fontWeight: FontWeight.bold,
@@ -209,26 +215,31 @@ class _CampaignDonateModalState extends State<CampaignDonateModal> {
                                   onTap: () => changeDonation(index + 2),
                                   child: AnimatedContainer(
                                     duration: Duration(milliseconds: 500),
-                                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 2),
                                     decoration: BoxDecoration(
                                         color: _selectedDonation == index + 2
                                             ? AppColors.primaryColor
-                                            : AppColors.primaryColor.withOpacity(0.25)),
+                                            : AppColors.primaryColor
+                                                .withOpacity(0.25)),
                                     child: Padding(
-                                      padding: const EdgeInsets.symmetric(vertical: 12),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 12),
                                       child: customTextNormal(
                                           _adoptPayments[index + 2],
                                           fontWeight: FontWeight.bold,
-                                          textColor: _selectedDonation == index + 2
-                                              ? Colors.white
-                                              : AppColors.primaryColor),
+                                          textColor:
+                                              _selectedDonation == index + 2
+                                                  ? Colors.white
+                                                  : AppColors.primaryColor),
                                     ),
                                   ),
                                 ),
                               )),
                     ),
                     const SizedBox(height: 28),
-                    customTextNormal(AppLocalizations.of(context)!.or, fontWeight: FontWeight.w600),
+                    customTextNormal(AppLocalizations.of(context)!.or,
+                        fontWeight: FontWeight.w600),
                     const SizedBox(height: 28),
                     TextField(
                       controller: _priceController,
@@ -270,13 +281,22 @@ class _CampaignDonateModalState extends State<CampaignDonateModal> {
                     ),
                     const SizedBox(height: 38),
                     MaterialButton(
-                      onPressed: () => widget.onContinue(DonationInfoModel(
-                          amount: _priceController.value.text,
-                          interval: _subscriptionPlanMap[_subscriptionPlans[_selectedSubscriptionPlan]]!.toLowerCase(), // Get API value
-                          giftAid: _addGiftAid ? 1 : 0)),
+                      onPressed: () {
+                        // navigate to portfolio payment method screen
+                        (Navigator.of(context).pushNamed(
+                            RoutePaths.philanthropyPaymentMethodSscreen,
+                            arguments: DonationInfoModel(
+                                amount: _priceController.value.text,
+                                interval: _subscriptionPlanMap[
+                                        _subscriptionPlans[
+                                            _selectedSubscriptionPlan]]!
+                                    .toLowerCase(), // Get API value
+                                giftAid: _addGiftAid ? 1 : 0)));
+                      },
                       child: customTextNormal(
                           AppLocalizations.of(context)!.continue1,
-                          textColor: Colors.white, fontWeight: FontWeight.w600),
+                          textColor: Colors.white,
+                          fontWeight: FontWeight.w600),
                       color: AppColors.primaryColor1,
                       minWidth: double.infinity,
                       height: 55,

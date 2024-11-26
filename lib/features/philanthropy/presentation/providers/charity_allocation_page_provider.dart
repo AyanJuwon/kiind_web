@@ -8,7 +8,7 @@ import 'package:kiind_web/core/constants/app_constants.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/charity_model.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
- 
+
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
@@ -83,16 +83,16 @@ class CharityAllocationPageProvider extends BaseProvider {
     if (loading) return;
     loading = true;
 
-  final selections = {
-  'charities': selectedCharities
-      .map((charity) => {
-            'charity_id': charity['id'],
-            'category_id': charity['category_id'],
-            'percentage': (charity['allocation'] as double).toStringAsFixed(2)
-          })
-      .toList()
-};
-
+    final selections = {
+      'charities': selectedCharities
+          .map((charity) => {
+                'charity_id': charity['id'],
+                'category_id': charity['category_id'],
+                'percentage':
+                    (charity['allocation'] as double).toStringAsFixed(2)
+              })
+          .toList()
+    };
 
     try {
       final result =

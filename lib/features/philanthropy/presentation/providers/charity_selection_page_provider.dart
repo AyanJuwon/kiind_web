@@ -11,12 +11,12 @@ import 'package:kiind_web/core/constants/texts.dart';
 import 'package:kiind_web/core/models/categories_model.dart';
 import 'package:kiind_web/core/models/category_model.dart';
 import 'package:kiind_web/core/models/charity_model.dart';
-import 'package:kiind_web/core/models/sub_categories_model.dart' ;
+import 'package:kiind_web/core/models/sub_categories_model.dart';
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/response_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
-import 'package:kiind_web/widgets/select_category_widgets.dart'; 
+import 'package:kiind_web/widgets/select_category_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CharitySelectionPageProvider extends BaseProvider {
@@ -77,56 +77,55 @@ class CharitySelectionPageProvider extends BaseProvider {
 
   getnewCategories() async {
     loading = true;
-    
-      Response res = await client.get(
-        Endpoints.categoriesAll,
-      );
-      if (res.isValid) {
-        // print("categories:::::::; ${res.data["data"]}");
-        var apiData = res.data['data']['data'];
-        for (var v in apiData) {
-          test.add(Categories.fromMap(v));
+
+    Response res = await client.get(
+      Endpoints.categoriesAll,
+    );
+    if (res.isValid) {
+      // print("categories:::::::; ${res.data["data"]}");
+      var apiData = res.data['data']['data'];
+      for (var v in apiData) {
+        test.add(Categories.fromMap(v));
+      }
+      // print('Categories now ::::::::::::::${test}');
+      for (Categories category in test) {
+        newCategories.putIfAbsent(category.title, () {
+          return category.children!
+              .map((child) => child.title.toString())
+              .toList();
+        });
+        if (category.selected == true) {
+          selectedList.add(category.title);
         }
-        // print('Categories now ::::::::::::::${test}');
-        for (Categories category in test) {
-          newCategories.putIfAbsent(category.title, () {
-            return category.children!
-                .map((child) => child.title.toString())
-                .toList();
-          });
-          if (category.selected == true) {
-            selectedList.add(category.title);
+      }
+      // print('Categories now ::::::::::::::${categories}');
+
+      categoriesList = newCategories.keys.toList();
+
+      selectedSubCategories = {for (var i in categoriesList) i: []};
+
+      for (Categories category in test) {
+        newCategories.putIfAbsent(category.title, () {
+          return category.children!
+              .map((child) => child.title.toString())
+              .toList();
+        });
+        if (category.selected == true) {
+          selectedList.add(category.title);
+        }
+        for (SubCategories subcat in category.children!) {
+          if (subcat.selected == true) {
+            addsubCategory(category.title, subcat.title);
           }
         }
-        // print('Categories now ::::::::::::::${categories}');
-
-        categoriesList = newCategories.keys.toList();
-
-        selectedSubCategories = {for (var i in categoriesList) i: []};
-
-        for (Categories category in test) {
-          newCategories.putIfAbsent(category.title, () {
-            return category.children!
-                .map((child) => child.title.toString())
-                .toList();
-          });
-          if (category.selected == true) {
-            selectedList.add(category.title);
-          }
-          for (SubCategories subcat in category.children!) {
-            if (subcat.selected == true) {
-              addsubCategory(category.title, subcat.title);
-            }
-          }
-        }
-        notifyListeners();
-        loading = false;
-      } else {
-        // ignore: avoid_print
-        print("categories:::::::; ${res.errorMessage}");
       }
       notifyListeners();
-    
+      loading = false;
+    } else {
+      // ignore: avoid_print
+      print("categories:::::::; ${res.errorMessage}");
+    }
+    notifyListeners();
 
     loading = false;
   }

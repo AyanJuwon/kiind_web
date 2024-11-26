@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kiind_web/core/base_page.dart';
@@ -158,7 +157,9 @@ class _CharitySelectionPageState extends State<CharitySelectionPage> {
                                 decoration: BoxDecoration(
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Theme.of(context).colorScheme.background
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .background
                                         : AppColors.lightGrey,
                                     borderRadius: BorderRadius.circular(12)),
                                 child: TextField(
@@ -294,8 +295,8 @@ class _CharitySelectionPageState extends State<CharitySelectionPage> {
                                           isSelected: provider.selectedCharities
                                               .contains(
                                                   provider.charities[index]),
-                                          image:
-                                              provider.charities[index].image_url,
+                                          image: provider
+                                              .charities[index].image_url,
                                           onToggle: () => provider
                                               .toggleSelectCharity(index),
                                         );
