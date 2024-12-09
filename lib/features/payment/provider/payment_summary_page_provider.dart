@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
@@ -28,7 +29,7 @@ enum PaymentType {
 class PaymentSummaryPageProvider extends BaseProvider {
   ValueNotifier<PaymentDetail?> paymentDetail = ValueNotifier(null);
   ValueNotifier<bool> processingPayment = ValueNotifier(false);
-
+String myPosHtml = '';
   PaymentType paymentType = PaymentType.oneTime;
   String? interval = 'one_time';
 
@@ -188,7 +189,9 @@ class PaymentSummaryPageProvider extends BaseProvider {
           );
         }
 
-        await initializeGateway(context);
+          myPosHtml = response.info!.data['gateway']['original']['data']?? '';
+      await initializeGateway(context,response.info!.data['gateway']['original']['data'] ?? '');
+
       } else {
         context.back(times: 2);
       }
@@ -206,7 +209,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
     }
   }
 
-  initializeGateway(BuildContext context) async {
+  initializeGateway(BuildContext context,data) async {
     try {
       switch (method?.id) {
         case 3:
@@ -217,7 +220,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
         //   break;
         case 4:
         default:
-          await initBrainTree(context);
+          await initMyPos(context,data);
           break;
       }
     } on Exception catch (e) {
@@ -308,6 +311,42 @@ class PaymentSummaryPageProvider extends BaseProvider {
     ];
   }
 
+
+
+
+
+  initMyPos(BuildContext context, String html) {
+  print("Launching InAppWebView...");
+  try {
+    Future.delayed(Duration(milliseconds: 100), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => Scaffold(
+            appBar: AppBar(title: Text("My Pos")),
+            body: InAppWebView(
+              initialData: InAppWebViewInitialData(data: html,),  initialOptions: InAppWebViewGroupOptions(
+ 
+    crossPlatform: InAppWebViewOptions(
+      javaScriptEnabled: true,
+    
+    ),
+          ),
+        ),
+          )));
+    });
+  } catch (e) {
+    print("my pos launch error ::: $e");
+  }
+}
+
+ Future launchMyPos(BuildContext context) async {
+    processingPayment.value = true;
+print("starting mypos");
+      initMyPos(context,myPosHtml);
+
+    processingPayment.value = false;
+  }
   launchGateway(BuildContext context) async {
     switch (method?.id) {
       case 3:
@@ -316,8 +355,8 @@ class PaymentSummaryPageProvider extends BaseProvider {
       // case 5:
       //   await launchStripe(context);
       //   break;
-      case 4:
-        await launchBraintree(context);
+     case 7:
+        await launchMyPos(context);
         break;
       case 10000:
       default:
