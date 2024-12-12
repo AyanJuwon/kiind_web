@@ -164,7 +164,7 @@ class PaymentMethodPageProvider extends BaseProvider {
       case 3:
         logo = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
         break;
-      case 4:
+      case 8:
         logo =
             'https://www.braintreepayments.com/images/braintree-logo-black.png';
         break;

@@ -29,7 +29,7 @@ enum PaymentType {
 class PaymentSummaryPageProvider extends BaseProvider {
   ValueNotifier<PaymentDetail?> paymentDetail = ValueNotifier(null);
   ValueNotifier<bool> processingPayment = ValueNotifier(false);
-String myPosHtml = '';
+// String myPosHtml = '';
   PaymentType paymentType = PaymentType.oneTime;
   String? interval = 'one_time';
 
@@ -189,7 +189,7 @@ String myPosHtml = '';
           );
         }
 
-          myPosHtml = response.info!.data['gateway']['original']['data']?? '';
+          // myPosHtml = response.info!.data['gateway']['original']['data']?? '';
       await initializeGateway(context,response.info!.data['gateway']['original']['data'] ?? '');
 
       } else {
@@ -215,12 +215,12 @@ String myPosHtml = '';
         case 3:
           await initPaypal(context);
           break;
-        // case 5:
-        //   await initStripe(context);
-        //   break;
+        case 5:
+          await initStripe(context);
+          break;
         case 4:
         default:
-          await initMyPos(context,data);
+            await initStripe(context);
           break;
       }
     } on Exception catch (e) {
@@ -228,41 +228,51 @@ String myPosHtml = '';
     }
   }
 
-  // initStripe(BuildContext context) async {
-  //   PaymentDetail? _detail = paymentDetail.value;
-  //   Gateway? _gateway = _detail?.gateway;
+  initStripe(BuildContext context) async {
+    PaymentDetail? _detail = paymentDetail.value;
+    Gateway? _gateway = _detail?.gateway;
 
-  //   if (_gateway != null) {
-  //     Stripe.publishableKey = _gateway.publicKey!;
-  //     Stripe.merchantIdentifier = 'eCare';
-  //     // Stripe.stripeAccountId = '';
+    if (_gateway != null) {
+      Stripe.publishableKey = _gateway.publicKey!;
+      Stripe.merchantIdentifier = 'Kiind';
+      // Stripe.stripeAccountId = '';
 
-  //     await Stripe.instance.applySettings();
+      await Stripe.instance.applySettings();
 
-  //     await Stripe.instance.initPaymentSheet(
-  //       paymentSheetParameters: SetupPaymentSheetParameters(
-  //         // Main params
-  //         merchantDisplayName: 'Kiind',
-  //         // Customer params
-  //         customerId: null, // _gateway.customerKey!,
-  //         paymentIntentClientSecret: _gateway.paymentIntent!,
-  //         customerEphemeralKeySecret: _gateway.privateKey!,
-  //         // Extra params
-  //         applePay: true,
-  //         googlePay: true,
-  //         style: context.brightness == Brightness.dark
-  //             ? ThemeMode.dark
-  //             : ThemeMode.light,
-  //         // primaryButtonColor: bg,
-  //         // billingDetails: billingDetails,
-  //         testEnv: _gateway.sandbox,
-  //         merchantCountryCode: 'GB',
-  //       ),
-  //     );
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          returnURL: _gateway.notifyUrl,
+          // Main params
+          merchantDisplayName: 'Kiind',
+          // Customer params
+          customerId: null, // _gateway.customerKey!,
+          paymentIntentClientSecret: _gateway.paymentIntent!,
+          customerEphemeralKeySecret: _gateway.privateKey!,
+          // Extra params
+           applePay: PaymentSheetApplePay(
+          merchantCountryCode: 'GB',
+        
+          // buttonType: ApplePayButtonType.book,
+        ),
+        googlePay: PaymentSheetGooglePay(
+          merchantCountryCode: 'GB',
+          testEnv: _gateway.sandbox ?? false,
+        ),
+          style: context.brightness == Brightness.dark
+              ? ThemeMode.dark
+              : ThemeMode.light,
+          // primaryButtonColor: bg,
+          // billingDetails: billingDetails,
+          // testEnv: _gateway.sandbox,
+          // merchantCountryCode: 'GB',
+        ),
+      );
 
-  //     await Stripe.instance.applySettings();
-  //   }
-  // }
+      await Stripe.instance.applySettings();
+    }
+  }
+
+
 
   initBrainTree(BuildContext context) {
     print("not paypal data here");
@@ -343,7 +353,7 @@ String myPosHtml = '';
  Future launchMyPos(BuildContext context) async {
     processingPayment.value = true;
 print("starting mypos");
-      initMyPos(context,myPosHtml);
+      // initMyPos(context,myPosHtml);
 
     processingPayment.value = false;
   }
@@ -352,9 +362,9 @@ print("starting mypos");
       case 3:
         await launchPaypal(context);
         break;
-      // case 5:
-      //   await launchStripe(context);
-      //   break;
+      case 8:
+        await launchStripe(context);
+        break;
      case 7:
         await launchMyPos(context);
         break;
@@ -364,6 +374,30 @@ print("starting mypos");
         break;
     }
   }
+
+
+  launchStripe(BuildContext context) async {
+     Gateway? _gateway = paymentDetail.value?.gateway;
+    processingPayment.value = true;
+if(_gateway != null){
+    try {
+        Stripe.publishableKey = _gateway.publicKey!;
+      Stripe.merchantIdentifier = 'Kiind';
+      await Stripe.instance.presentPaymentSheet();
+    } on Exception catch (e) {
+      processingPayment.value = false;
+      log('An error occurred at launch\n$e');
+      return;
+    }
+
+    await sendReceiptToServer(context);
+}
+  
+
+    processingPayment.value = false;
+  }
+
+ 
 
   // launchStripe(BuildContext context) async {
   //   processingPayment.value = true;
