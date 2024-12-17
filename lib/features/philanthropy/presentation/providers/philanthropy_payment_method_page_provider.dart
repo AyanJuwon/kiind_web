@@ -2,11 +2,14 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 // import 'package:flutter_paypal/flutter_paypal.dart';
 // import 'package:flutter_paypal/flutter_paypal_subscription.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
+// import 'package:flutter_stripe/flutter_stripe.dart';
+
+import 'dart:html' as html;
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
@@ -16,6 +19,7 @@ import 'package:kiind_web/core/providers/base_provider.dart';
 
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
+import 'package:kiind_web/features/philanthropy/presentation/providers/stripe_web_service.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:paypal_payment/paypal_payment.dart';
 
@@ -33,9 +37,9 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
         final List methods = result.data['data'];
         paymentMethods = methods
             .map((method) => kind_payment_method.PaymentMethod.fromMap(method))
-            .where((method) =>
-                method.title!.toLowerCase() == 'paypal' ||
-                method.title!.toLowerCase() == 'stripe')
+            // .where((method) =>
+            //     method.title!.toLowerCase() == 'paypal' ||
+            //     method.title!.toLowerCase() == 'stripe')
             .toList();
       }
     } on DioException {
@@ -52,11 +56,11 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
       case 3:
         logo = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
         break;
-      case 4:
-        logo =
-            'https://www.braintreepayments.com/images/braintree-logo-black.png';
-        break;
-      case 5:
+      // case 8:
+      //   logo =
+      //       'https://www.braintreepayments.com/images/braintree-logo-black.png';
+      //   break;
+      case 8:
         logo = 'https://cdn-icons-png.flaticon.com/512/1198/1198299.png';
         break;
       case 10000:
@@ -266,6 +270,11 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
     // );
   }
 
+
+void redirectToStripeCheckout(String publicKey, String sessionId) {
+  final stripeCheckoutUrl = 'https://checkout.stripe.com/c/pay/$sessionId';
+  html.window.open(stripeCheckoutUrl, '_self');
+}
   void stripePaymentHandler(
       BuildContext context,
       DonationInfoModel donationInfo,
@@ -276,27 +285,55 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
     log('got to stripe payment $gateway');
 
     if (gateway != null) {
-      Stripe.publishableKey = gateway.publicKey!;
-      Stripe.merchantIdentifier = 'Kiind';
-      await Stripe.instance.applySettings();
-      await Stripe.instance.initPaymentSheet(
-          paymentSheetParameters: SetupPaymentSheetParameters(
-        merchantDisplayName: 'Kiind',
-        customerId: null,
-        paymentIntentClientSecret: gateway.paymentIntent!,
-        customerEphemeralKeySecret: gateway.privateKey!,
-        applePay: const PaymentSheetApplePay(merchantCountryCode: 'GB'),
-        googlePay: const PaymentSheetGooglePay(merchantCountryCode: 'GB'),
-        style: Theme.of(context).brightness == Brightness.dark
-            ? ThemeMode.dark
-            : ThemeMode.light,
-        // primaryButtonColor: bg,
-        // testEnv: gateway.sandbox,
-      ));
-      await Stripe.instance.applySettings();
+
+
+ 
+redirectToStripeCheckout(gateway.publicKey!, gateway.sessionId!);
+      
+      // Stripe.publishableKey = gateway.publicKey!;
+
+// WebStripe.instance.initialise(publishableKey: gateway.publicKey!,
+// merchantIdentifier: "Kiind",
+//       // await WebStripe.instance.applySettings();
+
+// );
+      // Stripe.merchantIdentifier = 'Kiind';
+      // await Stripe.instance.applySettings();
+    // await WebStripe.instance.initPaymentRequestButton(
+    //     PaymentRequestButtonOptions(
+    //       countryCode: 'GB',
+    //       currency: 'GBP',
+    //       total: PaymentRequestItem(
+    //         label: 'Total Payment',
+    //         amount: detail.amount.toString(),
+    //       ),
+    //       requestPayerName: true,
+    //       requestPayerEmail: true,
+    //     ),
+    //   );
+  //   final stripeService = StripeService(gateway.publicKey!);
+
+  // stripeService.createPaymentRequestButton(
+  //   countryCode: 'GB',
+  //   currency: 'GBP',
+  //   amount: paymentDetail.amounts!.userSubmittedAmount!.toInt(), // e.g., £10.00
+  //   onPaymentSuccess: (paymentMethod) {
+  //     print('Payment successful: $paymentMethod');
+      
+  //   },
+  //   onPaymentFailure: (error) {
+  //     print('Payment failed: $error');
+  //   },
+  // );
+
+  //     // await Stripe.instance.applySettings();
+  //      await     WebStripe.instance.confirmPaymentElement(
+  //   ConfirmPaymentElementOptions(
+  //     confirmParams: ConfirmPaymentParams(return_url: "https://kiind.co.uk/?__route=payment_successful"),
+  //   ));
 
       try {
-        await Stripe.instance.presentPaymentSheet();
+        // await Stripe.instance.presentPaymentSheet();
         finalizeKiindDonation(
             context, donationInfo, paymentMethod, paymentDetail, null);
       } on Exception {

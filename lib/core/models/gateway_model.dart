@@ -13,7 +13,7 @@ class Gateway {
     this.publicKey,
     this.privateKey,
     this.plan,
-    this.paymentIntent,
+    this.paymentIntent,  this.sessionId,
   });
 
   final String? notifyUrl;
@@ -22,6 +22,7 @@ class Gateway {
   final String? publicKey;
   final String? privateKey;
   final String? paymentIntent;
+  final String? sessionId;
   final String? customerKey;
   final String? plan;
 
@@ -35,6 +36,7 @@ class Gateway {
     String? customerKey,
     String? privateKey,
     String? paymentIntent,
+    String? sessionId,
     String? plan,
   }) =>
       Gateway(
@@ -45,6 +47,7 @@ class Gateway {
         privateKey: privateKey ?? this.privateKey,
         customerKey: customerKey ?? this.customerKey,
         paymentIntent: paymentIntent ?? this.paymentIntent,
+        sessionId: sessionId ?? this.sessionId,
         plan: plan ?? this.plan,
       );
 
@@ -60,6 +63,7 @@ class Gateway {
         privateKey: json["private_key"],
         customerKey: (json["customer_key"] ?? {})['id'],
         paymentIntent: json["payment_intent"],
+        sessionId: json["session_id"],
         plan: json["plan"],
       );
 
@@ -71,6 +75,7 @@ class Gateway {
         "customer_key": customerKey,
         "private_key": privateKey,
         "payment_intent": paymentIntent,
+        "session_id": sessionId,
         "plan": plan,
       };
 }

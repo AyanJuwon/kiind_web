@@ -69,7 +69,7 @@ class PaymentMethod {
   factory PaymentMethod.fromJson(String str) =>
       PaymentMethod.fromMap(json.decode(str));
 
-  String get label => title == 'Stripe' ? 'Card' : title ?? 'N/A';
+  String get label => title == 'Stripe' ? 'Card Payment' : title ?? 'N/A';
 
   String toJson() => json.encode(toMap());
 

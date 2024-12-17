@@ -1,11 +1,13 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/gateway_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
@@ -19,6 +21,7 @@ import 'package:kiind_web/core/util/extensions/response_extensions.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
 import 'package:paypal_payment/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:html' as html;
 
 enum PaymentType {
   oneTime,
@@ -233,42 +236,43 @@ class PaymentSummaryPageProvider extends BaseProvider {
     Gateway? _gateway = _detail?.gateway;
 
     if (_gateway != null) {
-      Stripe.publishableKey = _gateway.publicKey!;
-      Stripe.merchantIdentifier = 'Kiind';
+      // Stripe.publishableKey = _gateway.publicKey!;
+      // Stripe.merchantIdentifier = 'Kiind';
       // Stripe.stripeAccountId = '';
 
-      await Stripe.instance.applySettings();
-
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          returnURL: _gateway.notifyUrl,
-          // Main params
-          merchantDisplayName: 'Kiind',
-          // Customer params
-          customerId: null, // _gateway.customerKey!,
-          paymentIntentClientSecret: _gateway.paymentIntent!,
-          customerEphemeralKeySecret: _gateway.privateKey!,
-          // Extra params
-           applePay: PaymentSheetApplePay(
-          merchantCountryCode: 'GB',
+// WebStripe.instance.initialise(publishableKey: _gateway.publicKey!,
+// merchantIdentifier: "Kiind");
+      // await WebStripe.instance.initPaymentSheet(
+      //     SetupPaymentSheetParameters(
+            
+      //     returnURL: _gateway.notifyUrl,
+      //     // Main params
+      //     merchantDisplayName: 'Kiind',
+      //     // Customer params
+      //     customerId: null, // _gateway.customerKey!,
+      //     paymentIntentClientSecret: _gateway.paymentIntent!,
+      //     customerEphemeralKeySecret: _gateway.privateKey!,
+      //     // Extra params
+      //      applePay: PaymentSheetApplePay(
+      //     merchantCountryCode: 'GB',
         
-          // buttonType: ApplePayButtonType.book,
-        ),
-        googlePay: PaymentSheetGooglePay(
-          merchantCountryCode: 'GB',
-          testEnv: _gateway.sandbox ?? false,
-        ),
-          style: context.brightness == Brightness.dark
-              ? ThemeMode.dark
-              : ThemeMode.light,
-          // primaryButtonColor: bg,
-          // billingDetails: billingDetails,
-          // testEnv: _gateway.sandbox,
-          // merchantCountryCode: 'GB',
-        ),
-      );
+      //     // buttonType: ApplePayButtonType.book,
+      //   ),
+      //   googlePay: PaymentSheetGooglePay(
+      //     merchantCountryCode: 'GB',
+      //     testEnv: _gateway.sandbox ?? false,
+      //   ),
+      //     style: context.brightness == Brightness.dark
+      //         ? ThemeMode.dark
+      //         : ThemeMode.light,
+      //     // primaryButtonColor: bg,
+      //     // billingDetails: billingDetails,
+      //     // testEnv: _gateway.sandbox,
+      //     // merchantCountryCode: 'GB',
+      //   ),
+      // );
 
-      await Stripe.instance.applySettings();
+      // // await WebStripe.instance.set;
     }
   }
 
@@ -375,15 +379,26 @@ print("starting mypos");
     }
   }
 
+void redirectToStripeCheckout(String publicKey, String sessionId) {
+  final stripeCheckoutUrl = 'https://checkout.stripe.com/c/pay/$sessionId';
+  html.window.open(stripeCheckoutUrl, '_self');
+}
 
   launchStripe(BuildContext context) async {
      Gateway? _gateway = paymentDetail.value?.gateway;
     processingPayment.value = true;
 if(_gateway != null){
     try {
-        Stripe.publishableKey = _gateway.publicKey!;
-      Stripe.merchantIdentifier = 'Kiind';
-      await Stripe.instance.presentPaymentSheet();
+redirectToStripeCheckout(_gateway.publicKey!, _gateway.sessionId!);
+      
+      //   Stripe.publishableKey = _gateway.publicKey!;
+      // Stripe.merchantIdentifier = 'Kiind';
+      // await Stripe.instance.presentPaymentSheet();
+
+    //   WebStripe.instance.confirmPaymentElement(
+    // ConfirmPaymentElementOptions(
+    //   confirmParams: ConfirmPaymentParams(return_url: "https://kiind.co.uk/?__route=payment_successful"),
+    // ));
     } on Exception catch (e) {
       processingPayment.value = false;
       log('An error occurred at launch\n$e');
@@ -421,7 +436,10 @@ if(_gateway != null){
       // Stripe.publishableKey = "stripePublishableKey";
       // Stripe.merchantIdentifier = 'com.kiind.app';
       // Stripe.urlScheme = 'flutterstripe';
-      await Stripe.instance.applySettings();
+      await     WebStripe.instance.confirmPaymentElement(
+    ConfirmPaymentElementOptions(
+      confirmParams: ConfirmPaymentParams(return_url: "https://kiind.co.uk/?__route=payment_successful"),
+    ));
       btRes = await BraintreeDropIn.start(btReq);
       if (btRes != null) {
         await sendReceiptToServer(context);

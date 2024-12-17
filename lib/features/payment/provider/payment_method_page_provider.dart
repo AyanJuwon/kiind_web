@@ -102,7 +102,7 @@ class PaymentMethodPageProvider extends BaseProvider {
         bool other = detail.cause?.isOther ?? false;
 
         for (var v in responseData['data']) {
-          if (v['id'] != 4) {
+          if (v['id'] != 8) {
             paymentMethods[v['id']] = PaymentMethod.fromMap(v);
           }
         }
@@ -164,11 +164,11 @@ class PaymentMethodPageProvider extends BaseProvider {
       case 3:
         logo = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
         break;
-      case 8:
-        logo =
-            'https://www.braintreepayments.com/images/braintree-logo-black.png';
-        break;
-      case 5:
+      // case 8:
+      //   logo =
+      //       'https://www.braintreepayments.com/images/braintree-logo-black.png';
+      //   break;
+      case 8 :
         logo = 'https://cdn-icons-png.flaticon.com/512/1198/1198299.png';
         break;
       case 10000:
