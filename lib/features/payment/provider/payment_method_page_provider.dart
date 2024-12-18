@@ -102,7 +102,7 @@ class PaymentMethodPageProvider extends BaseProvider {
         bool other = detail.cause?.isOther ?? false;
 
         for (var v in responseData['data']) {
-          if (v['id'] != 8) {
+          if (v['id'] != 7) {
             paymentMethods[v['id']] = PaymentMethod.fromMap(v);
           }
         }
