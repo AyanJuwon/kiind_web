@@ -38,7 +38,7 @@ void main() async {
   } else {
     // Use a default token if not provided in the URL
     await prefs.setString(
-        'token', "288|CTrqs2eE3Yn26yaqG3BxMOBcwFFP1BPwKCFnCln2");
+        'token', "301|aIMbmUCORPpihhSlf28phQs29wo9CrIidg0UDEyf");
   }
 // U5MhyA9rNlOSC8LW0qj1oXIoD9P4reYsbVG8BJ24
 // U5MhyA9rNlOSC8LW0qj1oXIoD9P4reYsbVG8BJ24

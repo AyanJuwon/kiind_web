@@ -83,6 +83,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
         'payment_method': paymentMethod.title!.toLowerCase(),
         'amount': donationInfo.amount,
         'interval': parseInterval(donationInfo.interval),
+        "device":'ios'
       });
 
       if (result.statusCode == 200 || result.statusCode == 201) {
@@ -271,8 +272,8 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
   }
 
 
-void redirectToStripeCheckout(String publicKey, String sessionId) {
-  final stripeCheckoutUrl = 'https://checkout.stripe.com/c/pay/$sessionId';
+void redirectToStripeCheckout(String url, ) {
+  final stripeCheckoutUrl = url;
   html.window.open(stripeCheckoutUrl, '_self');
 }
   void stripePaymentHandler(
@@ -288,7 +289,7 @@ void redirectToStripeCheckout(String publicKey, String sessionId) {
 
 
  
-redirectToStripeCheckout(gateway.publicKey!, gateway.sessionId!);
+redirectToStripeCheckout(paymentDetail.html!,);
       
       // Stripe.publishableKey = gateway.publicKey!;
 

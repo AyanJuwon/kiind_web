@@ -16,6 +16,7 @@ class PaymentDetail {
     this.purpose,
     this.amounts,
     this.subscriptionId,
+     this.html,
   });
 
   final Gateway? gateway;
@@ -24,6 +25,7 @@ class PaymentDetail {
   final Charges? charges;
   final Amounts? amounts;
   final int? subscriptionId;
+  final String? html;
 
   double get netCost =>
       ((amounts?.userSubmittedAmount ?? 0) - (charges?.totalCharges ?? 0));
@@ -35,6 +37,7 @@ class PaymentDetail {
     String? purpose,
     Amounts? amounts,
     int? subscriptionId,
+    String? html,
   }) =>
       PaymentDetail(
         gateway: gateway ?? this.gateway,
@@ -43,6 +46,7 @@ class PaymentDetail {
         purpose: purpose ?? this.purpose,
         amounts: amounts ?? this.amounts,
         subscriptionId: subscriptionId ?? this.subscriptionId,
+        html: html ?? this.html,
       );
 
   factory PaymentDetail.fromJson(String str) =>
@@ -64,6 +68,7 @@ class PaymentDetail {
         amounts:
             json["amounts"] == null ? null : Amounts.fromMap(json["amounts"]),
         subscriptionId: json["subscription_id"],
+        html: json["html"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -74,6 +79,7 @@ class PaymentDetail {
         "charges": charges?.toMap(),
         "amounts": amounts?.toMap(),
         "subscription_id": subscriptionId,
+        "html": html,
       };
 }
 

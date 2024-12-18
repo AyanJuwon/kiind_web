@@ -139,6 +139,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
         "payment_method": method?.title?.toLowerCase(),
         "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
         "interval": interval?.replaceAll('ly', ''),
+        "device": 'ios',
       };
 
       if (paymentType != PaymentType.deposit) {

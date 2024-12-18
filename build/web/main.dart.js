@@ -27483,20 +27483,21 @@ n=J.ad(o)
 m=typeof n.h(o,i)=="string"?A.dB(n.h(o,i),k):n.h(o,i)
 m=m==null?k:J.KA(m)
 o=n.h(o,"amount_after_charges_deduction")
-o=new A.KJ(m,o==null?k:J.KA(o))}return new A.mm(s,r,q,p,o,a.h(0,"subscription_id"))},
+o=new A.KJ(m,o==null?k:J.KA(o))}return new A.mm(s,r,q,p,o,a.h(0,"subscription_id"),a.h(0,"html"))},
 aZb(a){var s,r="breakdown",q=J.ad(a)
 if(q.h(a,r)==null)s=null
 else{s=q.h(a,r)
 if(s==null)s=[]
 s=A.cB(J.Ky(s,new A.aac()),!0,t.aR)}q=q.h(a,"total_charges")
 return new A.aab(s,q==null?null:J.KA(q))},
-mm:function mm(a,b,c,d,e,f){var _=this
+mm:function mm(a,b,c,d,e,f,g){var _=this
 _.a=a
 _.b=b
 _.c=c
 _.d=d
 _.e=e
-_.f=f},
+_.f=f
+_.r=g},
 KJ:function KJ(a,b){this.a=a
 this.b=b},
 aab:function aab(a,b){this.a=a
@@ -28145,7 +28146,7 @@ return A.o(j.GW("String","token",o),$async$yC)
 case 7:s=5
 break
 case 6:s=8
-return A.o(j.GW("String","token","288|CTrqs2eE3Yn26yaqG3BxMOBcwFFP1BPwKCFnCln2"),$async$yC)
+return A.o(j.GW("String","token","301|aIMbmUCORPpihhSlf28phQs29wo9CrIidg0UDEyf"),$async$yC)
 case 8:case 5:q=n!=null?A.rL(n,null):null
 i=A.M(["campaign_id",q,"amounts",m!=null?A.w_(m):null,"__interval",l,"__type",k,"user_id",19],t.N,t.z)
 h=p.gdV(p).length===0?"/":B.b.gW(p.gdV(p).split("?"))
@@ -94551,7 +94552,7 @@ return A.M(["id",r.a,"user_id",r.b,"campaign_id",r.c,"amount1",r.d,"amount2",r.e
 gjV(){return this.z}}
 A.mm.prototype={
 W3(a,b){var s=this,r=a==null?s.a:a,q=b==null?s.c:b
-return new A.mm(r,s.b,q,s.d,s.e,s.f)},
+return new A.mm(r,s.b,q,s.d,s.e,s.f,s.r)},
 alV(a){return this.W3(null,a)},
 ct(){return B.Z.e4(this.aF())},
 aF(){var s,r,q,p=this,o=null,n=p.b
@@ -94563,7 +94564,7 @@ r=p.d
 r=r==null?o:r.aF()
 q=p.e
 q=q==null?o:q.aF()
-return A.M(["gateway",p.a,"purpose",p.c,"post",s,"campaign",n,"charges",r,"amounts",q,"subscription_id",p.f],t.N,t.z)}}
+return A.M(["gateway",p.a,"purpose",p.c,"post",s,"campaign",n,"charges",r,"amounts",q,"subscription_id",p.f,"html",p.r],t.N,t.z)}}
 A.KJ.prototype={
 ct(){return B.Z.e4(this.aF())},
 aF(){return A.M(["user_submitted_amount",this.a,"amount_after_charges_deduction",this.b],t.N,t.z)}}
@@ -95035,7 +95036,7 @@ while(true)switch(s){case 0:n=q.a
 m=n.w
 m=m==null?null:m.e!=="Campaign"
 p=A.w_(n.f.a.a)
-o=new A.mm(null,n.w,null,null,new A.KJ(p,null),null).aF()
+o=new A.mm(null,n.w,null,null,new A.KJ(p,null),null,null).aF()
 if(m===!0){o.n(0,"__interval","")
 o.n(0,"__type",(B.c.p("","_")?B.lV:B.Bi).a)}if(n.w.d==="Fund Wallet")o.n(0,"__type",2)
 n=t.X
@@ -95309,7 +95310,7 @@ else{a0=a0.e
 a0=a0==null?null:a0.a}a1=n.db
 if(a1==null)a1=null
 else a1=A.dd(a1,"ly","")
-l=A.M(["payment_method",a,"amount",a0,"interval",a1],d,c)
+l=A.M(["payment_method",a,"amount",a0,"interval",a1,"device","ios"],d,c)
 if(n.cy!==B.dE){a=b.a
 if(a==null)a=null
 else{a=a.b
@@ -96258,7 +96259,7 @@ k===$&&A.b()
 j=t.N
 i=t.z
 s=7
-return A.o(k.lz("/kiind/donation/initiate",A.M(["payment_method",c.b.toLowerCase(),"amount",b.a,"interval",A.aLn(b.b)],j,i)),$async$Bh)
+return A.o(k.lz("/kiind/donation/initiate",A.M(["payment_method",c.b.toLowerCase(),"amount",b.a,"interval",A.aLn(b.b),"device","ios"],j,i)),$async$Bh)
 case 7:l=e
 if(l.c===200||l.c===201)m=A.Ti(A.fK(J.Z(l.a,"data"),j,i))
 p=2
@@ -96326,12 +96327,11 @@ a1j(a,b,c,d){var s=0,r=A.t(t.H),q=this,p,o,n,m
 var $async$E3=A.u(function(e,f){if(e===1)return A.p(f,r)
 while(true)switch(s){case 0:m=d.a
 A.e(m)
-if(m!=null){m.d.toString
-p=m.r
+if(m!=null){p=d.r
 p.toString
 o=window
 o.toString
-B.GO.YM(o,"https://checkout.stripe.com/c/pay/"+p,"_self")
+B.GO.YM(o,p,"_self")
 try{q.anX(a,b,c,d,null)}catch(l){if(t.VI.b(A.a8(l))){q.sdT(!1)
 A.fA(u.Q,B.b1,B.bf)}else throw l}}return A.q(null,r)}})
 return A.r($async$E3,r)}}
