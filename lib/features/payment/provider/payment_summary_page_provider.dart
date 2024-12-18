@@ -380,8 +380,8 @@ print("starting mypos");
     }
   }
 
-void redirectToStripeCheckout(String publicKey, String sessionId) {
-  final stripeCheckoutUrl = 'https://checkout.stripe.com/c/pay/$sessionId';
+void redirectToStripeCheckout(String url,) {
+  final stripeCheckoutUrl = url;
   html.window.open(stripeCheckoutUrl, '_self');
 }
 
@@ -390,7 +390,7 @@ void redirectToStripeCheckout(String publicKey, String sessionId) {
     processingPayment.value = true;
 if(_gateway != null){
     try {
-redirectToStripeCheckout(_gateway.publicKey!, _gateway.sessionId!);
+redirectToStripeCheckout(paymentDetail.value!.html!);
       
       //   Stripe.publishableKey = _gateway.publicKey!;
       // Stripe.merchantIdentifier = 'Kiind';
