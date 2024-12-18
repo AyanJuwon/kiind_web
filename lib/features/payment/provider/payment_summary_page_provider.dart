@@ -390,17 +390,10 @@ void redirectToStripeCheckout(String url,) {
     processingPayment.value = true;
 if(_gateway != null){
     try {
+      print("launching stripe");
 redirectToStripeCheckout(paymentDetail.value!.html!);
       
-      //   Stripe.publishableKey = _gateway.publicKey!;
-      // Stripe.merchantIdentifier = 'Kiind';
-      // await Stripe.instance.presentPaymentSheet();
-
-    //   WebStripe.instance.confirmPaymentElement(
-    // ConfirmPaymentElementOptions(
-    //   confirmParams: ConfirmPaymentParams(return_url: "https://kiind.co.uk/?__route=payment_successful"),
-    // ));
-    } on Exception catch (e) {
+         } on Exception catch (e) {
       processingPayment.value = false;
       log('An error occurred at launch\n$e');
       return;

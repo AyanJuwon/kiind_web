@@ -95479,7 +95479,8 @@ k=p.cx
 k.sm(0,!0)
 s=j!=null?3:4
 break
-case 3:try{l=l.a.r
+case 3:try{A.aK("launching stripe")
+l=l.a.r
 l.toString
 n=window
 n.toString
