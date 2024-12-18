@@ -160,8 +160,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
 
       if (token == null) {
         throw Exception('Token not found');
-      }
-
+      } 
       // API call to initiate payment
       final response = await dio.post(
         initEndpoint,
@@ -175,6 +174,8 @@ class PaymentSummaryPageProvider extends BaseProvider {
       );
 
       if (response.statusCode == 200 && response.data != null) {
+
+      print("data to from response initiate::::: ${response}");
         String? initialPurpose = paymentDetail.value?.purpose;
 
         // Use the response to initialize gateway
@@ -186,15 +187,17 @@ class PaymentSummaryPageProvider extends BaseProvider {
           paymentDetail.value = paymentDetail.value?.copyWith(
             gateway: detail.gateway,
             purpose: initialPurpose,
+            html: detail.html
           );
         } else {
           paymentDetail.value = detail.copyWith(
             purpose: initialPurpose,
+              html: detail.html
           );
         }
 
           // myPosHtml = response.info!.data['gateway']['original']['data']?? '';
-      await initializeGateway(context,response.info!.data['gateway']['original']['data'] ?? '');
+      await initializeGateway(context,);
 
       } else {
         context.back(times: 2);
@@ -213,7 +216,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
     }
   }
 
-  initializeGateway(BuildContext context,data) async {
+  initializeGateway(BuildContext context) async {
     try {
       switch (method?.id) {
         case 3:
@@ -391,6 +394,7 @@ void redirectToStripeCheckout(String url,) {
 if(_gateway != null){
     try {
       print("launching stripe");
+      print("paymentDetail.value!.html");
 redirectToStripeCheckout(paymentDetail.value!.html!);
       
          } on Exception catch (e) {
@@ -620,6 +624,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
       "plan": paymentDetail.value?.gateway?.plan,
       "interval": interval?.replaceAll('ly', ''),
       "subscription_id": paymentDetail.value?.subscriptionId,
+      
     };
 
     if (paymentType != PaymentType.deposit) {
