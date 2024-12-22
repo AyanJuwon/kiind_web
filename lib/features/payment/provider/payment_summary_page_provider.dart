@@ -192,7 +192,7 @@ class PaymentSummaryPageProvider extends BaseProvider {
         } else {
           paymentDetail.value = detail.copyWith(
             purpose: initialPurpose,
-              html: detail.html
+            
           );
         }
 
@@ -436,7 +436,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
       // Stripe.urlScheme = 'flutterstripe';
       await     WebStripe.instance.confirmPaymentElement(
     ConfirmPaymentElementOptions(
-      confirmParams: ConfirmPaymentParams(return_url: "https://kiind.co.uk/?__route=payment_successful"),
+      confirmParams: ConfirmPaymentParams(return_url: "https://app.kiind.co.uk/callback?__route=payment_successful"),
     ));
       btRes = await BraintreeDropIn.start(btReq);
       if (btRes != null) {
@@ -470,8 +470,8 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
                   secretKey: gateway.privateKey!,
                   currencyCode: paypalTransactions[0]['amount']['currency'],
                   amount: paypalTransactions[0]['amount']['total'],
-                  returnURL: "https://kiind.co.uk/?__route=payment_successful",
-                  cancelURL: gateway.cancelUrl!,
+                  returnURL: "https://app.kiind.co.uk/callback/?__route=payment_successful",
+                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
                   sandboxMode: gateway.sandbox,
                   note: "Thank you for supporting our cause.",
                   onSuccess: (Map params) async {
@@ -520,8 +520,9 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
                     }
                   ],
                   paymentPreferences: const {"auto_bill_outstanding": true},
-                  returnURL: "https://kiind.co.uk/?__route=payment_successful",
-                  cancelURL: gateway.cancelUrl,
+                  returnURL: "https://app.kiind.co.uk/callback?__route=payment_successful",
+        
+                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
                   onSuccess: (Map params) async {
                     log("onSuccess: $params");
                     paymentPayload = params;
@@ -644,19 +645,20 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
     );
 
     if (res.isValid) {
-      if (paymentType == PaymentType.deposit ||
-          (paymentDetail.value?.cause is Post)) {
-        context.off(
-          RoutePaths.paymentSuccessfulScreen,
-          args: {
-            '__type': paymentType.index,
-            '__paid_livestream': (paymentDetail.value?.cause is Post),
-          },
-          popCount: method?.id == 3 ? 3 : 2,
-        );
-      } else {
-        context.offAll(RoutePaths.paymentSuccessfulScreen);
-      }
+       html.window.open('https://app.kiind.co.uk/callback?__route=payment_successful', '_self');
+      // if (paymentType == PaymentType.deposit ||
+      //     (paymentDetail.value?.cause is Post)) {
+      //   context.off(
+      //     RoutePaths.paymentSuccessfulScreen,
+      //     args: {
+      //       '__type': paymentType.index,
+      //       '__paid_livestream': (paymentDetail.value?.cause is Post),
+      //     },
+      //     popCount: method?.id == 3 ? 3 : 2,
+      //   );
+      // } else {
+      //   context.offAll(RoutePaths.paymentSuccessfulScreen);
+      // }
     } else {
       context.back(
         times: method?.id == 3 ? 3 : 2,

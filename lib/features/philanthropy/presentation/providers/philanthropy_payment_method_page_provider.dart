@@ -191,14 +191,14 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
 
             return PaypalOrderPayment(
               sandboxMode: paymentDetail.gateway!.sandbox,
-              cancelURL: paymentDetail.gateway!.cancelUrl!,
+              cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled"!,
               note: "Contact us for any questions on your subscription.",
               clientId: paymentMethod.apiKey!,
               secretKey: paymentMethod.apiSecret!,
               currencyCode: "USD",
               amount: paymentDetail.amounts?.userSubmittedAmount.toString() ??
-                  "0.0",
-              returnURL: "https://kiind.co.uk/?__route=payment_successful",
+    "0.0",
+              returnURL: "https://app.kiind.co.uk/callback?__route=payment_successful",
               onSuccess: (Map params) {
                 log('Payment transaction was succesfull $params');
                 shouldPop = false;
@@ -243,8 +243,8 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
               }
             ],
             paymentPreferences: const {"auto_bill_outstanding": true},
-            returnURL: "https://kiind.co.uk/?__route=payment_successful",
-            cancelURL: paymentDetail.gateway!.cancelUrl!,
+            returnURL: "https://app.kiind.co.uk/callback?__route=payment_successful",
+               cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
             onSuccess: (Map params) {
               log('Payment was succesfull $params');
               shouldPop = false;
