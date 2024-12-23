@@ -22,7 +22,7 @@ import 'package:kiind_web/core/util/visual_alerts.dart';
 import 'package:paypal_payment/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:html' as html;
-
+  import 'dart:convert';
 enum PaymentType {
   oneTime,
   subscription,
@@ -37,6 +37,10 @@ class PaymentSummaryPageProvider extends BaseProvider {
   String? interval = 'one_time';
 
   bool get isSub => interval != 'one_time';
+
+
+final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payment_cancelled');
+
   @override
   String? token;
   String get initEndpoint {
@@ -113,108 +117,246 @@ class PaymentSummaryPageProvider extends BaseProvider {
     );
   }
 
-  Future<void> fetchPaymentDetails(BuildContext context) async {
-    loading = false;
-    notifyListeners();
+Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
+  final prefs = await SharedPreferences.getInstance();
 
-    try {
-      // Retrieve user profile
-      user = await getUserProfile();
-      notifyListeners();
+  // Extract __method from contextArgs
+  final contextMethod = contextArgs['__method'];
 
-      // Extract and process payment details from context
-      Map<String, dynamic> paymentDetailMap =
-          Map<String, dynamic>.from(context.args);
-      paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
+  if (contextMethod != null) {
+    // Save the context method to SharedPreferences
+    final paymentMethodJson = jsonEncode(contextMethod);
+    await prefs.setString('payment_method', paymentMethodJson);
 
-      paymentType = PaymentType.values[context.args['__type'] ?? 0];
-
-      if (context.args['__interval'] != null) {
-        interval = context.args['__interval'];
-      }
-
-      method = kiind_pay.PaymentMethod.fromMap(context.args['__method']);
-
-      Map<String, dynamic> data = {
-        "payment_method": method?.title?.toLowerCase(),
-        "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
-        "interval": interval?.replaceAll('ly', ''),
-        "device": 'ios',
-      };
-
-      if (paymentType != PaymentType.deposit) {
-        data["id"] = paymentDetail.value?.cause?.id;
-      }
-
-      // Initialize Dio
-      final dio = Dio(
-        BaseOptions(
-          baseUrl: 'https://app.kiind.co.uk/api/v2',
-          headers: {'Accept': 'application/json'},
-        ),
-      );
-
-      // Retrieve token from SharedPreferences
-      final prefs = await SharedPreferences.getInstance();
-      final token = prefs.getString('token');
-
-      if (token == null) {
-        throw Exception('Token not found');
-      } 
-      // API call to initiate payment
-      final response = await dio.post(
-        initEndpoint,
-        data: data,
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-          },
-          extra: {'context': context},
-        ),
-      );
-
-      if (response.statusCode == 200 && response.data != null) {
-
-      print("data to from response initiate::::: ${response}");
-        String? initialPurpose = paymentDetail.value?.purpose;
-
-        // Use the response to initialize gateway
-        PaymentDetail detail = PaymentDetail.fromMap(
-          Map<String, dynamic>.from(response.data['data']),
-        );
-
-        if (paymentType == PaymentType.deposit) {
-          paymentDetail.value = paymentDetail.value?.copyWith(
-            gateway: detail.gateway,
-            purpose: initialPurpose,
-            html: detail.html
-          );
-        } else {
-          paymentDetail.value = detail.copyWith(
-            purpose: initialPurpose,
-            
-          );
-        }
-
-          // myPosHtml = response.info!.data['gateway']['original']['data']?? '';
-      await initializeGateway(context,);
-
-      } else {
-        context.back(times: 2);
-      }
-    } on DioException catch (e) {
-      // Handle Dio errors
-      if (e.response != null) {
-        print('Error: ${e.response?.data}');
-      } else {
-        print('Error: ${e.message}');
-      }
-      context.back(times: 2); // Handle failure
-    } finally {
-      loading = false;
-      notifyListeners();
+    // Initialize the method
+    method = kiind_pay.PaymentMethod.fromMap(contextMethod);
+  } else {
+    // If contextMethod is null, check SharedPreferences
+    final paymentMethodJson = prefs.getString('payment_method');
+    if (paymentMethodJson != null && paymentMethodJson.isNotEmpty) {
+      final paymentMethodMap = jsonDecode(paymentMethodJson) as Map<String, dynamic>;
+      method = kiind_pay.PaymentMethod.fromMap(paymentMethodMap);
+    } else {
+      throw Exception("No payment method found in SharedPreferences or context.args['__method']");
     }
   }
+
+  // Log the current payment method
+  print('Current Payment Method: ${method.toString()}');
+}
+  Future<void> fetchPaymentDetails(BuildContext context) async {
+  loading = false;
+  notifyListeners();
+
+  try {
+    // Retrieve user profile
+    user = await getUserProfile();
+    notifyListeners();
+
+    // Extract and process payment details from context
+    Map<String, dynamic> paymentDetailMap =
+        Map<String, dynamic>.from(context.args);
+    paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
+
+    paymentType = PaymentType.values[context.args['__type'] ?? 0];
+
+    if (context.args['__interval'] != null) {
+      interval = context.args['__interval'];
+    }
+
+    // Handle payment method using the reusable function
+    await handlePaymentMethod(context.args);
+
+    // Retrieve saved payment method from SharedPreferences
+    final prefs = await SharedPreferences.getInstance();
+    final paymentMethodJson = prefs.getString('payment_method');
+    if (paymentMethodJson == null || paymentMethodJson.isEmpty) {
+      throw Exception('Payment method not found');
+    }
+    final method = kiind_pay.PaymentMethod.fromMap(
+      jsonDecode(paymentMethodJson) as Map<String, dynamic>,
+    );
+
+    Map<String, dynamic> data = {
+      "payment_method": method.title?.toLowerCase(),
+      "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+      "interval": interval?.replaceAll('ly', ''),
+      "device": 'ios',
+    };
+
+    if (paymentType != PaymentType.deposit) {
+      data["id"] = paymentDetail.value?.cause?.id;
+    }
+
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
+
+    // Retrieve token from SharedPreferences
+    final token = prefs.getString('token');
+    if (token == null) {
+      throw Exception('Token not found');
+    }
+
+    // API call to initiate payment
+    final response = await dio.post(
+      initEndpoint,
+      data: data,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+        extra: {'context': context},
+      ),
+    );
+
+    if (response.statusCode == 200 && response.data != null) {
+      print("data to from response initiate::::: ${response}");
+      String? initialPurpose = paymentDetail.value?.purpose;
+
+      // Use the response to initialize gateway
+      PaymentDetail detail = PaymentDetail.fromMap(
+        Map<String, dynamic>.from(response.data['data']),
+      );
+
+      if (paymentType == PaymentType.deposit) {
+        paymentDetail.value = paymentDetail.value?.copyWith(
+          gateway: detail.gateway,
+          purpose: initialPurpose,
+          html: detail.html,
+        );
+      } else {
+        paymentDetail.value = detail.copyWith(
+          purpose: initialPurpose,
+        );
+      }
+
+      await initializeGateway(context);
+    } else {
+      context.back(times: 2);
+    }
+  } on DioException catch (e) {
+    // Handle Dio errors
+    if (e.response != null) {
+      print('Error: ${e.response?.data}');
+    } else {
+      print('Error: ${e.message}');
+    }
+    context.back(times: 2); // Handle failure
+  } finally {
+    loading = false;
+    notifyListeners();
+  }
+}
+
+  // Future<void> fetchPaymentDetails(BuildContext context) async {
+  //   loading = false;
+  //   notifyListeners();
+
+  //   try {
+  //     // Retrieve user profile
+  //     user = await getUserProfile();
+  //     notifyListeners();
+
+  //     // Extract and process payment details from context
+  //     Map<String, dynamic> paymentDetailMap =
+  //         Map<String, dynamic>.from(context.args);
+  //     paymentDetail.value = PaymentDetail.fromMap(paymentDetailMap);
+
+  //     paymentType = PaymentType.values[context.args['__type'] ?? 0];
+
+  //     if (context.args['__interval'] != null) {
+  //       interval = context.args['__interval'];
+  //     }
+
+  //     final prefs = await SharedPreferences.getInstance(); 
+
+  //     method = kiind_pay.PaymentMethod.fromMap(context.args['__method']);
+
+  //     Map<String, dynamic> data = {
+  //       "payment_method": method?.title?.toLowerCase(),
+  //       "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+  //       "interval": interval?.replaceAll('ly', ''),
+  //       "device": 'ios',
+  //     };
+
+  //     if (paymentType != PaymentType.deposit) {
+  //       data["id"] = paymentDetail.value?.cause?.id;
+  //     }
+
+  //     // Initialize Dio
+  //     final dio = Dio(
+  //       BaseOptions(
+  //         baseUrl: 'https://app.kiind.co.uk/api/v2',
+  //         headers: {'Accept': 'application/json'},
+  //       ),
+  //     );
+ 
+  //     final token = prefs.getString('token');
+
+  //     if (token == null) {
+  //       throw Exception('Token not found');
+  //     } 
+  //     // API call to initiate payment
+  //     final response = await dio.post(
+  //       initEndpoint,
+  //       data: data,
+  //       options: Options(
+  //         headers: {
+  //           'Authorization': 'Bearer $token',
+  //         },
+  //         extra: {'context': context},
+  //       ),
+  //     );
+
+  //     if (response.statusCode == 200 && response.data != null) {
+
+  //     print("data to from response initiate::::: ${response}");
+  //       String? initialPurpose = paymentDetail.value?.purpose;
+
+  //       // Use the response to initialize gateway
+  //       PaymentDetail detail = PaymentDetail.fromMap(
+  //         Map<String, dynamic>.from(response.data['data']),
+  //       );
+
+  //       if (paymentType == PaymentType.deposit) {
+  //         paymentDetail.value = paymentDetail.value?.copyWith(
+  //           gateway: detail.gateway,
+  //           purpose: initialPurpose,
+  //           html: detail.html
+  //         );
+  //       } else {
+  //         paymentDetail.value = detail.copyWith(
+  //           purpose: initialPurpose,
+            
+  //         );
+  //       }
+
+  //         // myPosHtml = response.info!.data['gateway']['original']['data']?? '';
+  //     await initializeGateway(context,);
+
+  //     } else {
+  //       context.back(times: 2);
+  //     }
+  //   } on DioException catch (e) {
+  //     // Handle Dio errors
+  //     if (e.response != null) {
+  //       print('Error: ${e.response?.data}');
+  //     } else {
+  //       print('Error: ${e.message}');
+  //     }
+  //     context.back(times: 2); // Handle failure
+  //   } finally {
+  //     loading = false;
+  //     notifyListeners();
+  //   }
+  // }
+
+
 
   initializeGateway(BuildContext context) async {
     try {
@@ -471,7 +613,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
                   currencyCode: paypalTransactions[0]['amount']['currency'],
                   amount: paypalTransactions[0]['amount']['total'],
                   returnURL: "https://app.kiind.co.uk/callback/?__route=payment_successful",
-                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
+                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled",
                   sandboxMode: gateway.sandbox,
                   note: "Thank you for supporting our cause.",
                   onSuccess: (Map params) async {
@@ -522,7 +664,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
                   paymentPreferences: const {"auto_bill_outstanding": true},
                   returnURL: "https://app.kiind.co.uk/callback?__route=payment_successful",
         
-                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
+                  cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled",
                   onSuccess: (Map params) async {
                     log("onSuccess: $params");
                     paymentPayload = params;

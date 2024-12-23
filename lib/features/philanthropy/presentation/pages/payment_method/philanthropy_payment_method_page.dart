@@ -27,7 +27,7 @@ class _PhilanthropyPaymentMethodPageState
         provider: PhilanthropyPaymentMethodPageProvider(),
         builder: (context, provider, child) {
           if (!provider.loading && provider.paymentMethods == null) {
-            provider.getPaymentMethods();
+            provider.getPaymentMethods(context);
           }
 
           return Scaffold(

@@ -143,6 +143,7 @@ class PaymentMethodPageProvider extends BaseProvider {
     });
     dynamic finalPaymentDetails = paymentDetail.toMap();
     finalPaymentDetails["__type"] = context.args["__type"];
+    print("latest payment_method ::: ${method.toMap()}");
     context.to(
       RoutePaths.paymentSummaryScreen,
       args: finalPaymentDetails

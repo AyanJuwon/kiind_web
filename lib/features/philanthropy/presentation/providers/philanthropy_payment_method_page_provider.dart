@@ -22,16 +22,31 @@ import 'package:kiind_web/core/util/visual_alerts.dart';
 import 'package:kiind_web/features/philanthropy/presentation/providers/stripe_web_service.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:paypal_payment/paypal_payment.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
   List<kind_payment_method.PaymentMethod>? paymentMethods;
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
 
-  void getPaymentMethods() async {
+  void getPaymentMethods(BuildContext context) async {
     if (loading) return;
     loading = true;
+    print("bearer tken ::: $token");
 
     try {
-      final result = await client.get(Endpoints.getPaymentMethods);
+      final result = await client.get(Endpoints.getPaymentMethods,options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Accept': 'application/json'
+        },
+        extra: {'context': context},
+      ),);
 
       if (result.statusCode == 200 || result.statusCode == 201) {
         final List methods = result.data['data'];
@@ -77,14 +92,24 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
     if (loading) return;
     loading = true;
     PaymentDetail? detail;
-
+ final prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token')!;
+    print("bearer token ::: $token");
     try {
       final result = await client.post(Endpoints.initiateKiindDonation, data: {
         'payment_method': paymentMethod.title!.toLowerCase(),
         'amount': donationInfo.amount,
         'interval': parseInterval(donationInfo.interval),
         "device":'ios'
-      });
+      },
+       options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Accept': 'application/json'
+        },
+        extra: {'context': context},
+      ),
+      );
 
       if (result.statusCode == 200 || result.statusCode == 201) {
         detail = PaymentDetail.fromMap(
@@ -119,6 +144,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
     // loading = true;
     print("paypal mode :: ${paymentDetail.gateway?.sandbox}");
     print("paypal payload :: $payload");
+    print("bearer tken ::: $token");
     try {
       final result = await client.post(Endpoints.finalizeKiindDonation, data: {
         'payment_method': paymentMethod.title!.toLowerCase(),
@@ -128,7 +154,14 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
         'subscription_id': paymentDetail.subscriptionId,
         'payload': payload,
         'gift_aid': donationInfo.giftAid
-      });
+      },
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Accept': 'application/json'
+        },
+        extra: {'context': context},
+      ),);
 
       print('finalize payment result');
       print(result.data);
@@ -244,7 +277,7 @@ class PhilanthropyPaymentMethodPageProvider extends BaseProvider {
             ],
             paymentPreferences: const {"auto_bill_outstanding": true},
             returnURL: "https://app.kiind.co.uk/callback?__route=payment_successful",
-               cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled ",
+               cancelURL: "https://app.kiind.co.uk/callback?__route=payment_cancelled",
             onSuccess: (Map params) {
               log('Payment was succesfull $params');
               shouldPop = false;

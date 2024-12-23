@@ -454,7 +454,7 @@ class _PayModalState extends State<PayModal> {
                               borderRadius: BorderRadius.circular(38),
                             ),
                             child: customTextNormal(
-                              "Continues",
+                              "Continue",
                               textColor: Colors.white,
                               fontWeight: FontWeight.w600,
                             ),
