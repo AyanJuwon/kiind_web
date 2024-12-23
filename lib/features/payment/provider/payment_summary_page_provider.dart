@@ -9,6 +9,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 // import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
+import 'package:kiind_web/core/models/campaign_model.dart';
 import 'package:kiind_web/core/models/gateway_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
 import 'package:kiind_web/core/models/payment_method.dart' as kiind_pay;
@@ -144,6 +145,7 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
   // Log the current payment method
   print('Current Payment Method: ${method.toString()}');
 }
+  
   Future<void> fetchPaymentDetails(BuildContext context) async {
   loading = false;
   notifyListeners();
@@ -176,12 +178,13 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
     final method = kiind_pay.PaymentMethod.fromMap(
       jsonDecode(paymentMethodJson) as Map<String, dynamic>,
     );
-
+  print("interval for payment : ${interval!}");
     Map<String, dynamic> data = {
       "payment_method": method.title?.toLowerCase(),
       "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
-      "interval": interval?.replaceAll('ly', ''),
+      "interval": interval?.toLowerCase() =='one_time'? "single": interval?.replaceAll('ly', ''),
       "device": 'ios',
+    "id":paymentDetail.value!.cause is Campaign? (paymentDetail.value!.cause as Campaign).id : null
     };
 
     if (paymentType != PaymentType.deposit) {
@@ -203,6 +206,8 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
     }
 
     // API call to initiate payment
+    print("init endpoint is ::: $initEndpoint");
+    print("init endpoint is ::: ${data}");
     final response = await dio.post(
       initEndpoint,
       data: data,
@@ -237,16 +242,17 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
 
       await initializeGateway(context);
     } else {
-      context.back(times: 2);
+      // context.back(times: 1);
+      print("error here");
     }
   } on DioException catch (e) {
     // Handle Dio errors
     if (e.response != null) {
-      print('Error: ${e.response?.data}');
+      print('Error from stripe: ${e.response?.data}');
     } else {
-      print('Error: ${e.message}');
+      print('Error from stripe 2: ${e.message}');
     }
-    context.back(times: 2); // Handle failure
+    context.back(times: 1); // Handle failure
   } finally {
     loading = false;
     notifyListeners();
@@ -631,7 +637,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
                   onCancel: () {
                     log('Payment cancelled');
                     Navigator.pop(context);
-                    showAlertToast("PPayment Cancelled");
+                    showAlertToast("Payment Cancelled");
                   },
                 )
               : PaypalSubscriptionPayment(
