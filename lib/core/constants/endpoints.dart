@@ -82,6 +82,9 @@ class Endpoints {
   static const initiatePayment = '/campaign/payment/initiate';
   static const finalizePayment = '/campaign/payment/finalize';
 
+  static const initiateCharityDonation = '/charity/payment/initiate';
+  static const finalizeCharityDonation = '/charity/payment/finalize';
+
   static const initiateSubscription = '/campaign/subscription/initiate';
   static const finalizeSubscription = '/campaign/subscription/finalize';
   static const cancelSubscription = '/campaign/subscription/cancel';

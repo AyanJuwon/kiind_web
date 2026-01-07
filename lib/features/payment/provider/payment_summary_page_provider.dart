@@ -47,20 +47,29 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
   String get initEndpoint {
     String endpoint = '';
 
+    // Check if this is a charity donation
+    bool isCharityDonation = context?.args.containsKey('__charity_id') ?? false;
+
     if (paymentDetail.value?.purpose == null) {
-      switch (paymentType.index) {
-        case 1:
-          endpoint = isSub
-              ? Endpoints.initiateSubscription
-              : Endpoints.initiatePayment;
-          break;
-        case 2:
-          endpoint = Endpoints.initiateDeposit;
-          break;
-        case 0:
-        default:
-          endpoint = Endpoints.initiatePayment;
-          break;
+      if (isCharityDonation) {
+        // For charity donations, use charity-specific endpoints
+        endpoint = Endpoints.initiateCharityDonation;
+      } else {
+        // For regular donations, use existing logic
+        switch (paymentType.index) {
+          case 1:
+            endpoint = isSub
+                ? Endpoints.initiateSubscription
+                : Endpoints.initiatePayment;
+            break;
+          case 2:
+            endpoint = Endpoints.initiateDeposit;
+            break;
+          case 0:
+          default:
+            endpoint = Endpoints.initiatePayment;
+            break;
+        }
       }
     } else {
       endpoint = Endpoints.initiateEcarePay;
@@ -72,20 +81,29 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
   String get finalEndpoint {
     String endpoint = '';
 
+    // Check if this is a charity donation
+    bool isCharityDonation = context?.args.containsKey('__charity_id') ?? false;
+
     if (paymentDetail.value?.purpose == null) {
-      switch (paymentType.index) {
-        case 1:
-          endpoint = isSub
-              ? Endpoints.finalizeSubscription
-              : Endpoints.finalizePayment;
-          break;
-        case 2:
-          endpoint = Endpoints.finalizeDeposit;
-          break;
-        case 0:
-        default:
-          endpoint = Endpoints.finalizePayment;
-          break;
+      if (isCharityDonation) {
+        // For charity donations, use charity-specific endpoints
+        endpoint = Endpoints.finalizeCharityDonation;
+      } else {
+        // For regular donations, use existing logic
+        switch (paymentType.index) {
+          case 1:
+            endpoint = isSub
+                ? Endpoints.finalizeSubscription
+                : Endpoints.finalizePayment;
+            break;
+          case 2:
+            endpoint = Endpoints.finalizeDeposit;
+            break;
+          case 0:
+          default:
+            endpoint = Endpoints.finalizePayment;
+            break;
+        }
       }
     } else {
       endpoint = Endpoints.finalizeEcarePay;
@@ -179,16 +197,26 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
       jsonDecode(paymentMethodJson) as Map<String, dynamic>,
     );
   print("interval for payment : ${interval!}");
+    // Check if this is a charity donation
+    bool isCharityDonation = context.args.containsKey('__charity_id');
+
     Map<String, dynamic> data = {
       "payment_method": method.title?.toLowerCase(),
       "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
       "interval": interval?.toLowerCase() =='one_time'? "single": interval?.replaceAll('ly', ''),
       "device": 'ios',
-    "id":paymentDetail.value!.cause is Campaign? (paymentDetail.value!.cause as Campaign).id : null
     };
 
-    if (paymentType != PaymentType.deposit) {
-      data["id"] = paymentDetail.value?.cause?.id;
+    if (isCharityDonation) {
+      // For charity donations, use charity ID from context
+      data["charity_id"] = context.args['__charity_id'];
+    } else {
+      // For regular donations, use existing logic
+      if (paymentDetail.value!.cause is Campaign) {
+        data["id"] = (paymentDetail.value!.cause as Campaign).id;
+      } else if (paymentType != PaymentType.deposit) {
+        data["id"] = paymentDetail.value?.cause?.id;
+      }
     }
 
     // Initialize Dio
@@ -765,6 +793,9 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
         ? 'Not Specified'
         : paymentDetail.value!.purpose!.trim();
 
+    // Check if this is a charity donation
+    bool isCharityDonation = context.args.containsKey('__charity_id');
+
     Map<String, dynamic> data = {
       "payload": paymentPayload,
       "payment_method": method?.title?.toLowerCase(),
@@ -773,10 +804,13 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
       "plan": paymentDetail.value?.gateway?.plan,
       "interval": interval?.replaceAll('ly', ''),
       "subscription_id": paymentDetail.value?.subscriptionId,
-      
     };
 
-    if (paymentType != PaymentType.deposit) {
+    if (isCharityDonation) {
+      // For charity donations, use charity ID
+      data["charity_id"] = context.args['__charity_id'];
+    } else if (paymentType != PaymentType.deposit) {
+      // For regular donations, use existing logic
       data["id"] = paymentDetail.value?.cause?.id;
     }
 
