@@ -44,7 +44,7 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
 
   @override
   String? token;
-  String get initEndpoint {
+  String getInitEndpoint(BuildContext? context) {
     String endpoint = '';
 
     // Check if this is a charity donation
@@ -78,7 +78,7 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
     return endpoint;
   }
 
-  String get finalEndpoint {
+  String getFinalEndpoint(BuildContext? context) {
     String endpoint = '';
 
     // Check if this is a charity donation
@@ -234,10 +234,10 @@ Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
     }
 
     // API call to initiate payment
-    print("init endpoint is ::: $initEndpoint");
+    print("init endpoint is ::: ${getInitEndpoint(context)}");
     print("init endpoint is ::: ${data}");
     final response = await dio.post(
-      initEndpoint,
+      getInitEndpoint(context),
       data: data,
       options: Options(
         headers: {
@@ -815,7 +815,7 @@ redirectToStripeCheckout(paymentDetail.value!.html!);
     }
 
     Response res = await client.post(
-      finalEndpoint,
+      getFinalEndpoint(context),
       data: data,
       options: Options(
         headers: {

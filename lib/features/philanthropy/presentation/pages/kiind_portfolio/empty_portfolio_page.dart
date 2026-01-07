@@ -5,7 +5,7 @@ import 'package:kiind_web/core/constants/texts.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/widgets/full_width_button.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kiind_web/l10n/app_localizations.dart';
 
 class EmptyKiindPortfolioPage extends StatelessWidget {
   const EmptyKiindPortfolioPage({super.key});

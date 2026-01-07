@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kiind_web/l10n/app_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/texts.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';

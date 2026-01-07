@@ -8,7 +8,7 @@ import 'package:kiind_web/core/models/subscription_model.dart';
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/visual_alerts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kiind_web/l10n/app_localizations.dart';
 
 class KiindPortfolioPageProvider extends BaseProvider {
   List<Map>? categories;

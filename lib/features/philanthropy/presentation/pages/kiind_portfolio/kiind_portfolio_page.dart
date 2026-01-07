@@ -12,7 +12,7 @@ import 'package:kiind_web/widgets/donation_modal.dart';
 import 'package:kiind_web/widgets/full_width_button.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kiind_web/l10n/app_localizations.dart';
 
 class KiindPortfolioPage extends StatefulWidget {
   const KiindPortfolioPage({super.key});
