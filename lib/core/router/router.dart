@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/features/organizations/presentation/pages/charity_donation_flow/charity_donation_page.dart';
+import 'package:kiind_web/widgets/charity_donation_modal.dart';
 import 'package:kiind_web/features/organizations/presentation/pages/charity_payment_summary_page.dart';
 import 'package:kiind_web/features/payment/pages/pay_modal.dart';
 import 'package:kiind_web/features/payment/pages/payment_method_screen.dart';
@@ -49,8 +50,9 @@ class AppRouter {
           settings: settings,
         );
       case RoutePaths.charityDonationScreen:
+        final arguments = settings.arguments as Map<String, dynamic>? ?? {};
         return MaterialPageRoute(
-          builder: (_) => const CharityDonationPage(),
+          builder: (_) => CharityDonationModal(arguments: arguments),
           settings: settings,
         );
       case RoutePaths.charityPaymentSummaryScreen:

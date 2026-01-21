@@ -51,13 +51,16 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                 child: MaterialButton(
                   onPressed: () {
                     // Check if this is a charity donation and if donation type is selected
-                    bool isCharityDonation = context.args.containsKey('__charity_id');
+                    bool isCharityDonation =
+                        context.args.containsKey('__charity_id');
 
-                    if (isCharityDonation && provider.selectedDonationType == null) {
+                    if (isCharityDonation &&
+                        provider.selectedDonationType == null) {
                       // Show error message if donation type is not selected
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Please select a donation type to proceed'),
+                          content:
+                              Text('Please select a donation type to proceed'),
                           backgroundColor: Colors.red.shade700,
                         ),
                       );
@@ -69,7 +72,8 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                       // Show error message if payment method is not selected
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Please select a payment method to proceed'),
+                          content:
+                              Text('Please select a payment method to proceed'),
                           backgroundColor: Colors.red.shade700,
                         ),
                       );
@@ -77,7 +81,9 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                     }
 
                     // Proceed with payment if validation passes
-                    provider.launchGateway(context, selectedMethod: provider.method);
+                    provider.launchGateway(
+                      context,
+                    );
                   },
                   color: AppColors.primaryColor,
                   minWidth: double.infinity,
@@ -210,10 +216,13 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                         alignment: TextAlign.start),
                                     const SizedBox(width: 12),
                                     Expanded(
-                                      child: ValueListenableBuilder<bool>(
-                                        valueListenable: provider.isLoadingPaymentMethods,
-                                        builder: (context, isLoading, child) {
-                                          if (isLoading) {
+                                      child: ValueListenableBuilder<
+                                          Map<int, kiind_pay.PaymentMethod>>(
+                                        valueListenable:
+                                            provider.paymentMethods,
+                                        builder:
+                                            (context, paymentMethods, child) {
+                                          if (paymentMethods.isEmpty) {
                                             return const SizedBox(
                                               width: 20,
                                               height: 20,
@@ -223,24 +232,33 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                             );
                                           }
                                           return DropdownButtonFormField(
-                                            value: provider.method,
+                                            value:
+                                                provider.selectedPaymentMethod,
                                             decoration: const InputDecoration(
                                               border: OutlineInputBorder(),
-                                              contentPadding: EdgeInsets.symmetric(
+                                              contentPadding:
+                                                  EdgeInsets.symmetric(
                                                 horizontal: 12,
                                                 vertical: 8,
                                               ),
                                             ),
-                                            hint: const Text('Select payment method'),
-                                            items: provider.availablePaymentMethods
-                                                .map((paymentMethod) => DropdownMenuItem(
+                                            hint: const Text(
+                                                'Select payment method'),
+                                            items: paymentMethods.values
+                                                .map((paymentMethod) =>
+                                                    DropdownMenuItem(
                                                       value: paymentMethod,
-                                                      child: Text(paymentMethod.label),
+                                                      child: Text(
+                                                          paymentMethod.label),
                                                     ))
                                                 .toList(),
-                                            onChanged: (newValue) async {
+                                            onChanged: (newValue) {
                                               if (newValue != null) {
-                                                await provider.onPaymentMethodSelected(context, newValue as kiind_pay.PaymentMethod);
+                                                provider.selectedPaymentMethod =
+                                                    newValue;
+                                                provider
+                                                    .onPaymentMethodSelected(
+                                                        context);
                                               }
                                             },
                                           );

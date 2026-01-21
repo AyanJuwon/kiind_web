@@ -6,7 +6,8 @@ import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/features/organizations/presentation/providers/charity_donation_page_provider.dart';
 
 class CharityDonationPage extends StatefulWidget {
-  const CharityDonationPage({Key? key}) : super(key: key);
+  final Map<String, dynamic>? arguments;
+  const CharityDonationPage({Key? key, this.arguments}) : super(key: key);
 
   @override
   _CharityDonationPageState createState() => _CharityDonationPageState();
@@ -19,6 +20,13 @@ class _CharityDonationPageState extends State<CharityDonationPage> {
       child: null,
       provider: CharityDonationPageProvider(),
       builder: (context, provider, child) {
+        // Initialize the provider with arguments if available
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (widget.arguments != null) {
+            provider.setArguments(widget.arguments!);
+          }
+        });
+
         return Scaffold(
           appBar: AppBar(
             title: const Text('Donate to Charity'),
@@ -60,7 +68,7 @@ class _CharityDonationPageState extends State<CharityDonationPage> {
                         ],
                       ),
                     ),
-                    
+
                     // Donation Amount Input
                     Container(
                       padding: const EdgeInsets.all(16),
@@ -76,7 +84,8 @@ class _CharityDonationPageState extends State<CharityDonationPage> {
                           const SizedBox(height: 16),
                           TextFormField(
                             controller: provider.amountController,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            keyboardType: const TextInputType.numberWithOptions(
+                                decimal: true),
                             decoration: const InputDecoration(
                               labelText: 'Amount (£)',
                               border: OutlineInputBorder(),
@@ -85,7 +94,7 @@ class _CharityDonationPageState extends State<CharityDonationPage> {
                           ),
                           const SizedBox(height: 16),
                           ElevatedButton(
-                            onPressed: provider.validateAndProceed,
+                            onPressed: () => provider.validateAndProceed(context),
                             style: ElevatedButton.styleFrom(
                               minimumSize: const Size(double.infinity, 50),
                             ),

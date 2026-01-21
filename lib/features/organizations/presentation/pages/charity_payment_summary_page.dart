@@ -105,7 +105,7 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
                                   children: [
                                     _buildInfoRow(
                                       'Donor :',
-                                      provider.model.user?.name ?? 'N/A',
+                                      provider.model?.name ?? 'N/A',
                                     ),
                                     const SizedBox(height: 12),
                                     _buildInfoRow(
@@ -114,7 +114,8 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
                                     ),
                                     const SizedBox(height: 12),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
                                           'Method :',
@@ -125,26 +126,36 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
                                           ),
                                         ),
                                         Expanded(
-                                          child: ValueListenableBuilder<bool>(
-                                            valueListenable: provider.isLoadingPaymentMethods,
-                                            builder: (context, isLoading, child) {
-                                              if (isLoading) {
+                                          child: ValueListenableBuilder<
+                                              Map<int, PaymentMethod>>(
+                                            valueListenable:
+                                                provider.paymentMethods,
+                                            builder: (context, paymentMethods,
+                                                child) {
+                                              if (paymentMethods.isEmpty) {
                                                 return const SizedBox(
                                                   width: 20,
                                                   height: 20,
-                                                  child: CircularProgressIndicator(
+                                                  child:
+                                                      CircularProgressIndicator(
                                                     strokeWidth: 2,
                                                   ),
                                                 );
                                               }
-                                              return DropdownButtonFormField<PaymentMethod>(
-                                                value: provider.method,
+                                              return DropdownButtonFormField<
+                                                  PaymentMethod>(
+                                                value: provider
+                                                    .selectedPaymentMethod,
                                                 dropdownColor: _cardColor,
                                                 decoration: InputDecoration(
                                                   contentPadding:
-                                                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                                      const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 16,
+                                                          vertical: 12),
                                                   border: InputBorder.none,
-                                                  hintText: 'Select payment method',
+                                                  hintText:
+                                                      'Select payment method',
                                                   hintStyle: TextStyle(
                                                     color: _labelColor,
                                                     fontSize: 14,
@@ -155,8 +166,10 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
                                                   color: _labelColor,
                                                 ),
                                                 isExpanded: true,
-                                                items: provider.availablePaymentMethods.map((method) {
-                                                  return DropdownMenuItem<PaymentMethod>(
+                                                items: paymentMethods.values
+                                                    .map((method) {
+                                                  return DropdownMenuItem<
+                                                      PaymentMethod>(
                                                     value: method,
                                                     child: Text(
                                                       method.label,
@@ -167,9 +180,14 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
                                                     ),
                                                   );
                                                 }).toList(),
-                                                onChanged: (PaymentMethod? newValue) async {
+                                                onChanged:
+                                                    (PaymentMethod? newValue) {
                                                   if (newValue != null) {
-                                                    await provider.onPaymentMethodSelected(context, newValue);
+                                                    provider.selectedPaymentMethod =
+                                                        newValue;
+                                                    provider
+                                                        .onPaymentMethodSelected(
+                                                            context);
                                                   }
                                                 },
                                               );
@@ -298,7 +316,7 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
               return DropdownMenuItem<CharityDonationType>(
                 value: type,
                 child: Text(
-                  type.name ?? 'Unknown',
+                  type.title ?? 'Unknown',
                   style: TextStyle(
                     fontSize: 14,
                     color: _valueColor,

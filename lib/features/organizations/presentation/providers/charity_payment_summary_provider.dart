@@ -7,10 +7,12 @@ import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:flutter_stripe_web/flutter_stripe_web.dart';
 import 'package:kiind_web/core/constants/endpoints.dart';
 import 'package:kiind_web/core/models/charity_donation_type_model.dart';
+import 'package:kiind_web/core/models/charity_model.dart';
 import 'package:kiind_web/core/models/gateway_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
 import 'package:kiind_web/core/models/payment_method.dart' as kiind_pay;
 import 'package:kiind_web/core/models/post_model.dart';
+import 'package:kiind_web/core/models/user_model.dart';
 import 'package:kiind_web/core/providers/base_provider.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
@@ -31,7 +33,8 @@ class CharityPaymentSummaryProvider extends BaseProvider {
 
   // Donation type properties
   ValueNotifier<List<CharityDonationType>> donationTypes = ValueNotifier([]);
-  ValueNotifier<CharityDonationType?> selectedDonationType = ValueNotifier(null);
+  ValueNotifier<CharityDonationType?> selectedDonationType =
+      ValueNotifier(null);
   ValueNotifier<bool> loadingDonationTypes = ValueNotifier(false);
 
   bool get isSub => interval != 'one_time';
@@ -39,48 +42,147 @@ class CharityPaymentSummaryProvider extends BaseProvider {
   String get initEndpoint => Endpoints.initiateCharityDonation;
   String get finalEndpoint => Endpoints.finalizeCharityDonation;
 
-  // Payment method properties - now nullable to allow selection on page
-  kiind_pay.PaymentMethod? method;
-  List<kiind_pay.PaymentMethod> availablePaymentMethods = [];
-  ValueNotifier<bool> isLoadingPaymentMethods = ValueNotifier(false);
+  // Payment method properties
+  ValueNotifier<Map<int, kiind_pay.PaymentMethod>> paymentMethods =
+      ValueNotifier({});
+  kiind_pay.PaymentMethod? selectedPaymentMethod;
+
+  kiind_pay.PaymentMethod? method; // Will be set from selectedPaymentMethod
 
   dynamic paymentPayload;
   List paypalTransactions = [];
 
-  Future<void> fetchPaymentMethods() async {
-    if (isLoadingPaymentMethods.value) return;
-
-    isLoadingPaymentMethods.value = true;
-    notifyListeners();
-
+  Future<void> fetchPaymentMethods(BuildContext context) async {
+    // Check if user is guest
+    bool isGuest = false;
     try {
       final prefs = await SharedPreferences.getInstance();
-      token = prefs.getString('token') ?? '';
+      final token = prefs.getString('token');
+      isGuest = (token == null || token.isEmpty);
+    } catch (e) {
+      print("Error checking if user is guest: $e");
+      isGuest = true; // Default to guest if there's an error
+    }
 
-      final response = await client.get(
+    if (isGuest) {
+      print("User is guest, skipping payment methods API call");
+      // Add default payment methods for guest users
+      paymentMethods.value = {
+        8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+        10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+      };
+      notifyListeners();
+      return;
+    }
+
+    try {
+      print("Fetching payment methods from: ${Endpoints.getPaymentMethods}");
+
+      Response res = await client.get(
         Endpoints.getPaymentMethods,
         options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-            'Accept': 'application/json'
-          },
+          extra: {'context': context},
         ),
       );
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final List methods = response.data['data'];
-        availablePaymentMethods = methods
-            .map((method) => kiind_pay.PaymentMethod.fromMap(method))
-            .toList();
+      print("Payment methods API Response status: ${res.statusCode}");
+      print("Payment methods API Response data: ${res.data}");
+      print("res.isValid: ${res.isValid}");
+      print("res.hasInfo: ${res.hasInfo}");
+
+      if (res.isValid) {
+        Map<String, dynamic> detailMap =
+            Map<String, dynamic>.from(context.args);
+        print("Payment methods detailMap: $detailMap");
+
+        try {
+          PaymentDetail _detail = PaymentDetail.fromMap(detailMap);
+          print("PaymentDetail created successfully for payment methods");
+
+          // Determine if this is an "other" type donation
+          bool _other = false;
+          if (_detail.cause != null) {
+            try {
+              _other = _detail.cause?.isOther ?? false;
+              print("_other from cause.isOther: $_other");
+            } catch (e) {
+              _other = false;
+              print("_other defaulted to false: $_other");
+            }
+          }
+
+          // Process payment methods from API response
+          dynamic paymentMethodsData = res.info?.data;
+          if (paymentMethodsData == null &&
+              res.data is Map &&
+              res.data.containsKey('data')) {
+            paymentMethodsData = res.data['data'];
+            print("Using fallback data access: $paymentMethodsData");
+          }
+
+          Map<int, kiind_pay.PaymentMethod> methods = {};
+
+          if (paymentMethodsData is List) {
+            for (var v in paymentMethodsData) {
+              print("Processing payment method: $v");
+              // Exclude method ID 7 (MyPos) for all donations
+              if (v['id'] != 7) {
+                kiind_pay.PaymentMethod method =
+                    kiind_pay.PaymentMethod.fromMap(v);
+                methods[v['id']] = method;
+                print("Added method: ${method.title} (ID: ${method.id})");
+              } else {
+                print("Skipped method with ID: ${v['id']}");
+              }
+            }
+          } else {
+            print(
+                "ERROR: paymentMethodsData is not a List: $paymentMethodsData");
+          }
+
+          // Add wallet method for non-"other" donations
+          if (!_other) {
+            kiind_pay.PaymentMethod walletMethod = kiind_pay.PaymentMethod(
+              id: 10000,
+              title: 'Wallet',
+            );
+            methods[10000] = walletMethod;
+            print("Added wallet method");
+          }
+
+          paymentMethods.value = methods;
+          print("Final paymentMethods count: ${methods.length}");
+        } catch (e, stackTrace) {
+          print("Error creating PaymentDetail for payment methods: $e");
+          print("Error stackTrace: $stackTrace");
+
+          // Even if PaymentDetail creation fails, try to add default payment methods
+          paymentMethods.value = {
+            8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+            10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+          };
+        }
+      } else {
+        print("API response not valid for payment methods");
+        // Add default payment methods if API fails
+        paymentMethods.value = {
+          8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+          10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+        };
       }
-    } on DioException catch (e) {
-      print('Error fetching payment methods: ${e.message}');
-      // Show error toast to user
-      // showAlertToast('Failed to load payment methods. Please try again.');
-    } finally {
-      isLoadingPaymentMethods.value = false;
-      notifyListeners();
+    } catch (e, stackTrace) {
+      print("Error in fetchPaymentMethods: $e");
+      print("StackTrace: $stackTrace");
+      debugPrint('Error fetching payment methods: $e');
+
+      // Add default payment methods in case of error
+      paymentMethods.value = {
+        8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+        10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+      };
     }
+
+    notifyListeners();
   }
 
   String _processInterval(String? interval) {
@@ -93,6 +195,7 @@ class CharityPaymentSummaryProvider extends BaseProvider {
       case 'one off':
       case 'one_off':
       case 'oneoff':
+      case 'one time':
         return 'one_time';
       case 'monthly':
         return 'month';
@@ -112,59 +215,27 @@ class CharityPaymentSummaryProvider extends BaseProvider {
     bool shouldGetUser = false,
     Function(BuildContext)? callback,
     bool refresh = true,
-  }) async {
-    await super.init(
+  }) {
+    return super.init(
       context,
-      callback: () async {
-        // Load user profile first
-        model = await getUserProfile();
-        // Then fetch payment details
-        await fetchPaymentDetails(context);
-        // Call the additional callback if provided
-        if (callback != null) {
-          await callback(context);
-        }
-      },
+      callback: fetchPaymentDetails,
     );
   }
 
-  Future<void> handlePaymentMethod(Map<dynamic, dynamic> contextArgs) async {
-    final prefs = await SharedPreferences.getInstance();
-
-    // Extract __method from contextArgs
-    final contextMethod = contextArgs['__method'];
-
-    if (contextMethod != null) {
-      // Save the context method to SharedPreferences
-      final paymentMethodJson = jsonEncode(contextMethod);
-      await prefs.setString('payment_method', paymentMethodJson);
-
-      // Initialize the method
-      method = kiind_pay.PaymentMethod.fromMap(contextMethod);
-    } else {
-      // If contextMethod is null, check SharedPreferences
-      final paymentMethodJson = prefs.getString('payment_method');
-      if (paymentMethodJson != null && paymentMethodJson.isNotEmpty) {
-        final paymentMethodMap = jsonDecode(paymentMethodJson) as Map<String, dynamic>;
-        method = kiind_pay.PaymentMethod.fromMap(paymentMethodMap);
-      } else {
-        // Don't throw exception anymore - we'll allow selection on page
-        print("No payment method found in SharedPreferences or context.args['__method'], allowing selection on page");
-      }
-    }
-
-    // Log the current payment method
-    print('Current Payment Method: ${method?.toString() ?? "None selected"}');
-  }
 
   // Separate method to initialize payment with a specific method
-  Future<void> initializePaymentWithMethod(BuildContext context, kiind_pay.PaymentMethod selectedMethod) async {
+  Future<void> initializePaymentWithMethod(
+      BuildContext context, kiind_pay.PaymentMethod selectedMethod) async {
     final prefs = await SharedPreferences.getInstance();
     token = prefs.getString('token') ?? '';
 
+    // Ensure the amount is properly set from the payment detail or context args
+    final amount = paymentDetail.value?.amounts?.userSubmittedAmount ??
+                  (context.args['amount'] != null ? double.tryParse(context.args['amount'].toString()) : 0.0);
+
     Map<String, dynamic> _data = {
       "payment_method": selectedMethod.title?.toLowerCase(),
-      "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+      "amount": amount,
       "interval": _processInterval(interval),
       "id": charityId,
     };
@@ -196,7 +267,8 @@ class CharityPaymentSummaryProvider extends BaseProvider {
       print("Charity donation initialized successfully");
       String? initialPurpose = paymentDetail.value?.purpose;
 
-      PaymentDetail _detail = PaymentDetail.fromMap(Map<String, dynamic>.from(res.info!.data));
+      PaymentDetail _detail =
+          PaymentDetail.fromMap(Map<String, dynamic>.from(res.info!.data));
 
       paymentDetail.value = _detail.copyWith(purpose: initialPurpose);
 
@@ -232,67 +304,109 @@ class CharityPaymentSummaryProvider extends BaseProvider {
         return;
       }
 
-      Map<String, dynamic> _paymentDetailMap = Map<String, dynamic>.from(context.args);
+      Map<String, dynamic> _paymentDetailMap =
+          Map<String, dynamic>.from(context.args);
       print("Charity payment details - Args received: $_paymentDetailMap");
-      print("Charity payment details - Args keys: ${_paymentDetailMap.keys.toList()}");
+      print(
+          "Charity payment details - Args keys: ${_paymentDetailMap.keys.toList()}");
 
-      // Validate required arguments
-      if (_paymentDetailMap.isEmpty) {
-        print("ERROR: Payment detail map is empty!");
-        loading = false;
-        notifyListeners();
-        Navigator.of(context).pop();
-        return;
+      // Check if token is provided in the arguments and save it to shared preferences
+      final tokenFromArgs = _paymentDetailMap['token'] as String?;
+      if (tokenFromArgs != null && tokenFromArgs.isNotEmpty) {
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', tokenFromArgs);
+        // Update the token in the provider
+        token = tokenFromArgs;
+        print("Token saved to shared preferences and provider: $tokenFromArgs");
+
+        // Refresh the client to pick up the new token
+        client.refresh();
       }
 
-      // Try to create PaymentDetail from the map
-      try {
-        paymentDetail.value = PaymentDetail.fromMap(_paymentDetailMap);
-        print("PaymentDetail created successfully: ${paymentDetail.value?.cause?.title}");
-      } catch (e) {
-        print("ERROR creating PaymentDetail: $e");
-        loading = false;
-        notifyListeners();
-        Navigator.of(context).pop();
-        return;
-      }
+      // Check if this is coming from the charity donation modal (has amount, interval, etc.)
+      if (_paymentDetailMap.containsKey('amount')) {
+        // This is coming from the charity donation modal
+        // Create a temporary payment detail with the amount
+        final amount =
+            double.tryParse(_paymentDetailMap['amount'].toString()) ?? 0.0;
+        final intervalParam =
+            _paymentDetailMap['interval']?.toString() ?? 'one_time';
+        final charityIdParam = _paymentDetailMap['charityId']?.toString();
 
-      if (context.args['__interval'] != null) {
-        interval = context.args['__interval'];
-        print("Interval set to: $interval");
-        print("Original interval value: ${context.args['__interval']}");
+        // Update the interval and charityId
+        interval = intervalParam;
+        charityId = charityIdParam;
 
-        // Process interval for API
-        String processedInterval = interval?.replaceAll('ly', '') ?? 'one_time';
-        print("Processed interval for API: $processedInterval");
+        print(
+            "Received from charity modal - Amount: $amount, Interval: $interval, Charity ID: $charityId");
+
+        // Fetch charity details to populate payment detail
+        await fetchCharityDetailsForPayment(context, amount);
       } else {
-        interval = 'one_time';
-        print("No interval provided, defaulting to: $interval");
+        // Original flow - coming from other sources
+        // Validate required arguments
+        if (_paymentDetailMap.isEmpty) {
+          print("ERROR: Payment detail map is empty!");
+          loading = false;
+          notifyListeners();
+          Navigator.of(context).pop();
+          return;
+        }
+
+        // Try to create PaymentDetail from the map
+        try {
+          paymentDetail.value = PaymentDetail.fromMap(_paymentDetailMap);
+          print(
+              "PaymentDetail created successfully: ${paymentDetail.value?.cause?.title}");
+        } catch (e) {
+          print("ERROR creating PaymentDetail: $e");
+          loading = false;
+          notifyListeners();
+          Navigator.of(context).pop();
+          return;
+        }
+
+        if (context.args['__interval'] != null) {
+          interval = context.args['__interval'];
+          print("Interval set to: $interval");
+          print("Original interval value: ${context.args['__interval']}");
+
+          // Process interval for API
+          String processedInterval =
+              interval?.replaceAll('ly', '') ?? 'one_time';
+          print("Processed interval for API: $processedInterval");
+        } else {
+          interval = 'one_time';
+          print("No interval provided, defaulting to: $interval");
+        }
+
+        // Use the charity's numeric ID from the payment detail instead of the slug from args
+        if (paymentDetail.value?.cause?.id != null) {
+          charityId = paymentDetail.value!.cause!.id.toString();
+          print("Charity ID set to: $charityId (from payment detail cause.id)");
+        } else if (context.args['__charity_id'] != null) {
+          // Fallback to the arg if cause.id is not available
+          charityId = context.args['__charity_id'];
+          print("Charity ID set to: $charityId (from args as fallback)");
+        }
       }
 
-      // Use the charity's numeric ID from the payment detail instead of the slug from args
-      if (paymentDetail.value?.cause?.id != null) {
-        charityId = paymentDetail.value!.cause!.id.toString();
-        print("Charity ID set to: $charityId (from payment detail cause.id)");
-      } else if (context.args['__charity_id'] != null) {
-        // Fallback to the arg if cause.id is not available
-        charityId = context.args['__charity_id'];
-        print("Charity ID set to: $charityId (from args as fallback)");
-      }
-
-      // Handle payment method using the reusable function
-      await handlePaymentMethod(context.args);
-
-      // Fetch available payment methods
-      await fetchPaymentMethods();
+      // Fetch payment methods first
+      await fetchPaymentMethods(context);
 
       // Fetch donation types after payment details are loaded
       await fetchDonationTypes(context);
 
-      // If we have a method selected, initialize the gateway
-      if (method != null) {
-        await initializePaymentWithMethod(context, method!);
+      // Set the first payment method as selected if none is selected yet
+      if (paymentMethods.value.isNotEmpty && selectedPaymentMethod == null) {
+        selectedPaymentMethod = paymentMethods.value.values.first;
+        method =
+            selectedPaymentMethod; // Set the method for backward compatibility
       }
+
+      // Don't initialize payment automatically - wait for user to click Pay Now
+      loading = false;
+      notifyListeners();
     } catch (e, stackTrace) {
       print("Error in charity payment details: $e");
       print("Stack trace: $stackTrace");
@@ -302,18 +416,128 @@ class CharityPaymentSummaryProvider extends BaseProvider {
     }
   }
 
-  // Method to be called when user selects a payment method from the dropdown
-  Future<void> onPaymentMethodSelected(BuildContext context, kiind_pay.PaymentMethod selectedMethod) async {
-    // Save the selected method to shared preferences
-    final prefs = await SharedPreferences.getInstance();
-    final paymentMethodJson = jsonEncode(selectedMethod.toMap());
-    await prefs.setString('payment_method', paymentMethodJson);
+  // Helper method to fetch charity details and create payment detail
+  Future<void> fetchCharityDetailsForPayment(
+      BuildContext context, double amount) async {
+    if (charityId == null) {
+      print("ERROR: Charity ID is null when fetching details for payment");
+      return;
+    }
 
-    // Update the provider's method
-    method = selectedMethod;
+    try {
+      // Fetch charity details
+      final response = await client.get('/v2/groups/$charityId');
 
-    // Initialize payment with the selected method
-    await initializePaymentWithMethod(context, selectedMethod);
+      if (response.statusCode == 200) {
+        // Create a minimal payment detail with the amount and charity info
+        final charityData = response.data['data'];
+
+        // Create a Charity object from the data
+        final charity = Charity.fromMap(charityData);
+
+        // Create a temporary PaymentDetail object
+        paymentDetail.value = PaymentDetail(
+          amounts: Amounts(userSubmittedAmount: amount),
+          // Use the Charity object as the cause
+          cause: charity,
+        );
+
+        print(
+            "Created payment detail for charity: ${charity.title} with amount: $amount");
+      } else {
+        // If the API call fails, still create a payment detail with just the amount
+        // This allows the flow to continue even if charity details can't be fetched
+        paymentDetail.value = PaymentDetail(
+          amounts: Amounts(userSubmittedAmount: amount),
+          // Use a placeholder charity with the ID
+          cause: Charity(
+            id: int.tryParse(charityId!) ?? 0,
+            title: 'Charity ID: $charityId',
+            slug: 'charity_$charityId',
+            categoryId: 0,
+            categoryTitle: 'Charity',
+          ),
+        );
+
+        print("Created payment detail with placeholder charity due to API error: ${response.statusCode}");
+      }
+    } catch (e) {
+      // If there's an exception, create a payment detail with a placeholder charity
+      print("Error fetching charity details for payment: $e");
+      paymentDetail.value = PaymentDetail(
+        amounts: Amounts(userSubmittedAmount: amount),
+        // Use a placeholder charity with the ID
+        cause: Charity(
+          id: int.tryParse(charityId!) ?? 0,
+          title: 'Charity ID: $charityId',
+          slug: 'charity_$charityId',
+          categoryId: 0,
+          categoryTitle: 'Charity',
+        ),
+      );
+    }
+  }
+
+  // Call this method when payment method selection changes
+  void onPaymentMethodSelected(BuildContext context) {
+    // Update the selected method and re-initialize payment to update service charges
+    if (selectedPaymentMethod != null) {
+      method =
+          selectedPaymentMethod; // Update the method reference for backward compatibility
+
+      // Re-initialize payment to update service charges displayed on the page
+      initializePaymentForSelectedMethod(context);
+    }
+  }
+
+  // Re-initialize payment with the currently selected method
+  Future<void> initializePaymentForSelectedMethod(BuildContext context) async {
+    if (selectedPaymentMethod == null) return;
+
+    // Update the method reference for backward compatibility
+    method = selectedPaymentMethod;
+
+    Map<String, dynamic> _data = {
+      "payment_method": selectedPaymentMethod?.title?.toLowerCase(),
+      "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+      "interval": _processInterval(interval),
+      "id": charityId,
+    };
+
+    // Add donation category ID if selected
+    if (selectedDonationType.value?.id != null) {
+      _data['donation_category_id'] = selectedDonationType.value!.id;
+    }
+
+    try {
+      Response res = await client.post(
+        initEndpoint,
+        data: _data,
+        options: Options(
+          extra: {'context': context},
+        ),
+      );
+
+      if (res.isValid) {
+        print("Payment re-initialized successfully with new method");
+        String? initialPurpose = paymentDetail.value?.purpose;
+
+        PaymentDetail _detail =
+            PaymentDetail.fromMap(Map<String, dynamic>.from(res.info!.data));
+
+        paymentDetail.value = _detail.copyWith(purpose: initialPurpose);
+
+        loading = false;
+        notifyListeners();
+        await initializeGateway(context, _detail.html ?? '');
+      } else {
+        print("Payment re-initialization failed: ${res.statusCode}");
+        print("Response data: ${res.data}");
+      }
+    } catch (e, stackTrace) {
+      print("Error re-initializing payment: $e");
+      print("Stack trace: $stackTrace");
+    }
   }
 
   Future<void> fetchDonationTypes(BuildContext context) async {
@@ -329,7 +553,7 @@ class CharityPaymentSummaryProvider extends BaseProvider {
       print("Fetching donation types for charity ID: $charityId");
 
       Response res = await client.get(
-        Endpoints.getCharityDonationTypes,
+        Endpoints.getCharityDonationType,
         queryParameters: {
           'group_id': charityId,
         },
@@ -468,7 +692,8 @@ class CharityPaymentSummaryProvider extends BaseProvider {
     ];
   }
 
-  launchGateway(BuildContext context, {kiind_pay.PaymentMethod? selectedMethod}) async {
+  launchGateway(BuildContext context,
+      {kiind_pay.PaymentMethod? selectedMethod}) async {
     final methodToUse = selectedMethod ?? method;
     print(methodToUse?.id);
     switch (methodToUse?.id) {
@@ -491,6 +716,25 @@ class CharityPaymentSummaryProvider extends BaseProvider {
   void redirectToStripeCheckout(String url) {
     final stripeCheckoutUrl = url;
     html.window.open(stripeCheckoutUrl, '_self');
+  }
+
+  String methodLogo(kiind_pay.PaymentMethod method) {
+    String logo = '';
+
+    switch (method.id) {
+      case 3:
+        logo = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
+        break;
+      case 8:
+        logo = 'https://cdn-icons-png.flaticon.com/512/1198/1198299.png';
+        break;
+      case 10000:
+      default:
+        logo = 'https://img.icons8.com/color/452/wallet--v1.png';
+        break;
+    }
+
+    return logo;
   }
 
   launchStripe(BuildContext context) async {
@@ -556,7 +800,8 @@ class CharityPaymentSummaryProvider extends BaseProvider {
     }
   }
 
-  sendReceiptToServer(BuildContext context, {kiind_pay.PaymentMethod? selectedMethod}) async {
+  sendReceiptToServer(BuildContext context,
+      {kiind_pay.PaymentMethod? selectedMethod}) async {
     loading = true;
 
     String _purpose = (paymentDetail.value?.purpose?.trim() ?? '').isEmpty
@@ -591,7 +836,9 @@ class CharityPaymentSummaryProvider extends BaseProvider {
     );
 
     if (res.isValid) {
-      html.window.open('https://app.kiind.co.uk/callback?__route=payment_successful', '_self');
+      html.window.open(
+          'https://app.kiind.co.uk/callback?__route=payment_successful',
+          '_self');
     } else {
       context.back(
         times: methodToUse?.id == 3 ? 3 : 2,

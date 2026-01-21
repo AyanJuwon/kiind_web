@@ -156,9 +156,7 @@ class _CharitySelectionPageState extends State<CharitySelectionPage> {
                                 decoration: BoxDecoration(
                                     color: Theme.of(context).brightness ==
                                             Brightness.dark
-                                        ? Theme.of(context)
-                                            .colorScheme
-                                            .surface
+                                        ? Theme.of(context).colorScheme.surface
                                         : AppColors.lightGrey,
                                     borderRadius: BorderRadius.circular(12)),
                                 child: TextField(
@@ -295,7 +293,7 @@ class _CharitySelectionPageState extends State<CharitySelectionPage> {
                                               .contains(
                                                   provider.charities[index]),
                                           image: provider
-                                              .charities[index].image_url,
+                                              .charities[index].imageUrl,
                                           onToggle: () => provider
                                               .toggleSelectCharity(index),
                                         );

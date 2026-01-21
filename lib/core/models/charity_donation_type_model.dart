@@ -1,18 +1,18 @@
 class CharityDonationType {
   final int id;
-  final String name;
+  final String title;
   final String description;
 
   CharityDonationType({
     required this.id,
-    required this.name,
+    required this.title,
     required this.description,
   });
 
   factory CharityDonationType.fromJson(Map<String, dynamic> json) {
     return CharityDonationType(
       id: json['id'] ?? 0,
-      name: json['name'] ?? '',
+      title: json['title'] ?? '',
       description: json['description'] ?? '',
     );
   }

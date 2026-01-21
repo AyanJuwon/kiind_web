@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/providers/provider_setup.dart';
+import 'package:kiind_web/core/router/route_paths.dart';
 import 'package:kiind_web/core/router/router.dart';
 import 'package:kiind_web/widgets/donation_modal.dart';
 import 'package:oktoast/oktoast.dart';
@@ -28,6 +29,9 @@ void main() async {
   final interval = uri.queryParameters['__interval'];
   final type = uri.queryParameters['__type'];
 
+  // Extract charity donation specific parameters
+  final charityId = uri.queryParameters['charityId'];
+
   // Initialize payment details map
   Map<String, dynamic> paymentDetails = {};
 
@@ -49,10 +53,23 @@ void main() async {
     "__interval": interval,
     "__type": type,
     "user_id": 19, // Default or extracted value
+    "charityId": charityId,
+    "token": token,
   };
 
   // Determine the initial route based on the URL path
   String initialRoute = uri.path.isEmpty ? '/' : uri.path.split('?').first;
+
+  // Check if the path is for charity donation and we have the required parameters
+  if (uri.path.contains('charity-donation') && charityId != null) {
+    initialRoute = RoutePaths
+        .charityDonationScreen; // Use the route name without leading slash
+    // Add charity-specific parameters to payment details
+    paymentDetails['charityId'] = charityId;
+    if (token != null) {
+      paymentDetails['token'] = token;
+    }
+  }
 
   // Debugging logs for verification
   print('Full URL: ${html.window.location.href}');
@@ -98,6 +115,12 @@ class MyApp extends StatelessWidget {
             if (settings.name == '/pay') {
               return AppRouter.generateRoute(RouteSettings(
                 name: '/pay',
+                arguments: paymentDetails,
+              ));
+            }
+            if (settings.name == '/charity-donation' || settings.name == RoutePaths.charityDonationScreen) {
+              return AppRouter.generateRoute(RouteSettings(
+                name: RoutePaths.charityDonationScreen,
                 arguments: paymentDetails,
               ));
             }

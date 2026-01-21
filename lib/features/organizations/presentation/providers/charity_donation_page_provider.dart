@@ -29,6 +29,11 @@ class CharityDonationPageProvider extends BaseProvider {
   }
 
   Future<void> fetchCharityDetails(BuildContext context) async {
+    // If charityId is already set (via setArguments), skip this method
+    if (charityId != null) {
+      return;
+    }
+
     loading = true;
     notifyListeners();
 
@@ -52,7 +57,49 @@ class CharityDonationPageProvider extends BaseProvider {
       }
 
       // Fetch charity details
-      final response = await client.get('/v2/groups/$charityId');
+      final response = await client.get('/groups/$charityId');
+
+      if (response.statusCode == 200) {
+        charity = Charity.fromMap(response.data['data']);
+      } else {
+        throw Exception('Failed to fetch charity details');
+      }
+    } catch (e) {
+      print('Error fetching charity details: $e');
+    } finally {
+      loading = false;
+      notifyListeners();
+    }
+  }
+
+  void setArguments(Map<String, dynamic> arguments) {
+    // Extract charityId and token from arguments
+    charityId = arguments['charityId'] as String?;
+    token = arguments['token'] as String?;
+
+    // If token is provided in arguments, save it to shared preferences
+    if (token != null && token!.isNotEmpty) {
+      SharedPreferences.getInstance().then((prefs) {
+        prefs.setString('token', token!);
+      });
+    }
+
+    // Fetch charity details after setting the arguments
+    fetchCharityDetailsWithParams(charityId!, token);
+  }
+
+  Future<void> fetchCharityDetailsWithParams(
+      String charityId, String? token) async {
+    loading = true;
+    notifyListeners();
+
+    try {
+      if (charityId.isEmpty) {
+        throw Exception('Charity ID is required');
+      }
+
+      // Fetch charity details
+      final response = await client.get('/groups/$charityId');
 
       if (response.statusCode == 200) {
         charity = Charity.fromMap(response.data['data']);

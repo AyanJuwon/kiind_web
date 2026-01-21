@@ -9,10 +9,10 @@ void registerPlatformView() {
   // This function serves as a compatibility layer
   try {
     // Only run on web
-    if (ui.webOnlyInstantiateImageCodecFromUrl != null) {
-      // On web, platformViewRegistry is accessed differently or not needed
-      // This is a no-op for web
-    }
+    // if (ui.webOnlyInstantiateImageCodecFromUrl != null) {
+    //   // On web, platformViewRegistry is accessed differently or not needed
+    //   // This is a no-op for web
+    // }
   } catch (e) {
     // Handle any errors gracefully
     print('Error registering platform view: $e');

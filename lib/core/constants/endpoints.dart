@@ -106,7 +106,7 @@ class Endpoints {
   static const categoriesAll = '/categories/all';
   static const guestCategoriesList = '/guest/categories/all';
 
-  static const getCharityDonationTypes = '/v2/charity-categories';
+  static const getCharityDonationTypes = '/charity-categories';
 
   static const categoryHomeFeed = '/home/category';
   static const categoryPosts = '/posts/category';
@@ -126,6 +126,8 @@ class Endpoints {
   static const featuredCampaigns = '/featured/campaigns';
   static const deleteAccountInit = '/auth/delete/init';
   static const deleteAccountComplete = '/auth/delete/confirm';
+
+  static const getCharityDonationType = '/charity-categories';
 
   static const openEndpoints = {
     register: true,

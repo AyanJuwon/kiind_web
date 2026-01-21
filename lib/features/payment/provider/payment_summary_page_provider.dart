@@ -118,10 +118,12 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
     return endpoint;
   }
 
-  // Payment method properties - now nullable to allow selection on page
-  kiind_pay.PaymentMethod? method;
-  List<kiind_pay.PaymentMethod> availablePaymentMethods = [];
-  bool isLoadingPaymentMethods = false;
+  // Payment method properties
+  ValueNotifier<Map<int, kiind_pay.PaymentMethod>> paymentMethods =
+      ValueNotifier({});
+  kiind_pay.PaymentMethod? selectedPaymentMethod;
+
+  kiind_pay.PaymentMethod? method; // Will be set from selectedPaymentMethod
 
   late BraintreeDropInRequest btReq;
   BraintreeDropInResult? btRes;
@@ -170,39 +172,137 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
     }
   }
 
-  Future<void> fetchPaymentMethods() async {
-    if (isLoadingPaymentMethods) return;
-
-    isLoadingPaymentMethods = true;
-    notifyListeners();
-
+  Future<void> fetchPaymentMethods(BuildContext context) async {
+    // Check if user is guest
+    bool isGuest = false;
     try {
       final prefs = await SharedPreferences.getInstance();
-      token = prefs.getString('token') ?? '';
+      final token = prefs.getString('token');
+      isGuest = (token == null || token.isEmpty);
+    } catch (e) {
+      print("Error checking if user is guest: $e");
+      isGuest = true; // Default to guest if there's an error
+    }
 
-      final response = await client.get(
+    if (isGuest) {
+      print("User is guest, skipping payment methods API call");
+      // Add default payment methods for guest users
+      paymentMethods.value = {
+        8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+        10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+      };
+      notifyListeners();
+      return;
+    }
+
+    try {
+      print("Fetching payment methods from: ${Endpoints.getPaymentMethods}");
+
+      Response res = await client.get(
         Endpoints.getPaymentMethods,
         options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-            'Accept': 'application/json'
-          },
+          extra: {'context': context},
         ),
       );
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        final List methods = response.data['data'];
-        availablePaymentMethods = methods
-            .map((method) => kiind_pay.PaymentMethod.fromMap(method))
-            .toList();
+      print("Payment methods API Response status: ${res.statusCode}");
+      print("Payment methods API Response data: ${res.data}");
+      print("res.isValid: ${res.isValid}");
+      print("res.hasInfo: ${res.hasInfo}");
+
+      if (res.isValid) {
+        Map<String, dynamic> detailMap =
+            Map<String, dynamic>.from(context.args);
+        print("Payment methods detailMap: $detailMap");
+
+        try {
+          PaymentDetail _detail = PaymentDetail.fromMap(detailMap);
+          print("PaymentDetail created successfully for payment methods");
+
+          // Determine if this is an "other" type donation
+          bool _other = false;
+          if (_detail.cause != null) {
+            try {
+              _other = _detail.cause?.isOther ?? false;
+              print("_other from cause.isOther: $_other");
+            } catch (e) {
+              _other = false;
+              print("_other defaulted to false: $_other");
+            }
+          }
+
+          // Process payment methods from API response
+          dynamic paymentMethodsData = res.info?.data;
+          if (paymentMethodsData == null &&
+              res.data is Map &&
+              res.data.containsKey('data')) {
+            paymentMethodsData = res.data['data'];
+            print("Using fallback data access: $paymentMethodsData");
+          }
+
+          Map<int, kiind_pay.PaymentMethod> methods = {};
+
+          if (paymentMethodsData is List) {
+            for (var v in paymentMethodsData) {
+              print("Processing payment method: $v");
+              // Exclude method ID 7 (MyPos) for all donations
+              if (v['id'] != 7) {
+                kiind_pay.PaymentMethod method =
+                    kiind_pay.PaymentMethod.fromMap(v);
+                methods[v['id']] = method;
+                print("Added method: ${method.title} (ID: ${method.id})");
+              } else {
+                print("Skipped method with ID: ${v['id']}");
+              }
+            }
+          } else {
+            print(
+                "ERROR: paymentMethodsData is not a List: $paymentMethodsData");
+          }
+
+          // Add wallet method for non-"other" donations
+          if (!_other) {
+            kiind_pay.PaymentMethod walletMethod = kiind_pay.PaymentMethod(
+              id: 10000,
+              title: 'Wallet',
+            );
+            methods[10000] = walletMethod;
+            print("Added wallet method");
+          }
+
+          paymentMethods.value = methods;
+          print("Final paymentMethods count: ${methods.length}");
+        } catch (e, stackTrace) {
+          print("Error creating PaymentDetail for payment methods: $e");
+          print("Error stackTrace: $stackTrace");
+
+          // Even if PaymentDetail creation fails, try to add default payment methods
+          paymentMethods.value = {
+            8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+            10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+          };
+        }
+      } else {
+        print("API response not valid for payment methods");
+        // Add default payment methods if API fails
+        paymentMethods.value = {
+          8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+          10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+        };
       }
-    } on DioException catch (e) {
-      print('Error fetching payment methods: ${e.message}');
-      showAlertToast('Failed to load payment methods. Please try again.');
-    } finally {
-      isLoadingPaymentMethods = false;
-      notifyListeners();
+    } catch (e, stackTrace) {
+      print("Error in fetchPaymentMethods: $e");
+      print("StackTrace: $stackTrace");
+      debugPrint('Error fetching payment methods: $e');
+
+      // Add default payment methods in case of error
+      paymentMethods.value = {
+        8: kiind_pay.PaymentMethod(id: 8, title: 'Stripe'),
+        10000: kiind_pay.PaymentMethod(id: 10000, title: 'Wallet'),
+      };
     }
+
+    notifyListeners();
   }
 
   @override
@@ -269,14 +369,11 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
         interval = context.args['__interval'];
       }
 
-      // Handle payment method using the reusable function
-      await handlePaymentMethod(context.args);
-
       // Check if this is a charity donation
       bool isCharityDonation = context.args.containsKey('__charity_id');
 
-      // Fetch available payment methods
-      await fetchPaymentMethods();
+      // Fetch payment methods first
+      await fetchPaymentMethods(context);
 
       // Fetch donation types for charity donations
       if (isCharityDonation) {
@@ -284,10 +381,15 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
         await fetchDonationTypes(context.args['__charity_id']);
       }
 
-      // If we have a method selected, initialize the gateway
-      if (method != null) {
-        await initializePaymentWithMethod(context, method!);
+      // Set the first payment method as selected if none is selected yet
+      if (paymentMethods.value.isNotEmpty && selectedPaymentMethod == null) {
+        selectedPaymentMethod = paymentMethods.value.values.first;
+        method = selectedPaymentMethod; // Set the method for backward compatibility
       }
+
+      // Don't initialize payment automatically - wait for user to click Pay Now
+      loading = false;
+      notifyListeners();
     } on DioException catch (e) {
       // Handle Dio errors with user-friendly messages
       String errorMessage = 'An error occurred during payment initialization.';
@@ -408,18 +510,106 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
     }
   }
 
-  // Method to be called when user selects a payment method from the dropdown
-  Future<void> onPaymentMethodSelected(BuildContext context, kiind_pay.PaymentMethod selectedMethod) async {
-    // Save the selected method to shared preferences
+  // Call this method when payment method selection changes
+  void onPaymentMethodSelected(BuildContext context) {
+    // Update the selected method and re-initialize payment to update service charges
+    if (selectedPaymentMethod != null) {
+      method = selectedPaymentMethod; // Update the method reference for backward compatibility
+
+      // Re-initialize payment to update service charges displayed on the page
+      initializePaymentForSelectedMethod(context);
+    }
+  }
+
+  // Re-initialize payment with the currently selected method
+  Future<void> initializePaymentForSelectedMethod(BuildContext context) async {
+    if (selectedPaymentMethod == null) return;
+
+    // Update the method reference for backward compatibility
+    method = selectedPaymentMethod;
+
+    // Check if this is a charity donation
+    bool isCharityDonation = context.args.containsKey('__charity_id');
+
+    Map<String, dynamic> data = {
+      "payment_method": selectedPaymentMethod?.title?.toLowerCase(),
+      "amount": paymentDetail.value?.amounts?.userSubmittedAmount,
+      "interval": interval?.toLowerCase() =='one_time'? "single": interval?.replaceAll('ly', ''),
+      "device": 'ios',
+    };
+
+    if (isCharityDonation) {
+      // For charity donations, use charity ID from context
+      data["charity_id"] = context.args['__charity_id'];
+
+      // Add donation category ID if selected
+      if (selectedDonationType != null) {
+        data["donation_category_id"] = selectedDonationType!.id;
+      }
+    } else {
+      // For regular donations, use existing logic
+      if (paymentDetail.value!.cause is Campaign) {
+        data["id"] = (paymentDetail.value!.cause as Campaign).id;
+      } else if (paymentType != PaymentType.deposit) {
+        data["id"] = paymentDetail.value?.cause?.id;
+      }
+    }
+
+    // Initialize Dio
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://app.kiind.co.uk/api/v2',
+        headers: {'Accept': 'application/json'},
+      ),
+    );
+
     final prefs = await SharedPreferences.getInstance();
-    final paymentMethodJson = jsonEncode(selectedMethod.toMap());
-    await prefs.setString('payment_method', paymentMethodJson);
+    final token = prefs.getString('token');
+    if (token == null) {
+      throw Exception('Token not found');
+    }
 
-    // Update the provider's method
-    method = selectedMethod;
+    // API call to initiate payment
+    print("init endpoint is ::: ${getInitEndpoint(context)}");
+    print("init endpoint is ::: $data");
+    final response = await dio.post(
+      getInitEndpoint(context),
+      data: data,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+        extra: {'context': context},
+      ),
+    );
 
-    // Initialize payment with the selected method
-    await initializePaymentWithMethod(context, selectedMethod);
+    if (response.statusCode == 200 && response.data != null) {
+      print("data to from response initiate::::: $response");
+      String? initialPurpose = paymentDetail.value?.purpose;
+
+      // Use the response to initialize gateway
+      PaymentDetail detail = PaymentDetail.fromMap(
+        Map<String, dynamic>.from(response.data['data']),
+      );
+
+      if (paymentType == PaymentType.deposit) {
+        paymentDetail.value = paymentDetail.value?.copyWith(
+          gateway: detail.gateway,
+          purpose: initialPurpose,
+          html: detail.html,
+        );
+      } else {
+        paymentDetail.value = detail.copyWith(
+          purpose: initialPurpose,
+        );
+      }
+
+      await initializeGateway(context);
+    } else {
+      // Show error dialog instead of silent navigation
+      _showErrorDialog(context, 'Payment initialization failed. Please try again later.');
+      print("Payment initialization failed with status: ${response.statusCode}");
+    }
   }
 
   // Future<void> fetchPaymentDetails(BuildContext context) async {
@@ -676,29 +866,88 @@ print("starting mypos");
 
     processingPayment.value = false;
   }
-  launchGateway(BuildContext context, {kiind_pay.PaymentMethod? selectedMethod}) async {
-    final methodToUse = selectedMethod ?? method;
+  launchGateway(BuildContext context) async {
+    // Use the selected payment method
+    kiind_pay.PaymentMethod? currentMethod = selectedPaymentMethod ?? method;
+    print(currentMethod?.id);
 
-    switch (methodToUse?.id) {
-      case 3:
-        await launchPaypal(context);
-        break;
-      case 8:
-        await launchStripe(context);
-        break;
-     case 7:
-        await launchMyPos(context);
-        break;
-      case 10000:
-      default:
-        await sendReceiptToServer(context);
-        break;
+    try {
+      // If payment hasn't been initialized yet, initialize it
+      if (paymentDetail.value?.gateway == null) {
+        // Show loading indicator
+        loading = true;
+        notifyListeners();
+
+        await initializePaymentForSelectedMethod(context);
+      }
+
+      switch (currentMethod?.id) {
+        case 3:
+          await launchPaypal(context);
+          break;
+        case 8:
+          await launchStripe(context);
+          break;
+        case 7:
+          await launchMyPos(context);
+          break;
+        case 10000:
+        default:
+          await sendReceiptToServer(context);
+          break;
+      }
+    } catch (e) {
+      print("Error during payment processing: $e");
+      // Stop loading indicator
+      loading = false;
+      notifyListeners();
+
+      // Show error dialog to user
+      if (context.mounted) {
+        showDialog(
+          context: context,
+          builder: (BuildContext dialogContext) {
+            return AlertDialog(
+              title: const Text('Payment Error'),
+              content: Text(
+                  'An error occurred during payment processing. Please try again.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(dialogContext).pop(); // Close dialog
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
     }
   }
 
 void redirectToStripeCheckout(String url,) {
   final stripeCheckoutUrl = url;
   html.window.open(stripeCheckoutUrl, '_self');
+}
+
+String methodLogo(kiind_pay.PaymentMethod method) {
+  String logo = '';
+
+  switch (method.id) {
+    case 3:
+      logo = 'https://cdn-icons-png.flaticon.com/512/174/174861.png';
+      break;
+    case 8:
+      logo = 'https://cdn-icons-png.flaticon.com/512/1198/1198299.png';
+      break;
+    case 10000:
+    default:
+      logo = 'https://img.icons8.com/color/452/wallet--v1.png';
+      break;
+  }
+
+  return logo;
 }
 
   launchStripe(BuildContext context) async {
