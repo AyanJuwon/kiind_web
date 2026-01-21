@@ -113,48 +113,119 @@ class PaymentMethodPageProvider extends BaseProvider {
             title: 'Wallet',
           );
         }
+      } else {
+        // Show error dialog for non-successful responses
+        _showErrorDialog(context, 'Failed to load payment methods. Please try again later.');
       }
     } on DioException catch (e) {
-      // Handle Dio errors
+      // Handle Dio errors with user-friendly messages
+      String errorMessage = 'An error occurred while loading payment methods.';
+
       if (e.response != null) {
-        print('Error: ${e.response?.data}');
+        print('Error loading payment methods: ${e.response?.data}');
+
+        // Check for specific error conditions
+        if (e.response?.statusCode == 500) {
+          errorMessage = 'Server error occurred. Please try again later.';
+        } else if (e.response?.statusCode == 400) {
+          errorMessage = 'Invalid request. Please try again.';
+        } else if (e.response?.statusCode == 401) {
+          errorMessage = 'Unauthorized access. Please log in again.';
+        } else if (e.response?.data is Map && e.response?.data['message'] != null) {
+          errorMessage = e.response?.data['message'].toString() ?? errorMessage;
+        }
+      } else if (e.type == DioExceptionType.connectionError || e.type == DioExceptionType.connectionTimeout) {
+        errorMessage = 'Connection error. Please check your internet connection.';
       } else {
-        print('Error: ${e.message}');
+        print('Error loading payment methods: ${e.message}');
       }
+
+      _showErrorDialog(context, errorMessage);
+    } on Exception catch (e) {
+      // Handle any other exceptions
+      print('Unexpected error loading payment methods: $e');
+      _showErrorDialog(context, 'An unexpected error occurred while loading payment methods. Please try again later.');
     } finally {
       loading = false;
       notifyListeners();
     }
   }
 
-  selectMethod(PaymentMethod method, BuildContext context, amount) {
-    print(context.args);
-    final paymentDetail = PaymentDetail.fromMap({
-      "gateway": null,
-      "purpose": null,
-      "post": null,
-      "campaign": campaign!.toMap(),
-      "charges": null,
-      "amounts": {
-        "user_submitted_amount": amount,
-        "amount_after_charges_deduction": null
-      },
-      "subscription_id": null
-    });
-    dynamic finalPaymentDetails = paymentDetail.toMap();
-    finalPaymentDetails["__type"] = context.args["__type"];
-    print("latest payment_method ::: ${method.toMap()}");
-    context.to(
-      RoutePaths.paymentSummaryScreen,
-      args: finalPaymentDetails
-        ..putIfAbsent(
-          '__method',
-          () => method.toMap(),
-        ),
-    );
+  Future<void> selectMethod(PaymentMethod method, BuildContext context, amount) async {
+    try {
+      print(context.args);
+      final paymentDetail = PaymentDetail.fromMap({
+        "gateway": null,
+        "purpose": null,
+        "post": null,
+        "campaign": campaign!.toMap(),
+        "charges": null,
+        "amounts": {
+          "user_submitted_amount": amount,
+          "amount_after_charges_deduction": null
+        },
+        "subscription_id": null
+      });
+      dynamic finalPaymentDetails = paymentDetail.toMap();
+      finalPaymentDetails["__type"] = context.args["__type"];
 
-    if (saveAsDefault) {
-      // save to box
+      // Check if this is a charity donation by looking for charity_id in context.args
+      bool isCharityDonation = context.args.containsKey('__charity_id');
+      if (isCharityDonation) {
+        // Add charity_id to the payment details
+        finalPaymentDetails['__charity_id'] = context.args['__charity_id'];
+      }
+
+      print("latest payment_method ::: ${method.toMap()}");
+
+      // Navigate to appropriate payment summary page based on donation type
+      if (isCharityDonation) {
+        context.to(
+          RoutePaths.charityPaymentSummaryScreen,
+          args: finalPaymentDetails
+            ..putIfAbsent(
+              '__method',
+              () => method.toMap(),
+            ),
+        );
+      } else {
+        context.to(
+          RoutePaths.paymentSummaryScreen,
+          args: finalPaymentDetails
+            ..putIfAbsent(
+              '__method',
+              () => method.toMap(),
+            ),
+        );
+      }
+
+      if (saveAsDefault) {
+        // save to box
+      }
+    } catch (e) {
+      print('Navigation error: $e');
+      _showErrorDialog(context, 'Failed to navigate to payment page. Please try again.');
+    }
+  }
+
+  // Helper method to show error dialogs to users
+  Future<void> _showErrorDialog(BuildContext context, String message) async {
+    if (context.mounted) {
+      await showDialog(
+        context: context,
+        builder: (dialogContext) => AlertDialog(
+          title: const Text('Payment Error'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop(); // Close dialog
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 

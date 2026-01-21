@@ -27,6 +27,8 @@ class RoutePaths {
   static const String paymentMethodScreen = 'payment_method';
   static const String paymentSummaryScreen = 'payment_summary';
   static const String paymentSuccessfulScreen = 'payment_successful';
+  static const String charityPaymentSummaryScreen = 'charity_payment_summary';
+  static const String charityDonationScreen = 'charity-donation';
   static const String mediaScreen = 'media';
   static const String podcastScreen = 'podcast';
   static const String podcastEpisodeScreen = 'podcast_episode';

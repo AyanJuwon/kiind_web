@@ -4,7 +4,9 @@ import 'package:kiind_web/core/base_page.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
 import 'package:kiind_web/core/constants/texts.dart';
 import 'package:kiind_web/core/models/campaign_model.dart';
+import 'package:kiind_web/core/models/donation_type_model.dart';
 import 'package:kiind_web/core/models/payment_detail.dart';
+import 'package:kiind_web/core/models/payment_method.dart' as kiind_pay;
 import 'package:kiind_web/core/util/extensions/buildcontext_extensions.dart';
 import 'package:kiind_web/core/util/extensions/num_extentions.dart';
 import 'package:kiind_web/features/payment/provider/payment_summary_page_provider.dart';
@@ -47,7 +49,36 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                   horizontal: 24,
                 ),
                 child: MaterialButton(
-                  onPressed: () => provider.launchGateway(context),
+                  onPressed: () {
+                    // Check if this is a charity donation and if donation type is selected
+                    bool isCharityDonation = context.args.containsKey('__charity_id');
+
+                    if (isCharityDonation && provider.selectedDonationType == null) {
+                      // Show error message if donation type is not selected
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please select a donation type to proceed'),
+                          backgroundColor: Colors.red.shade700,
+                        ),
+                      );
+                      return;
+                    }
+
+                    // Check if payment method is selected
+                    if (provider.method == null) {
+                      // Show error message if payment method is not selected
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please select a payment method to proceed'),
+                          backgroundColor: Colors.red.shade700,
+                        ),
+                      );
+                      return;
+                    }
+
+                    // Proceed with payment if validation passes
+                    provider.launchGateway(context, selectedMethod: provider.method);
+                  },
                   color: AppColors.primaryColor,
                   minWidth: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -179,9 +210,41 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                         alignment: TextAlign.start),
                                     const SizedBox(width: 12),
                                     Expanded(
-                                      child: customTextNormal(
-                                        provider.method?.label ?? 'N/A',
-                                        alignment: TextAlign.end,
+                                      child: ValueListenableBuilder<bool>(
+                                        valueListenable: provider.isLoadingPaymentMethods,
+                                        builder: (context, isLoading, child) {
+                                          if (isLoading) {
+                                            return const SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                              ),
+                                            );
+                                          }
+                                          return DropdownButtonFormField(
+                                            value: provider.method,
+                                            decoration: const InputDecoration(
+                                              border: OutlineInputBorder(),
+                                              contentPadding: EdgeInsets.symmetric(
+                                                horizontal: 12,
+                                                vertical: 8,
+                                              ),
+                                            ),
+                                            hint: const Text('Select payment method'),
+                                            items: provider.availablePaymentMethods
+                                                .map((paymentMethod) => DropdownMenuItem(
+                                                      value: paymentMethod,
+                                                      child: Text(paymentMethod.label),
+                                                    ))
+                                                .toList(),
+                                            onChanged: (newValue) async {
+                                              if (newValue != null) {
+                                                await provider.onPaymentMethodSelected(context, newValue as kiind_pay.PaymentMethod);
+                                              }
+                                            },
+                                          );
+                                        },
                                       ),
                                     ),
                                   ],
@@ -260,6 +323,81 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                           ),
                         ),
                         // const SizedBox(height: 28),
+                        // Add donation type dropdown section for charity donations
+                        // COMMENTED OUT: Only charity donations should have donation category selection
+                        /*
+                        if (context.args.containsKey('__charity_id'))
+                          Column(
+                            children: [
+                              const SizedBox(height: 28),
+                              Container(
+                                decoration: context.cardDecoration,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 20),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: customTextSmall(
+                                              'Donation Type *',
+                                              alignment: TextAlign.start,
+                                              textColor: Colors.black,
+                                            ),
+                                          ),
+                                          if (provider.isLoadingDonationTypes)
+                                            const SizedBox(
+                                              width: 20,
+                                              height: 20,
+                                              child: CircularProgressIndicator(
+                                                strokeWidth: 2,
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      DropdownButtonFormField<DonationType>(
+                                        value: provider.selectedDonationType,
+                                        decoration: const InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                            vertical: 8,
+                                          ),
+                                        ),
+                                        hint: const Text('Select donation type'),
+                                        items: provider.donationTypes
+                                            .map((donationType) => DropdownMenuItem(
+                                                  value: donationType,
+                                                  child: Text(donationType.title),
+                                                ))
+                                            .toList(),
+                                        onChanged: (DonationType? newValue) {
+                                          provider.selectedDonationType = newValue;
+                                          provider.notifyListeners();
+                                        },
+                                      ),
+                                      if (provider.selectedDonationType == null &&
+                                          !provider.isLoadingDonationTypes)
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 8.0),
+                                          child: Text(
+                                            'Please select a donation type to proceed',
+                                            style: TextStyle(
+                                              color: Colors.red.shade700,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        */
                         Align(
                           alignment: Alignment.centerRight,
                           child: Padding(

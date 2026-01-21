@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/models/donation_info_model.dart';
 import 'package:kiind_web/core/router/route_paths.dart';
+import 'package:kiind_web/features/organizations/presentation/pages/charity_donation_flow/charity_donation_page.dart';
+import 'package:kiind_web/features/organizations/presentation/pages/charity_payment_summary_page.dart';
 import 'package:kiind_web/features/payment/pages/pay_modal.dart';
 import 'package:kiind_web/features/payment/pages/payment_method_screen.dart';
 import 'package:kiind_web/features/payment/pages/payment_summary/payment_summary_page.dart';
@@ -44,6 +46,16 @@ class AppRouter {
       case RoutePaths.paymentSummaryScreen:
         return MaterialPageRoute(
           builder: (_) => const PaymentSummaryPage(),
+          settings: settings,
+        );
+      case RoutePaths.charityDonationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CharityDonationPage(),
+          settings: settings,
+        );
+      case RoutePaths.charityPaymentSummaryScreen:
+        return MaterialPageRoute(
+          builder: (_) => const CharityPaymentSummaryPage(),
           settings: settings,
         );
       // case RoutePaths.paymentSuccessfulScreen:

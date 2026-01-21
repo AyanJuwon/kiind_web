@@ -11,7 +11,7 @@ class Charity extends Equatable {
   final String? primaryColor;
   final String? secondaryColor;
   final String? image;
-  final String? image_url;
+  final String? imageUrl;
 
   const Charity({
     required this.id,
@@ -24,7 +24,7 @@ class Charity extends Equatable {
     this.primaryColor,
     this.secondaryColor,
     this.image,
-    this.image_url,
+    this.imageUrl,
   });
 
   factory Charity.fromMap(Map<String, dynamic> map) {
@@ -39,7 +39,7 @@ class Charity extends Equatable {
       secondaryColor: map['secondary_color'],
       categoryTitle: map['category_title'],
       image: map['image'],
-      image_url: map['image_url'],
+      imageUrl: map['image_url'],
     );
   }
 
@@ -55,7 +55,7 @@ class Charity extends Equatable {
       'secondary_color': secondaryColor,
       'category_title': categoryTitle,
       'image': image,
-      'image_url': image_url
+      'image_url': imageUrl
     };
   }
 

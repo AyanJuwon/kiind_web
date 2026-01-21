@@ -106,6 +106,8 @@ class Endpoints {
   static const categoriesAll = '/categories/all';
   static const guestCategoriesList = '/guest/categories/all';
 
+  static const getCharityDonationTypes = '/v2/charity-categories';
+
   static const categoryHomeFeed = '/home/category';
   static const categoryPosts = '/posts/category';
   static const categoryLive = '/live-events/category';
