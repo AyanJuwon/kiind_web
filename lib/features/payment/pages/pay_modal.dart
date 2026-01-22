@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:kiind_web/core/constants/app_colors.dart';
@@ -439,9 +440,10 @@ class _PayModalState extends State<PayModal> {
                                           PaymentType.deposit.index;
                                     }
 
+                                    // Always skip the payment method selection page and go directly to payment summary
+                                    // when coming from the pay page
                                     await context.off(
-                                      RoutePaths.paymentMethodScreen,
-                                      // RoutePaths.paymentSummaryScreen,
+                                      RoutePaths.paymentSummaryScreen,
                                       args: detail,
                                     );
                                   }

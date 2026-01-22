@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -58,6 +59,42 @@ class RestInterceptor extends Interceptor {
       options.headers['Accept'] = 'application/json';
     } else if (!Endpoints.openEndpoints.containsKey(options.path)) {
       options.path = options.path;
+    }
+
+    // Add CSRF token for web requests (for POST, PUT, PATCH, DELETE)
+    if (options.method.toUpperCase() != 'GET') {
+      // Try to get CSRF token from meta tag in HTML document
+      try {
+        final csrfToken = html.document.querySelector('meta[name="csrf-token"]');
+        if (csrfToken != null) {
+          final tokenValue = csrfToken.getAttribute('content');
+          if (tokenValue != null && tokenValue.isNotEmpty) {
+            options.headers['X-CSRF-TOKEN'] = tokenValue;
+          }
+        }
+      } catch (e) {
+        // If we can't access the document (in some environments), continue without CSRF token
+        print('Could not access CSRF token from HTML document: $e');
+      }
+
+      // Also try to get CSRF token from cookies (common in Laravel apps)
+      try {
+        final cookies = html.document.cookie;
+        if (cookies != null) {
+          final cookiePairs = cookies.split(';');
+          for (final pair in cookiePairs) {
+            final parts = pair.trim().split('=');
+            if (parts.length == 2 && parts[0] == 'XSRF-TOKEN') {
+              // Decode the cookie value if it's URL-encoded
+              final csrfToken = Uri.decodeComponent(parts[1]);
+              options.headers['X-XSRF-TOKEN'] = csrfToken;
+              break;
+            }
+          }
+        }
+      } catch (e) {
+        print('Could not access CSRF token from cookies: $e');
+      }
     }
 
     return super.onRequest(options, handler);

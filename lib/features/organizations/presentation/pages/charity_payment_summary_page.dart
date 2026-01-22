@@ -376,7 +376,7 @@ class _CharityPaymentSummaryPageState extends State<CharityPaymentSummaryPage> {
     }
     rows.add(
       _buildInfoRow(
-        'Pay to Campaign service',
+        'Pay to Charity',
         '£ ${(detail?.netCost ?? 0).leanString}',
       ),
     );

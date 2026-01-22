@@ -385,11 +385,14 @@ final cancelUrl = Uri.encodeFull('https://app.kiind.co.uk/callback?__route=payme
       if (paymentMethods.value.isNotEmpty && selectedPaymentMethod == null) {
         selectedPaymentMethod = paymentMethods.value.values.first;
         method = selectedPaymentMethod; // Set the method for backward compatibility
-      }
 
-      // Don't initialize payment automatically - wait for user to click Pay Now
-      loading = false;
-      notifyListeners();
+        // Automatically initialize payment details for the first selected method
+        await initializePaymentForSelectedMethod(context);
+      } else {
+        // Don't initialize payment automatically - wait for user to click Pay Now
+        loading = false;
+        notifyListeners();
+      }
     } on DioException catch (e) {
       // Handle Dio errors with user-friendly messages
       String errorMessage = 'An error occurred during payment initialization.';

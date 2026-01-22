@@ -223,12 +223,23 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                         builder:
                                             (context, paymentMethods, child) {
                                           if (paymentMethods.isEmpty) {
-                                            return const SizedBox(
-                                              width: 20,
-                                              height: 20,
-                                              child: CircularProgressIndicator(
-                                                strokeWidth: 2,
-                                              ),
+                                            return Row(
+                                              children: [
+                                                const SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: CircularProgressIndicator(
+                                                    strokeWidth: 2,
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 8),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Loading payment methods...',
+                                                    style: Theme.of(context).textTheme.bodyMedium,
+                                                  ),
+                                                ),
+                                              ],
                                             );
                                           }
                                           return DropdownButtonFormField(
@@ -252,12 +263,13 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                                           paymentMethod.label),
                                                     ))
                                                 .toList(),
-                                            onChanged: (newValue) {
+                                            onChanged: (newValue) async {
                                               if (newValue != null) {
                                                 provider.selectedPaymentMethod =
                                                     newValue;
-                                                provider
-                                                    .onPaymentMethodSelected(
+                                                // Update service charges when payment method changes
+                                                await provider
+                                                    .initializePaymentForSelectedMethod(
                                                         context);
                                               }
                                             },
@@ -323,7 +335,7 @@ class _PaymentSummaryPageState extends State<PaymentSummaryPage> {
                                               ? 'Add to Wallet:'
                                               : (detail?.cause is Campaign)
                                                   ? 'Pay to campaign service:'
-                                                  : 'Pay to livestream service',
+                                                  : 'Pay to stream service',
                                           alignment: TextAlign.start,
                                         ),
                                         const SizedBox(width: 12),
